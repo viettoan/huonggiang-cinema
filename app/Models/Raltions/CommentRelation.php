@@ -1,16 +1,15 @@
 <?php
 namespace App\Models\Relations;
-use App\Models\Cinema;
-use App\Models\Movie;
+use App\Models\User;
 
 trait CinemaScheduleRelation
 {
-    public function cinema()
+    public function commentable()
     {
-        return $this->belongsTo(Cinema::class);
+        return $this->morphTo();
     }
-    public function movie()
+    public function user()
     {
-        return $this->belongsTo(Media::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -14,6 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/', function () {
+        return view('admin.index');
+    });
+    Route::get('/login', function () {
+        return view('admin.auth.login');
+    });
+});
 
 Auth::routes();
 
