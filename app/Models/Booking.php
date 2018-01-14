@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Eloquent\Relations\BookingRelation;
+use App\Models\Relations\BookingRelation;
 
 class Booking extends Model
 {

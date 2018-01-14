@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Eloquent\Relations\TimeRelation;
+use App\Models\Relations\TimeRelation;
 
 class Time extends Model
 {

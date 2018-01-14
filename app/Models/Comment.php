@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Eloquent\Relations\CommentRelation;
+use App\Models\Relations\CommentRelation;
 
 class Comment extends Model
 {

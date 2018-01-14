@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Eloquent\Relations\CategoryRelation;
+use App\Models\Relations\CategoryRelation;
 
 class Category extends Model
 {

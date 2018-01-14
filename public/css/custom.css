@@ -1,0 +1,17 @@
+.header-custom {
+    margin:10px;
+}
+
+table thead {
+    background-color: #ffc107!important;
+}
+
+table .avatar-user {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+table .user-column {
+    width: 50px !important;
+    height: 50px !important;
+}
