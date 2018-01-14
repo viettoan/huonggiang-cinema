@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Eloquent\Relations\UserRelation;
+use App\Models\Relations\UserRelation;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use UserRelation;
     /**
      * The attributes that are mass assignable.
      *
@@ -33,4 +32,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+     /*
+     * Check Admin
+     */
+    public function isAdmin()
+    {
+        return $this->role == 1;
+    }
 }

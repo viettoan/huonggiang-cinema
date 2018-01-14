@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Eloquent\Relations\CinemaSchduleRelation;
+use App\Models\Relations\CinemaSchduleRelation;
 
 class CinemaSchedule extends Model
 {

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Eloquent\Relations\PromotionRelation;
+use App\Models\Relations\PromotionRelation;
 
 class Promotion extends Model
 {

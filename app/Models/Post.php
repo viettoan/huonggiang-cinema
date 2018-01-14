@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Eloquent\Relations\PostRelation;
+use App\Models\Relations\PostRelation;
 
 class Post extends Model
 {

@@ -14,13 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin'], function() {
+Route::get('/login-admin', function () {
+    return view('admin.auth.login');
+});
+Route::post('/login-admin', 'Admin\Auth\LoginController@login')->name('login-admin');
+Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/', function () {
         return view('admin.index');
-    });
-    Route::get('/login', function () {
-        return view('admin.auth.login');
-    });
+    })->name('dashboard');
+    Route::resource('user', 'UserController');
+    Route::resource('cinema', 'CinemaController');
+    Route::resource('movie', 'MovieController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('type', 'UserController');
+    Route::resource('media', 'UserController');
 });
 
 Auth::routes();

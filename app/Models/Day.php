@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Eloquent\Relations\DayRelation;
+use App\Models\Relations\DayRelation;
 
 class Day extends Model
 {

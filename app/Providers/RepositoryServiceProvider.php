@@ -8,8 +8,28 @@ class RepositoryServiceProvider extends ServiceProvider
 {
     protected static $repositories = [
         'user' => [
-            \App\Contracts\Repositories\UserRepository::class,
+            \App\Contracts\UserRepository::class,
             \App\Repositories\UserRepositoryEloquent::class,
+        ],
+        'movie' => [
+            \App\Contracts\MovieRepository::class,
+            \App\Repositories\MovieRepositoryEloquent::class,
+        ],
+        'cinema' => [
+            \App\Contracts\CinemaRepository::class,
+            \App\Repositories\CinemaRepositoryEloquent::class,
+        ],
+        'category' => [
+            \App\Contracts\CategoryRepository::class,
+            \App\Repositories\CategoryRepositoryEloquent::class,
+        ],
+        'type' => [
+            \App\Contracts\TypeRepository::class,
+            \App\Repositories\TypeRepositoryEloquent::class,
+        ],
+        'media' => [
+            \App\Contracts\MediaRepository::class,
+            \App\Repositories\MediaRepositoryEloquent::class,
         ],
     ];
     /**
