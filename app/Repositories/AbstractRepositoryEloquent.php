@@ -1,21 +1,22 @@
 <?php
 namespace App\Repositories;
+
 abstract class AbstractRepositoryEloquent
 {
     abstract public function model();
-    public function make($with = null)
+    public function make($with = [])
     {
-        return $this->model->with($with);
+        return $this->model()->with($with);
     }
-    public function all($with = [], $select = null)
+    public function all($with = [], $select = ['*'])
     {
         return $this->make($with)->get($select);
     }
-    public function paginate($paginate, $with = [], $select = null)
+    public function paginate($paginate, $with = [], $select = ['*'])
     {
         return $this->make($with)->paginate($paginate, $select);
     }
-    public function find($id, $with = null, $select = null)
+    public function find($id, $with = [], $select = ['*'])
     {
         return $this->make($with)->find($id);
     }

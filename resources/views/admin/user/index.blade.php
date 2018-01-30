@@ -4,15 +4,15 @@
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="#">Dashboard</a>
+        <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Tables</li>
+    <li class="breadcrumb-item active">Manage Users</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#createUser">
+    <a class="btn btn-primary" href = "{{ route('user.create') }}">
       New
-    </button>
+    </a>
     </div>
     <div class="col-md-5"><input type="text" name="search" id="search" placeholder="Search ..." class="form-control"></div>
 </div>
@@ -29,12 +29,14 @@
       </tr>
     </thead>
     <tbody>
+    @if (isset($users))
+      @foreach ($users as $user)
       <tr>
-          <th class="text-center">1</th>
-          <th class="user-column"><img class="img-responsive avatar-user" src="{{ asset('images/default-avatar.jpeg') }}"></th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Role</th>
+          <th class="text-center">{{ $user->id }}</th>
+          <th class="user-column"><img class="img-responsive avatar-user" src="{{ $user->avatar }}"></th>
+          <th>{{ $user->name }}</th>
+          <th>{{ $user->email }}</th>
+          <th>{{ $user->role }}</th>
           <th>
             <a data-toggle="modal" data-target="#editUser">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -44,12 +46,10 @@
             </a>
           </th>
       </tr>
+      @endforeach
+    @endif
+      
     </tbody>
   </table>
 </div>
-
-<!-- create new user -->
-@include('admin.user.create')
-<!-- edit user -->
-@include('admin.user.edit')
 @endsection
