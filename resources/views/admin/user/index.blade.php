@@ -38,18 +38,20 @@
           <th>{{ $user->email }}</th>
           <th>{{ $user->role }}</th>
           <th>
-            <a data-toggle="modal" data-target="#editUser">
+            <a href = "{{ route('user.edit', ['id' => $user->id]) }}">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
-            <a data-toggle="modal">
+            <a data-id="{{ $user->id}}" class="delUser">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
           </th>
       </tr>
       @endforeach
     @endif
-      
     </tbody>
   </table>
 </div>
+@endsection
+@section('script')
+  <script src="{{ asset('js/admin/user.js') }}"></script>
 @endsection

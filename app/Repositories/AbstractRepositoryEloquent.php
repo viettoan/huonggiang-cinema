@@ -33,10 +33,10 @@ abstract class AbstractRepositoryEloquent
     }
     public function delete($id)
     {
-        return $this->model->destroy($id);
+        return $this->model()->destroy($id);
     }
     public function deleteItem($data = [])
     {
-        return $this->model->destroy($data);
+        return $this->model()->destroy($data);
     }
 }

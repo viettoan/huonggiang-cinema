@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserRequest extends FormRequest
 {
@@ -21,14 +23,12 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         if ($this->isMethod('PUT')) {
             $arr = [
                 'name' => 'required|max:255' ,
-                'email' => 'max:255|unique:users,email,'.$request->id ,
-                'address' => 'required|string|max:255',
-                'avatar' => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email,'.$request->id,
                 'address' => 'string|string|max:255',
                 'gender' => 'required|numeric',
             ];
@@ -42,7 +42,8 @@ class UserRequest extends FormRequest
             'address' => 'required|string|max:255',
             'gender' => 'required|numeric',
             'role' => 'required|numeric',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required|min:8'
         ];
     }
 }

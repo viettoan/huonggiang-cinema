@@ -73,7 +73,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->user->find($id, []);
+
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -83,9 +85,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        
+        if ($this->user->update($id, $data)) {
+            return redirect()->route('user.edit', ['id' => $id])->with('error', trans('The user has been successfully edited!'));
+        } else {
+            return redirect()->route('user.edit', ['id' => $id])->with('success', trans('The user has been edited failed!'));
+        }
     }
 
     /**
@@ -94,8 +102,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            if ($this->user->delete($id)) {
+                return response(['status' => trans('messages.success')]);
+            }
+            return response(['status' => trans('messages.failed')]);
+        }
     }
 }
