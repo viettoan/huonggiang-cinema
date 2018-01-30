@@ -40,4 +40,14 @@ class User extends Authenticatable
     {
         return $this->role == 1;
     }
+
+    public function getAvatarAttribute($value)
+    {
+        return asset(config('custom.defaultPath') . $value);
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }

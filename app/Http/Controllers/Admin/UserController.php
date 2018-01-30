@@ -10,6 +10,10 @@ use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
+    protected $user;
+    public function __construct(UserRepository $user) {
+        $this->user = $user;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index');
+        $users = $this->user->all();
+
+        return view('admin.user.index', compact('users'));
     }
 
     /**
@@ -27,7 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
-         return view('admin.user.create');
+        return view('admin.user.create');
     }
 
     /**
@@ -36,9 +42,16 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['avatar'] = 'default-avatar.jpeg';
+
+        if ($this->user->create($data)) {
+            return redirect()->route('user.create')->with('error', trans('The user has been successfully created!'));
+        } else {
+            return redirect()->route('user.create')->with('success', trans('The user has been created failed!'));
+        }
     }
 
     /**

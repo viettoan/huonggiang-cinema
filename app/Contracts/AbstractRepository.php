@@ -1,5 +1,5 @@
 <?php
-namespace App\Contracts\Repositories;
+namespace App\Contracts;
 interface AbstractRepository
 {
     public function model();
