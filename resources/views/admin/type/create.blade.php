@@ -6,11 +6,11 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{ route('movie.index') }}">Manage Movies</a></li>
-    <li class="breadcrumb-item active">Edit Movie</li>
+    <li class="breadcrumb-item"><a href="{{ route('type.index') }}">Manage Types</a></li>
+    <li class="breadcrumb-item active">Create Type</li>
 </ol>
 <div class="card card-register mx-auto mt-5">
-    <div class="card-header">Edit Movie</div>
+    <div class="card-header">Create Type</div>
     <div class="card-body">
     @if (session('error'))
         <div class="alert alert-success">
@@ -22,16 +22,16 @@
             {{ session('success') }}
         </div>
     @endif
-    <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
+    <form method="POST" action="{{route('type.store')}}">
     {{ csrf_field() }}
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">
-                <label for="exampleInputName">File</label>
-                <input class="form-control" type="file" name="name" value="{{ old('path') }}">
-                @if ($errors->has('path'))
+                <label for="exampleInputName">Name</label>
+                <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="Enter name" required>
+                @if ($errors->has('name'))
                     <span class="help-block">
-                            <strong>{{ $errors->first('path') }}</strong>
+                            <strong>{{ $errors->first('name') }}</strong>
                     </span>
                 @endif
                 </div>
@@ -46,20 +46,7 @@
                 </span>
             @endif
         </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Status</label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="status" value="0" >Hide
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="status" value="1" checked>Show
-                </label>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Edit</button>
+        <button type="submit" class="btn btn-primary btn-block">Save</button>
     </form>
     </div>
 </div>

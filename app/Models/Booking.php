@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Relations\BookingRelation;
 
 class Booking extends Model
 {
-    use BookingRelation;
     
     protected $fillable = [
         'movie_id',
@@ -17,4 +15,16 @@ class Booking extends Model
         'status',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class);
+    }
+    public function cinemaSchedule()
+    {
+        return $this->hasMany(CinemaSchedule::class);
+    }
 }

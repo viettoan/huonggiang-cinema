@@ -4,43 +4,73 @@
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="#">Dashboard</a>
+        <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Tables</li>
+    <li class="breadcrumb-item"><a href="{{ route('cinema.index') }}">Manage Cinemas</a></li>
+    <li class="breadcrumb-item active">Edit Cinema</li>
 </ol>
 <div class="card card-register mx-auto mt-5">
-    <div class="card-header">Register an Account</div>
+    <div class="card-header">Edit Cinema</div>
     <div class="card-body">
-    <form>
+    @if (session('error'))
+        <div class="alert alert-success">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
+        {{ csrf_field() }}
         <div class="form-group">
-        <div class="form-row">
-            <div class="col-md-6">
-            <label for="exampleInputName">First name</label>
-            <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
-            </div>
-            <div class="col-md-6">
-            <label for="exampleInputLastName">Last name</label>
-            <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
-            </div>
-        </div>
+            <label for="exampleInputEmail1">Name</label>
+            <input class="form-control" type="text" name="description" value="{{ old('description') }}" placeholder="Description" required>
+            @if ($errors->has('description'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('description') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <label for="exampleInputEmail1">Time</label>
+            <input class="form-control" type="text" name="description" value="{{ old('description') }}" placeholder="Description" required>
+            @if ($errors->has('description'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('description') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
-        <div class="form-row">
-            <div class="col-md-6">
-            <label for="exampleInputPassword1">Password</label>
-            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+            <label for="exampleInputEmail1">Description</label>
+            <input class="form-control" type="text" name="description" value="{{ old('description') }}" placeholder="Description" required>
+            @if ($errors->has('description'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('description') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Banner</label>
+            <select name="parent_id" class="form-control">
+                <option value="0">None</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Status</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status" value="0" >Hide
+                </label>
             </div>
-            <div class="col-md-6">
-            <label for="exampleConfirmPassword">Confirm password</label>
-            <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status" value="1" checked>Show
+                </label>
             </div>
         </div>
-        </div>
-        <a class="btn btn-primary btn-block" href="login.html">Save</a>
+        <button type="submit" class="btn btn-primary btn-block">Edit</button>
     </form>
     </div>
 </div>

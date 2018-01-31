@@ -41,9 +41,11 @@
             <a href = "{{ route('user.edit', ['id' => $user->id]) }}">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
+            @if (Auth::id() != $user->id)
             <a data-id="{{ $user->id}}" class="delUser">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
+            @endif
           </th>
       </tr>
       @endforeach

@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Relations\PostRelation;
 
 class Post extends Model
 {
-    use PostRelation;
     
     protected $fillable = [
         'title',
@@ -16,5 +14,20 @@ class Post extends Model
         'status',
         'media_id',
     ];
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function comments()
+    {
+        return $this->morphMany(Booking::class, 'commentable');
+    }
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
+    }
 }

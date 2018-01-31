@@ -22,13 +22,20 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/', function () {
         return view('admin.index');
     })->name('dashboard');
+
     Route::resource('user', 'UserController');
     Route::get('/user/delete/{id}', 'UserController@destroy');
+
     Route::resource('cinema', 'CinemaController');
+
     Route::resource('movie', 'MovieController');
+
     Route::resource('category', 'CategoryController');
-    Route::resource('type', 'UserController');
-    Route::resource('media', 'UserController');
+    Route::get('/category/delete/{id}', 'CategoryController@destroy');
+
+    Route::resource('type', 'TypeController');
+
+    Route::resource('media', 'MediaController');
 });
 
 Auth::routes();

@@ -6,8 +6,8 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Manage Categories</a></li>
-    <li class="breadcrumb-item active">Edit Category</li>
+    <li class="breadcrumb-item"><a href="{{ route('type.index') }}">Manage Types</a></li>
+    <li class="breadcrumb-item active">Edit Type</li>
 </ol>
 <div class="card card-register mx-auto mt-5">
     <div class="card-header">Edit Category</div>
@@ -22,14 +22,14 @@
             {{ session('success') }}
         </div>
     @endif
-    <form method="POST" action="{{ route('category.update', ['id' => $category->id]) }}">
+    <form method="POST" action="">
         <input type="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">
                 <label for="exampleInputName">Name</label>
-                <input class="form-control" type="text" name="name" value="{{ $category->name }}" placeholder="Enter name" required>
+                <input class="form-control" type="text" name="name" value="" placeholder="Enter name" required>
                 @if ($errors->has('name'))
                     <span class="help-block">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -40,26 +40,12 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Description</label>
-            <input class="form-control" type="text" name="description" value="{{ $category->description }}" placeholder="Description" required>
+            <input class="form-control" type="text" name="description" value="" placeholder="Description" required>
             @if ($errors->has('description'))
                 <span class="help-block">
                         <strong>{{ $errors->first('description') }}</strong>
                 </span>
             @endif
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Parent Category</label>
-            <select name="parent_id" class="form-control">
-                <option value="0">None</option>
-                @if (isset($categories))
-                    @foreach($categories as $cat)
-                        @if ($cat->id != $category->id)
-                            <option value="{{ $cat->id }}" @if($cat->id == $category->parent_id) selected @endif>{{ $cat->name }}</option>
-                        @endif
-                       
-                    @endforeach
-                @endif
-            </select>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Edit</button>
     </form>

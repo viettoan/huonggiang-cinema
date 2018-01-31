@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Relations\PromotionRelation;
 
 class Promotion extends Model
 {
-    use PromotionRelation;
     
     protected $fillable = [
         'title',
@@ -18,5 +16,8 @@ class Promotion extends Model
         'sale',
         'status',
     ];
-
+    public function cinema()
+    {
+        return $this->hasMany(Cinema::class);
+    }
 }

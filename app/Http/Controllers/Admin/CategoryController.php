@@ -31,7 +31,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $categories = $this->category->all();
+
+        return view('admin.category.create', compact('categories'));
     }
 
     /**
@@ -71,8 +73,9 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = $this->category->find($id, []);
+        $categories = $this->category->all();
 
-        return view('admin.category.edit', compact('category'));
+        return view('admin.category.edit', compact('category', 'categories'));
     }
 
     /**

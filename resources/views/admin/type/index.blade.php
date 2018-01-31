@@ -6,11 +6,11 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Manage Media</li>
+    <li class="breadcrumb-item active">Manage Types</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
-    <a class="btn btn-primary" href = "{{ route('media.create') }}">
+    <a class="btn btn-primary" href = "{{ route('type.create') }}">
       New
     </a>
     </div>
@@ -20,9 +20,10 @@
     <thead>
       <tr>
           <th class="text-center">#</th>
-          <th class="text-center ">File</th>
-          <th class="text-center">Description</th>
-          <th class="text-center">Status</th>
+          <th class="text-center ">Avatar</th>
+          <th class="text-center">Name</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Role</th>
           <th class="text-center"></th>
       </tr>
     </thead>

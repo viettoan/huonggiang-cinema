@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(document).on('click', '.delUser', function () {
+    $(document).on('click', '.delCategory', function () {
         var id = $(this).data('id');
         var selector = $(this);
         swal({
@@ -16,7 +16,7 @@ $(document).ready(function() {
             buttonsStyling: false
         }).then(function () {
             $.ajax({
-                url: '/admin/user/delete/' + id,
+                url: '/admin/category/delete/' + id,
                 type: 'GET',
                 success: function (res) {
                     selector.parents('tr').remove();

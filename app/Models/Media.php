@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Relations\MediaRelation;
 
 class Media extends Model
 {
-    use MediaRelation;
     
     protected $fillable = [
         'path',
@@ -15,4 +13,16 @@ class Media extends Model
         'status',
     ];
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function movies()
+    {
+        return $this->hasMany(Movie::class);
+    }
+    public function cinemas()
+    {
+        return $this->hasMany(Cinema::class);
+    }
 }

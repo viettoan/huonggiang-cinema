@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Relations\CinemaRelation;
 
 class Cinema extends Model
 {
-    use CinemaRelation;
     
     protected $fillable = [
         'name',
@@ -15,5 +13,16 @@ class Cinema extends Model
         'description',
         'media_id',
     ];
-
+    public function promtions()
+    {
+        return $this->hasMany(Promotion::class);
+    }
+    public function cinema_schedules()
+    {
+        return $this->hasMany(CinemaSchedule::class);
+    }
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
+    }
 }

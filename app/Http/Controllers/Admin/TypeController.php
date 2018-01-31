@@ -24,7 +24,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.type.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.type.edit');
     }
 
     /**

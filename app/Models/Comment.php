@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Relations\CommentRelation;
 
 class Comment extends Model
 {
-    use CommentRelation;
     
     protected $fillable = [
         'commentable_id',
@@ -17,4 +15,12 @@ class Comment extends Model
         'status',
     ];
 
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
