@@ -11,6 +11,7 @@ class Media extends Model
         'path',
         'description',
         'status',
+        'type',
     ];
 
     public function posts()
@@ -24,5 +25,9 @@ class Media extends Model
     public function cinemas()
     {
         return $this->hasMany(Cinema::class);
+    }
+    public function getpathAttribute($value)
+    {
+        return asset(config('custom.defaultMedia') . $value);
     }
 }

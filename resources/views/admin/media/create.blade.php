@@ -22,13 +22,13 @@
             {{ session('success') }}
         </div>
     @endif
-    <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
+    <form method="POST" action="{{route('media.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">
                 <label for="exampleInputName">File</label>
-                <input class="form-control" type="file" name="name" value="{{ old('path') }}">
+                <input class="form-control" type="file" name="path" value="{{ old('path') }}">
                 @if ($errors->has('path'))
                     <span class="help-block">
                             <strong>{{ $errors->first('path') }}</strong>
@@ -58,6 +58,16 @@
                     <input type="radio" name="status" value="1" checked>Show
                 </label>
             </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Type</label>
+            <select name="type" class="form-control">
+                @if (config('custom.media.type') != null)
+                    @foreach(config('custom.media.type') as $key => $type)
+                        <option value="{{ $type }}">{{ $key }}</option>
+                    @endforeach
+                @endif
+            </select>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Save</button>
     </form>
