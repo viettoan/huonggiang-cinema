@@ -23,8 +23,13 @@ class MediaRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $arr = [
+            'path' => 'required|max:255' ,
+            'description' => 'required|max:255',
+            'status' => 'required|numeric',
+            'type' => 'numeric'
         ];
+        
+        return $arr;
     }
 }

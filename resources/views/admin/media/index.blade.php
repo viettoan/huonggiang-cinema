@@ -23,14 +23,38 @@
           <th class="text-center ">File</th>
           <th class="text-center">Description</th>
           <th class="text-center">Status</th>
+          <th class="text-center">Type</th>
           <th class="text-center"></th>
       </tr>
     </thead>
     <tbody>
+    @if (isset($media))
+      @foreach ($media as $m)
+      <tr>
+          <th class="text-center">{{ $m->id }}</th>
+          <th><img class="img-responsive avatar-user" src="{{ $m->path }}"></th>
+          <th>{{ $m->description }}</th>
+          <th>
+            {{ $m->status }}
+          </th>
+          <th>
+            {{ $m->type }}
+          </th>
+          <th>
+            <a href = "{{ route('media.edit', ['id' => $m->id]) }}">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+            <a data-id="{{ $m->id}}" class="delMedia">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+          </th>
+      </tr>
+      @endforeach
+    @endif
     </tbody>
   </table>
 </div>
 @endsection
 @section('script')
-  <script src="{{ asset('js/admin/type.js') }}"></script>
+  <script src="{{ asset('js/admin/media.js') }}"></script>
 @endsection

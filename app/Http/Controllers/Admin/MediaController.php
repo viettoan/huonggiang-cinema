@@ -4,9 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MediaRequest;
+use App\Helper\Helper;
+use App\Contracts\MediaRepository;
 
 class MediaController extends Controller
 {
+    protected $media;
+    public function __construct(MediaRepository $media) {
+        $this->media = $media;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class MediaController extends Controller
      */
     public function index()
     {
-        return view('admin.media.index');
+        $media = $this->media->all();
+
+        return view('admin.media.index', compact('media'));
     }
 
     /**
@@ -33,9 +42,21 @@ class MediaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MediaRequest $request)
     {
-        //
+        $data = [
+            'description' => $request->description,
+            'status' => $request->status,
+            'type' => $request->type,
+        ];
+        
+        $data['path'] = Helper::upload($request->path, 'media');
+
+        if ($this->media->create($data)) {
+            return redirect()->route('media.create')->with('error', trans('The media has been successfully created!'));
+        } else {
+            return redirect()->route('media.create')->with('success', trans('The media has been created failed!'));
+        }
     }
 
     /**
@@ -57,7 +78,9 @@ class MediaController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.media.edit');
+        $media = $this->media->find($id, []);
+
+        return view('admin.media.edit', compact('media'));
     }
 
     /**

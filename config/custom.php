@@ -7,6 +7,14 @@ return [
     'post' =>1,
     'tour' =>0,
     'defaultPath' => 'images/',
+    'defaultMedia' => 'media/',
     'stripe' => 1,
     'direct_payment' => 0,
+    'media' => [
+        'type' => [
+            'post' => 0,
+            'movie' => 1,
+            'cinema' => 2
+        ]
+    ]
 ];
