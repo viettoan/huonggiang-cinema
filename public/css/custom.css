@@ -10,7 +10,10 @@ table .avatar-user {
     width: 50px !important;
     height: 50px !important;
 }
-
+table .media-file {
+    width: 250px !important;
+    height: 200px !important;
+}
 table .user-column {
     width: 50px !important;
     height: 50px !important;

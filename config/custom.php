@@ -15,6 +15,16 @@ return [
             'post' => 0,
             'movie' => 1,
             'cinema' => 2
+        ],
+        'status' => [
+            'hide' => 0,
+            'show' => 1
         ]
-    ]
+    ],
+    'types' => [
+        'type' => [
+            'post' => 0,
+            'movie' => 1,
+        ],
+    ],
 ];

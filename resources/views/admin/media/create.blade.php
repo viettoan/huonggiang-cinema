@@ -27,13 +27,14 @@
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">
-                <label for="exampleInputName">File</label>
-                <input class="form-control" type="file" name="path" value="{{ old('path') }}">
-                @if ($errors->has('path'))
-                    <span class="help-block">
-                            <strong>{{ $errors->first('path') }}</strong>
-                    </span>
-                @endif
+                    <label for="exampleInputName">File</label>
+                    <input class="form-control" id="file-media" type="file" name="path" value="{{ old('path') }}">
+                    @if ($errors->has('path'))
+                        <span class="help-block">
+                                <strong>{{ $errors->first('path') }}</strong>
+                        </span>
+                    @endif
+                    <img class="col-md-12 img-responsive review-file-media">
                 </div>
             </div>
         </div>
@@ -73,4 +74,7 @@
     </form>
     </div>
 </div>
+@endsection
+@section('script')
+  <script src="{{ asset('js/admin/media.js') }}"></script>
 @endsection
