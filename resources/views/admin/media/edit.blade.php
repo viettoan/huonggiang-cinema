@@ -22,24 +22,26 @@
             {{ session('success') }}
         </div>
     @endif
-    <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
-    {{ csrf_field() }}
+    <form method="POST" action="{{route('media.update', ['id' => $media->id])}}" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="PUT">
+        {{ csrf_field() }}
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">
                 <label for="exampleInputName">File</label>
-                <input class="form-control" type="file" name="name" value="{{ old('path') }}">
+                <input class="form-control" id="file-media" type="file" name="path" value="{{ $media->path }}">
                 @if ($errors->has('path'))
                     <span class="help-block">
                             <strong>{{ $errors->first('path') }}</strong>
                     </span>
                 @endif
                 </div>
+                <img class="col-md-12 img-responsive review-file-media" src="{{ $media->path }}">
             </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Description</label>
-            <input class="form-control" type="text" name="description" value="{{ old('description') }}" placeholder="Description" required>
+            <input class="form-control" type="text" name="description" value="{{ $media->description }}" placeholder="Description" required>
             @if ($errors->has('description'))
                 <span class="help-block">
                         <strong>{{ $errors->first('description') }}</strong>
@@ -50,17 +52,30 @@
             <label for="exampleInputEmail1">Status</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="0" >Hide
+                    <input type="radio" name="status" value="0" @if ($media->status == 0) checked @endif >Hide
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="1" checked>Show
+                    <input type="radio" name="status" value="1" @if ($media->status == 1) checked @endif >Show
                 </label>
             </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Type</label>
+            <select name="type" class="form-control">
+                @if (config('custom.media.type') != null)
+                    @foreach(config('custom.media.type') as $key => $type)
+                        <option value="{{ $type }}" @if($media->type == $type) selected @endif>{{ $key }}</option>
+                    @endforeach
+                @endif
+            </select>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Edit</button>
     </form>
     </div>
 </div>
+@endsection
+@section('script')
+  <script src="{{ asset('js/admin/media.js') }}"></script>
 @endsection

@@ -31,13 +31,14 @@ class UserRequest extends FormRequest
                 'email' => 'required|email|unique:users,email,'.$request->id,
                 'address' => 'string|string|max:255',
                 'gender' => 'required|numeric',
+                'role' => 'required|numeric',
             ];
             
             return $arr;
         }
         return [
             'name' => 'required|max:255' ,
-            'email' => 'max:255|unique:users' ,
+            'email' => 'max:255|email|unique:users' ,
             'avatar' => 'string|max:255',
             'address' => 'required|string|max:255',
             'gender' => 'required|numeric',

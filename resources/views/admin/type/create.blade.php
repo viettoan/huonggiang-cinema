@@ -23,7 +23,7 @@
         </div>
     @endif
     <form method="POST" action="{{route('type.store')}}">
-    {{ csrf_field() }}
+        {{ csrf_field() }}
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">
@@ -45,6 +45,16 @@
                         <strong>{{ $errors->first('description') }}</strong>
                 </span>
             @endif
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Type</label>
+            <select name="type" class="form-control">
+                @if (config('custom.types.type') != null)
+                    @foreach(config('custom.types.type') as $key => $type)
+                        <option value="{{ $type }}">{{ $key }}</option>
+                    @endforeach
+                @endif
+            </select>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Save</button>
     </form>

@@ -4,9 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\TypeRepository;
+use App\Http\Requests\TypeRequest;
 
 class TypeController extends Controller
 {
+    protected $type;
+    public function __construct(TypeRepository $type) {
+        $this->type = $type;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return view('admin.type.index');
+        $types = $this->type->all([]);
+        return view('admin.type.index', compact('types'));
     }
 
     /**
@@ -33,9 +40,15 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TypeRequest $request)
     {
-        //
+        $data = $request->all();
+
+        if ($this->type->create($data)) {
+            return redirect()->route('type.create')->with('error', trans('The type has been successfully created!'));
+        } else {
+            return redirect()->route('type.create')->with('success', trans('The type has been created failed!'));
+        }
     }
 
     /**
@@ -57,7 +70,9 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.type.edit');
+        $type = $this->type->find($id, []);
+
+        return view('admin.type.edit', compact('type'));
     }
 
     /**
@@ -67,9 +82,15 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TypeRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        
+        if ($this->type->update($id, $data)) {
+            return redirect()->route('type.edit', ['id' => $id])->with('error', trans('The type has been successfully edited!'));
+        } else {
+            return redirect()->route('type.edit', ['id' => $id])->with('success', trans('The type has been edited failed!'));
+        }
     }
 
     /**
@@ -78,8 +99,13 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            if ($this->type->delete($id)) {
+                return response(['status' => trans('messages.success')]);
+            }
+            return response(['status' => trans('messages.failed')]);
+        }
     }
 }

@@ -38,7 +38,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('type.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Type</span>
+            <span class="nav-link-text">Manage Types</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">

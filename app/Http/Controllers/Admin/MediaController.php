@@ -90,9 +90,21 @@ class MediaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MediaRequest $request, $id)
     {
-        //
+        $data = [
+            'description' => $request->description,
+            'status' => $request->status,
+            'type' => $request->type,
+        ];
+        if ($request->path != null) {
+            $data['path'] = Helper::upload($request->path, 'media');
+        }
+        if ($this->media->update($id, $data)) {
+            return redirect()->route('media.edit', ['id' => $id])->with('error', trans('The media has been successfully edited!'));
+        } else {
+            return redirect()->route('media.edit', ['id' => $id])->with('success', trans('The media has been edited failed!'));
+        }
     }
 
     /**
@@ -101,8 +113,13 @@ class MediaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            if ($this->media->delete($id)) {
+                return response(['status' => trans('messages.success')]);
+            }
+            return response(['status' => trans('messages.failed')]);
+        }
     }
 }

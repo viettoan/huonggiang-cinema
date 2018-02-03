@@ -20,7 +20,7 @@
     <thead>
       <tr>
           <th class="text-center">#</th>
-          <th class="text-center ">Banner</th>
+          <th class="text-center ">Movie poster</th>
           <th class="text-center ">Name</th>
           <th class="text-center ">Address</th>
           <th class="text-center">Description</th>

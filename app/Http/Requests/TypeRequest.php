@@ -23,8 +23,12 @@ class TypeRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $arr = [
+            'name' => 'required|max:255' ,
+            'type' => 'required|numeric',
+            'description' => 'required|max:255',
         ];
+        
+        return $arr;
     }
 }

@@ -33,9 +33,11 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::resource('category', 'CategoryController');
     Route::get('/category/delete/{id}', 'CategoryController@destroy');
 
-    Route::resource('type', 'TypeController');
-
     Route::resource('media', 'MediaController');
+    Route::get('/media/delete/{id}', 'MediaController@destroy');
+
+    Route::resource('type', 'TypeController');
+    Route::get('/type/delete/{id}', 'TypeController@destroy');
 });
 
 Auth::routes();

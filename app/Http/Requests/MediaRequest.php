@@ -23,13 +23,21 @@ class MediaRequest extends FormRequest
      */
     public function rules()
     {
-        $arr = [
+        if ($this->isMethod('PUT')) {
+            $arr = [
+                'path' => 'max:255' ,
+                'description' => 'required|max:255',
+                'status' => 'required|numeric',
+                'type' => 'numeric'
+            ];
+            
+            return $arr;
+        }
+        return [
             'path' => 'required|max:255' ,
             'description' => 'required|max:255',
             'status' => 'required|numeric',
             'type' => 'numeric'
         ];
-        
-        return $arr;
     }
 }

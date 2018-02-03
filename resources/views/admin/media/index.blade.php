@@ -32,13 +32,23 @@
       @foreach ($media as $m)
       <tr>
           <th class="text-center">{{ $m->id }}</th>
-          <th><img class="img-responsive avatar-user" src="{{ $m->path }}"></th>
+          <th><img class="img-responsive media-file" src="{{ $m->path }}"></th>
           <th>{{ $m->description }}</th>
-          <th>
-            {{ $m->status }}
+          <th class="text-center">
+            @if ($m->status == config('custom.media.status.show'))
+                <button class="btn btn-primary">Show</button>
+            @else
+            <button class="btn btn-warning">Hide</button>
+            @endif
           </th>
-          <th>
-            {{ $m->type }}
+          <th class="text-center">
+            @if (config('custom.media.type') != null)
+                @foreach(config('custom.media.type') as $key => $type)
+                    @if($m->type == $type)
+                    <button class="btn btn-primary">{{ $key }}</button>
+                    @endif
+                @endforeach
+            @endif
           </th>
           <th>
             <a href = "{{ route('media.edit', ['id' => $m->id]) }}">
