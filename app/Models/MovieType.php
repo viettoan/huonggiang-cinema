@@ -4,18 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CinemaSchedule extends Model
+class MovieType extends Model
 {
-    
     protected $fillable = [
-        'cinema_id',
         'movie_id',
-        'day_id',
-        'price',
+        'type_id',
     ];
-    public function cinema()
+    public function type()
     {
-        return $this->belongsTo(Cinema::class);
+        return $this->belongsTo(Type::class);
     }
     public function movie()
     {
