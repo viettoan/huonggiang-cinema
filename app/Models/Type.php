@@ -15,8 +15,8 @@ class Type extends Model
     {
         return $this->hasMany(Post::class);
     }
-    public function movies()
+    public function movieType()
     {
-        return $this->hasMany(Movie::class);
+        return $this->hasMany(MovieType::class);
     }
 }

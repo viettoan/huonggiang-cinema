@@ -15,6 +15,7 @@ class Movie extends Model
         'status',
         'media_id',
         'type_id',
+        'category_id',
     ];
 
     public function bookings()
@@ -37,8 +38,12 @@ class Movie extends Model
     {
         return $this->hasMany(CinemaSchedule::class);
     }
-    public function type()
+    public function trailers()
     {
-        return $this->belongsTo(Type::class);
+        return $this->hasMany(Trailer::class);
+    }
+    public function movieType()
+    {
+        return $this->hasMany(MovieType::class);
     }
 }
