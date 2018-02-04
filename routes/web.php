@@ -27,6 +27,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/user/delete/{id}', 'UserController@destroy');
 
     Route::resource('cinema', 'CinemaController');
+    Route::get('/cinema/delete/{id}', 'CinemaController@destroy');
 
     Route::resource('movie', 'MovieController');
 

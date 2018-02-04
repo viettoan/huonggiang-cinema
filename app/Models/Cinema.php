@@ -12,6 +12,7 @@ class Cinema extends Model
         'address',
         'description',
         'media_id',
+        'status',
     ];
     public function promtions()
     {

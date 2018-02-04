@@ -27,4 +27,10 @@ return [
             'movie' => 1,
         ],
     ],
+    'cinema' => [
+        'status' => [
+            'block' => 0,
+            'active' => 1,
+        ],
+    ],
 ];
