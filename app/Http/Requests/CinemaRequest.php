@@ -23,8 +23,14 @@ class CinemaRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $arr = [
+            'name' => 'required|max:255' ,
+            'address' => 'required|max:255',
+            'description' => 'required|max:255',
+            'media_id' => 'required|numeric',
+            'status' => 'required|numeric',
         ];
+        
+        return $arr;
     }
 }

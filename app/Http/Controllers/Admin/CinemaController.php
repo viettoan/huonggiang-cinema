@@ -4,9 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\CinemaRepository;
+use App\Contracts\MediaRepository;
+use App\Http\Requests\CinemaRequest;
 
 class CinemaController extends Controller
 {
+    protected $cinema, $media;
+    public function __construct(
+        CinemaRepository $cinema,
+        MediaRepository $media
+    )
+    {
+        $this->cinema = $cinema;
+        $this->media = $media;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,8 @@ class CinemaController extends Controller
      */
     public function index()
     {
-        return view('admin.cinema.index');
+        $cinemas = $this->cinema->all(['media']);
+        return view('admin.cinema.index', compact('cinemas'));
     }
 
     /**
@@ -24,7 +37,9 @@ class CinemaController extends Controller
      */
     public function create()
     {
-        //
+        $media = $this->media->getMediaByTypeCinema([]);
+
+        return view('admin.cinema.create', compact('media'));
     }
 
     /**
@@ -33,9 +48,15 @@ class CinemaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CinemaRequest $request)
     {
-        //
+        $data = $request->all();
+
+        if ($this->cinema->create($data)) {
+            return redirect()->route('cinema.create')->with('error', trans('The cinema has been successfully created!'));
+        } else {
+            return redirect()->route('cinema.create')->with('success', trans('The cinema has been created failed!'));
+        }
     }
 
     /**
@@ -57,7 +78,10 @@ class CinemaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cinema = $this->cinema->find($id, []);
+        $media = $this->media->getMediaByTypeCinema([]);
+
+        return view('admin.cinema.edit', compact('cinema', 'media'));
     }
 
     /**
@@ -67,9 +91,15 @@ class CinemaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CinemaRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        
+        if ($this->cinema->update($id, $data)) {
+            return redirect()->route('cinema.edit', ['id' => $id])->with('error', trans('The cinema has been successfully edited!'));
+        } else {
+            return redirect()->route('cinema.edit', ['id' => $id])->with('success', trans('The cinema has been edited failed!'));
+        }
     }
 
     /**
@@ -78,8 +108,13 @@ class CinemaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            if ($this->cinema->delete($id)) {
+                return response(['status' => trans('messages.success')]);
+            }
+            return response(['status' => trans('messages.failed')]);
+        }
     }
 }

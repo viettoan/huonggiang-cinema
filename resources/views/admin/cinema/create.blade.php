@@ -22,29 +22,29 @@
             {{ session('success') }}
         </div>
     @endif
-    <form method="POST" action="{{route('category.store')}}" enctype="multipart/form-data">
-    {{ csrf_field() }}
+    <form method="POST" action="{{route('cinema.store')}}" enctype="multipart/form-data">
+        {{ csrf_field() }}
         <div class="form-group">
             <label for="exampleInputEmail1">Name</label>
-            <input class="form-control" type="text" name="description" value="{{ old('description') }}" placeholder="Description" required>
-            @if ($errors->has('description'))
+            <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="Name" required>
+            @if ($errors->has('name'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('description') }}</strong>
+                        <strong>{{ $errors->first('name') }}</strong>
                 </span>
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Time</label>
-            <input class="form-control" type="text" name="description" value="{{ old('description') }}" placeholder="Description" required>
-            @if ($errors->has('description'))
+            <label for="exampleInputEmail1">Address</label>
+            <input class="form-control" type="text" name="address" value="{{ old('address') }}" placeholder="Address" required>
+            @if ($errors->has('address'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('description') }}</strong>
+                        <strong>{{ $errors->first('address') }}</strong>
                 </span>
             @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Description</label>
-            <input class="form-control" type="text" name="description" value="{{ old('description') }}" placeholder="Description" required>
+            <textarea class="form-control" rows="5" name="description" required>{{ old('description') }}</textarea>
             @if ($errors->has('description'))
                 <span class="help-block">
                         <strong>{{ $errors->first('description') }}</strong>
@@ -53,20 +53,22 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Banner</label>
-            <select name="parent_id" class="form-control">
-                <option value="0">None</option>
+            <select name="media_id" class="form-control">
+            @foreach ($media as $m)
+            <option value="{{ $m->id }}">{{ $m->description }}</option>
+            @endforeach 
             </select>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Status</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="0" >Hide
+                    <input type="radio" name="status" value="{{ config('custom.cinema.status.active') }}" checked>Active
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="1" checked>Show
+                    <input type="radio" name="status" value="{{ config('custom.cinema.status.block') }}">Block
                 </label>
             </div>
         </div>

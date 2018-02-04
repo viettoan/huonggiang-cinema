@@ -1,12 +1,12 @@
 <?php
 namespace App\Repositories;
-use App\Contracts\CategoryRepository;
-use App\Models\Category;
-class CategoryRepositoryEloquent extends AbstractRepositoryEloquent implements CategoryRepository
+use App\Contracts\CinemaRepository;
+use App\Models\Cinema;
+class CinemaRepositoryEloquent extends AbstractRepositoryEloquent implements CinemaRepository
 {
     public function model()
     {
-        return new Category;
+        return new Cinema;
     }
     
 }
