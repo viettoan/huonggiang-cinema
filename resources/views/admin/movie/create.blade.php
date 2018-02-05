@@ -95,9 +95,6 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Category</label>
-        </div>
-        <div class="form-group">
             <label for="exampleInputEmail1">Status</label>
             <div class="radio">
                 <label>

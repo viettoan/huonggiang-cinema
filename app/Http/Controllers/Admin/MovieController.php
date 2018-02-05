@@ -102,10 +102,11 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        $movie = $this->movie->find($id, []);
-        $media = $this->media->getMediaByTypeCinema([]);
-
-        return view('admin.cinema.edit', compact('movie', 'media'));
+        $movie = $this->movie->find($id, ['media']);
+        $movieTypes = $this->movieType->getTypeByMovieId($id, [])->pluck('type_id')->toArray();
+        $media = $this->media->getMediaByTypeMovie([]);
+        $types = $this->type->getTypeByMovie([]);
+        return view('admin.movie.edit', compact('movie', 'media', 'types', 'movieTypes'));
     }
 
     /**
@@ -117,9 +118,27 @@ class MovieController extends Controller
      */
     public function update(MovieRequest $request, $id)
     {
-       
+        $dataMovie = [
+            'name' => $request->name,
+            'time' => $request->time,
+            'release_date' => $request->release_date,
+            'directors' => $request->directors,
+            'actors' => $request->actors,
+            'description' => $request->description,
+            'status' => $request->status,
+            'media_id' => $request->media_id,
+        ];
+        $movie = $this->movie->update($id, $dataMovie);
         
-        if ($this->movie->update($id, $data)) {
+        if ($movie) {
+            $this->movieType->deleteByMovieId($id);
+            foreach ($request->type_id as $type_id) {
+                $dataMovieType = [
+                    'type_id' => $type_id,
+                    'movie_id' => $id,
+                ];
+                $this->movieType->create($dataMovieType);
+            }
             return redirect()->route('movie.edit', ['id' => $id])->with('error', trans('The movie has been successfully edited!'));
         } else {
             return redirect()->route('movie.edit', ['id' => $id])->with('success', trans('The movie has been edited failed!'));

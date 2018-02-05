@@ -42,7 +42,7 @@ class Movie extends Model
     {
         return $this->hasMany(Trailer::class);
     }
-    public function movieType()
+    public function movieTypes()
     {
         return $this->hasMany(MovieType::class);
     }

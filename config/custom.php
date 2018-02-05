@@ -37,6 +37,7 @@ return [
         'status' => [
             'new_release' => 0,
             'now_showing' => 1,
+            'stop_showing' => 2
         ],
     ],
 ];

@@ -8,5 +8,12 @@ class MovieTypeRepositoryEloquent extends AbstractRepositoryEloquent implements 
     {
         return new MovieType;
     }
-    
+    public function getTypeByMovieId($id,$with = [], $select = ['*'])
+    {
+        return $this->model()->with($with)->select($select)->where('movie_id', $id)->get();
+    }
+    public function deleteByMovieId($id)
+    {
+        return $this->model()->where('movie_id', $id)->delete();
+    }
 }
