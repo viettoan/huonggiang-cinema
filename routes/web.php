@@ -30,6 +30,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/cinema/delete/{id}', 'CinemaController@destroy');
 
     Route::resource('movie', 'MovieController');
+    Route::get('/movie/delete/{id}', 'MovieController@destroy');
 
     Route::resource('category', 'CategoryController');
     Route::get('/category/delete/{id}', 'CategoryController@destroy');

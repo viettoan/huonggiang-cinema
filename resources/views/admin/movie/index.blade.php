@@ -29,6 +29,33 @@
       </tr>
     </thead>
     <tbody>
+    @if (isset($movies))
+        @foreach ($movies as $movie)
+        <tr>
+            <th class="text-center">{{ $movie->id }}</th>
+            <th><img class="media-file" src="{{ $movie->media->path }}"></th>
+            <th>{{ $movie->name }}</th>
+            <th>{{ $movie->time }}</th>
+            <th>{{ $movie->release_date }}</th>
+            <th class="text-center">
+                @if ($movie->status == config('custom.movie.status.new_release'))
+                    <button class="btn btn-primary">New Release</button>
+                @elseif ($movie->status == config('custom.movie.status.now_showing'))
+                    <button class="btn btn-danger">Now Showing</button>
+                @else
+                    <button class="btn btn-danger">Stop Showing</button>
+                @endif
+            <th>
+                <a href = "{{ route('movie.edit', ['id' => $movie->id]) }}">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+                <a data-id="{{ $movie->id}}" class="delMovie">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+            </th>
+        </tr>
+        @endforeach
+    @endif
     </tbody>
   </table>
 </div>
