@@ -31,6 +31,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Contracts\MediaRepository::class,
             \App\Repositories\MediaRepositoryEloquent::class,
         ],
+        'movie_type' => [
+            \App\Contracts\MovieTypeRepository::class,
+            \App\Repositories\MovieTypeRepositoryEloquent::class,
+        ],
     ];
     /**
      * Bootstrap the application services.

@@ -4,9 +4,28 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\MovieRepository;
+use App\Contracts\MovieTypeRepository;
+use App\Contracts\MediaRepository;
+use App\Contracts\TypeRepository;
+
+use App\Http\Requests\MovieRequest;
 
 class MovieController extends Controller
 {
+    protected $movie, $media, $type, $movieType;
+    public function __construct(
+        MovieRepository $movie,
+        MediaRepository $media,
+        TypeRepository $type,
+        MovieTypeRepository $movieType
+    )
+    {
+        $this->movie = $movie;
+        $this->media = $media;
+        $this->type = $type;
+        $this->movieType = $movieType;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +33,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return view('admin.movie.index');
+        $movies = $this->movie->all(['media']);
+        return view('admin.movie.index', compact('movies'));
     }
 
     /**
@@ -24,7 +44,10 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        $media = $this->media->getMediaByTypeMovie([]);
+        $types = $this->type->getTypeByMovie([]);
+
+        return view('admin.movie.create', compact('media', 'types'));
     }
 
     /**
@@ -33,9 +56,31 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
-        //
+        $dataMovie = [
+            'name' => $request->name,
+            'time' => $request->time,
+            'release_date' => $request->release_date,
+            'directors' => $request->directors,
+            'actors' => $request->actors,
+            'description' => $request->description,
+            'status' => $request->status,
+            'media_id' => $request->media_id,
+        ];
+        $movie = $this->movie->create($dataMovie);
+        if ($movie) {
+            foreach ($request->type_id as $type_id) {
+                $dataMovieType = [
+                    'type_id' => $type_id,
+                    'movie_id' => $movie->id,
+                ];
+                $this->movieType->create($dataMovieType);
+            }
+            return redirect()->route('movie.create')->with('error', trans('The movie has been successfully created!'));
+        } else {
+            return redirect()->route('movie.create')->with('success', trans('The movie has been created failed!'));
+        }
     }
 
     /**
@@ -57,7 +102,10 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movie = $this->movie->find($id, []);
+        $media = $this->media->getMediaByTypeCinema([]);
+
+        return view('admin.cinema.edit', compact('movie', 'media'));
     }
 
     /**
@@ -67,9 +115,15 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MovieRequest $request, $id)
     {
-        //
+       
+        
+        if ($this->movie->update($id, $data)) {
+            return redirect()->route('movie.edit', ['id' => $id])->with('error', trans('The movie has been successfully edited!'));
+        } else {
+            return redirect()->route('movie.edit', ['id' => $id])->with('success', trans('The movie has been edited failed!'));
+        }
     }
 
     /**
@@ -78,8 +132,13 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            if ($this->movie->delete($id)) {
+                return response(['status' => trans('messages.success')]);
+            }
+            return response(['status' => trans('messages.failed')]);
+        }
     }
 }

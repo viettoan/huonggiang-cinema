@@ -16,6 +16,7 @@
     <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet">
     <link href="{{asset('bower/toastr/toastr.min.css')}}" rel="stylesheet">
     <link href="{{asset('bower/sweetalert2/dist/sweetalert2.css')}}" rel="stylesheet">
+    <link href="{{asset('bower/select2/dist/css/select2.css')}}" rel="stylesheet">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
     @yield('style')
 </head>
@@ -46,7 +47,7 @@
     <!-- Custom scripts for this page-->
     <script src="{{asset('bower/sweetalert2/dist/sweetalert2.js')}}"></script>
     <script src="{{asset('bower/toastr/toastr.min.js')}}"></script>
-
+    <script src="{{asset('bower/select2/dist/js/select2.js')}}"></script>
     @yield('script')
 </body>
 </html>

@@ -22,8 +22,8 @@
           <th class="text-center">#</th>
           <th class="text-center ">Movie poster</th>
           <th class="text-center ">Name</th>
-          <th class="text-center ">Address</th>
-          <th class="text-center">Description</th>
+          <th class="text-center ">Time</th>
+          <th class="text-center ">Release Date</th>
           <th class="text-center">Status</th>
           <th class="text-center"></th>
       </tr>
