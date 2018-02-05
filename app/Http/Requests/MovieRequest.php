@@ -23,8 +23,18 @@ class MovieRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $arr = [
+            'name' => 'required|max:255' ,
+            'time' => 'required|numeric|min:0',
+            'release_date' => 'required',
+            'directors' => 'required|max:255',
+            'actors' => 'required|max:255',
+            'description' => 'required',
+            'media_id' => 'required|numeric',
+            'status' => 'required|numeric',
+            'type_id' => 'required',
         ];
+        
+        return $arr;
     }
 }

@@ -10,12 +10,12 @@ class Movie extends Model
     protected $fillable = [
         'name',
         'time',
-        'director',
+        'release_date',
+        'directors',
+        'actors',
         'description',
         'status',
         'media_id',
-        'type_id',
-        'category_id',
     ];
 
     public function bookings()

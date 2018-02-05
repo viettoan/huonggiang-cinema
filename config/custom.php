@@ -33,4 +33,10 @@ return [
             'active' => 1,
         ],
     ],
+    'movie' => [
+        'status' => [
+            'new_release' => 0,
+            'now_showing' => 1,
+        ],
+    ],
 ];

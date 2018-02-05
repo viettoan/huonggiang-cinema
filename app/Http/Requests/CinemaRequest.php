@@ -26,7 +26,7 @@ class CinemaRequest extends FormRequest
         $arr = [
             'name' => 'required|max:255' ,
             'address' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'media_id' => 'required|numeric',
             'status' => 'required|numeric',
         ];
