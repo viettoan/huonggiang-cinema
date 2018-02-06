@@ -9,12 +9,22 @@ class TypeRepositoryEloquent extends AbstractRepositoryEloquent implements TypeR
     {
         return new Type;
     }
+
     public function getTypeByMovie($with = [], $select = ['*'])
     {
         return $this->model()
             ->select($select)
             ->with($with)
             ->where('type', config('custom.types.type.movie'))
+            ->get();
+    }
+
+    public function getTypeByPost($with = [], $select = ['*'])
+    {
+        return $this->model()
+            ->select($select)
+            ->with($with)
+            ->where('type', config('custom.types.type.post'))
             ->get();
     }
 }

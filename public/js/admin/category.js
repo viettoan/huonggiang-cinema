@@ -4,31 +4,33 @@ $(document).ready(function() {
         var selector = $(this);
         swal({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: 'You will not be able to recover this imaginary file!',
             type: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
-            confirmButtonClass: 'btn btn-success',
-            cancelButtonClass: 'btn btn-danger',
-            buttonsStyling: false
-        }).then(function () {
-            $.ajax({
-                url: '/admin/category/delete/' + id,
-                type: 'GET',
-                success: function (res) {
-                    selector.parents('tr').remove();
-                }
-            });
-        }, function (dismiss) {
-            if (dismiss === 'cancel') {
-                swal(
-                    'Cancelled',
-                    'Your imaginary file is safe :)',
-                    'error'
-                )
+            cancelButtonText: 'No, keep it'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: '/admin/category/delete/' + id,
+                    type: 'GET',
+                    success: function (res) {
+                        swal(
+                            'Deleted!',
+                            'Your imaginary file has been deleted.',
+                            'success'
+                          )
+                        selector.parents('tr').remove();
+                    }
+                });
+              
+            // result.dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+            } else if (result.dismiss === 'cancel') {
+              swal(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+              )
             }
         });    
     });
