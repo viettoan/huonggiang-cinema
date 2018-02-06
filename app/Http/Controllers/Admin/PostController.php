@@ -82,10 +82,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = $this->post->find($id, []);
+        $post = $this->post->find($id, ['media', 'type']);
+        $media = $this->media->getMediaByTypePost([]);
         $types = $this->type->getTypeByPost([]);
 
-        return view('admin.post.edit', compact('post', 'types'));
+        return view('admin.post.edit', compact('post', 'types', 'media'));
     }
 
     /**

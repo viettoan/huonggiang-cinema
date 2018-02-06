@@ -32,9 +32,6 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::resource('movie', 'MovieController');
     Route::get('/movie/delete/{id}', 'MovieController@destroy');
 
-    Route::resource('category', 'CategoryController');
-    Route::get('/category/delete/{id}', 'CategoryController@destroy');
-
     Route::resource('media', 'MediaController');
     Route::get('/media/delete/{id}', 'MediaController@destroy');
 

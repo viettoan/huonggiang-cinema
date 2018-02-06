@@ -19,10 +19,6 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Contracts\CinemaRepository::class,
             \App\Repositories\CinemaRepositoryEloquent::class,
         ],
-        'category' => [
-            \App\Contracts\CategoryRepository::class,
-            \App\Repositories\CategoryRepositoryEloquent::class,
-        ],
         'type' => [
             \App\Contracts\TypeRepository::class,
             \App\Repositories\TypeRepositoryEloquent::class,
@@ -35,7 +31,7 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Contracts\MovieTypeRepository::class,
             \App\Repositories\MovieTypeRepositoryEloquent::class,
         ],
-        'movie_type' => [
+        'post' => [
             \App\Contracts\PostRepository::class,
             \App\Repositories\PostRepositoryEloquent::class,
         ],
