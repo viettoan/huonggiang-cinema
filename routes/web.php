@@ -40,6 +40,9 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 
     Route::resource('type', 'TypeController');
     Route::get('/type/delete/{id}', 'TypeController@destroy');
+
+    Route::resource('post', 'PostController');
+    Route::get('/post/delete/{id}', 'PostController@destroy');
 });
 
 Auth::routes();

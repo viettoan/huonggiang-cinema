@@ -40,4 +40,10 @@ return [
             'stop_showing' => 2
         ],
     ],
+    'post' => [
+        'status' => [
+            'hide' => 0,
+            'show' => 1
+        ],
+    ],
 ];
