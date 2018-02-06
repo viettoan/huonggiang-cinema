@@ -111,6 +111,11 @@
                     <input type="radio" name="status" value="{{ config('custom.movie.status.now_showing') }}">Now Showing
                 </label>
             </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status" value="{{ config('custom.movie.status.stop_showing') }}">Stop Showing
+                </label>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Save</button>
     </form>

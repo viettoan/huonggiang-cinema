@@ -41,7 +41,7 @@
                 @if ($movie->status == config('custom.movie.status.new_release'))
                     <button class="btn btn-primary">New Release</button>
                 @elseif ($movie->status == config('custom.movie.status.now_showing'))
-                    <button class="btn btn-danger">Now Showing</button>
+                    <button class="btn btn-success">Now Showing</button>
                 @else
                     <button class="btn btn-danger">Stop Showing</button>
                 @endif

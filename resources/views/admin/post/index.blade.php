@@ -34,11 +34,11 @@
             <th class="text-center">{{ $post->id }}</th>
             <th>{{ $post->title }}</th>
             <th>{{ $post->description }}</th>
-            <th>
+            <th class="text-center">
                 @if ($post->status == config('custom.post.status.hide'))
-                    <button class="btn btn-primary">Hide</button>
+                    <button class="btn btn-warning">Hide</button>
                 @else
-                <button class="btn btn-danger">Show</button>
+                <button class="btn btn-primary">Show</button>
                 @endif
             </th> 
             <th>
