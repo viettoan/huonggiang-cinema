@@ -8,6 +8,7 @@ class Promotion extends Model
 {
     
     protected $fillable = [
+        'cinema_id',
         'title',
         'description',
         'content',
@@ -18,6 +19,6 @@ class Promotion extends Model
     ];
     public function cinema()
     {
-        return $this->hasMany(Cinema::class);
+        return $this->belongsTo(Cinema::class);
     }
 }

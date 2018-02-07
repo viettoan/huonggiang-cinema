@@ -40,6 +40,9 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 
     Route::resource('post', 'PostController');
     Route::get('/post/delete/{id}', 'PostController@destroy');
+
+    Route::resource('promotion', 'PromotionController');
+    Route::get('/promotion/delete/{id}', 'PromotionController@destroy');
 });
 
 Auth::routes();

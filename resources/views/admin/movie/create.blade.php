@@ -85,6 +85,11 @@
                 <option value="{{ $m->id }}">{{ $m->description }}</option>
             @endforeach 
             </select>
+            @if ($errors->has('media_id'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('media_id') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Type</label>
@@ -93,6 +98,11 @@
                 <option value="{{ $type->id }}">{{ $type->description }}</option>
                 @endforeach 
             </select>
+            @if ($errors->has('type_id'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('media_id') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Status</label>

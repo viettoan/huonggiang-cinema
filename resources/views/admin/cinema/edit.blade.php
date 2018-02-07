@@ -59,6 +59,11 @@
             <option value="{{ $m->id }}" @if ($cinema->media->id == $m->id) selected @endif>{{ $m->description }}</option>
             @endforeach 
             </select>
+            @if ($errors->has('media_id'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('media_id') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Status</label>
