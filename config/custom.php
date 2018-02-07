@@ -46,4 +46,10 @@ return [
             'show' => 1
         ],
     ],
+    'promotion' => [
+        'status' => [
+            'hide' => 0,
+            'show' => 1
+        ],
+    ],
 ];

@@ -6,11 +6,11 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{ route('post.index') }}">Manage Posts</a></li>
-    <li class="breadcrumb-item active">Edit Post</li>
+    <li class="breadcrumb-item"><a href="{{ route('promotion.index') }}">Manage Promotions</a></li>
+    <li class="breadcrumb-item active">Create Promotion</li>
 </ol>
 <div class="card card-register mx-auto mt-5">
-    <div class="card-header">Edit Post</div>
+    <div class="card-header">Create Promotion</div>
     <div class="card-body">
     @if (session('error'))
         <div class="alert alert-success">
@@ -22,21 +22,33 @@
             {{ session('success') }}
         </div>
     @endif
-    <form method="POST" action="{{route('post.update', ['id' => $post->id])}}" enctype="multipart/form-data">
-        <input type="hidden" name="_method" value="PUT">
+    <form method="POST" action="{{route('promotion.store')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="exampleInputEmail1">Title</label>
-            <input class="form-control" type="text" name="title" value="{{ $post->title }}" placeholder="Title" required>
-            @if ($errors->has('name'))
+            <label for="exampleInputEmail1">Cinema</label>
+            <select name="cinema_id" class="form-control">
+                @foreach ($cinemas as $cinema)
+                <option value="{{ $cinema->id }}">{{ $cinema->name }}</option>
+                @endforeach 
+            </select>
+            @if ($errors->has('cinema_id'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('name') }}</strong>
+                        <strong>{{ $errors->first('cinema_id') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Title</label>
+            <input class="form-control" type="text" name="title" value="{{ old('title') }}" placeholder="Title" required>
+            @if ($errors->has('title'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('title') }}</strong>
                 </span>
             @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Description</label>
-            <textarea class="form-control" rows="5" name="description" required>{{ $post->description }}</textarea>
+            <textarea class="form-control" rows="5" name="description" required>{{ old('description') }}</textarea>
             @if ($errors->has('description'))
                 <span class="help-block">
                         <strong>{{ $errors->first('description') }}</strong>
@@ -45,7 +57,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Content</label>
-            <textarea class="form-control" rows="5" name="content" required>{{ $post->content }}</textarea>
+            <textarea class="form-control" rows="5" name="content" required>{{ old('content') }}</textarea>
             @if ($errors->has('content'))
                 <span class="help-block">
                         <strong>{{ $errors->first('content') }}</strong>
@@ -53,28 +65,29 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Banner</label>
-            <select name="media_id" class="form-control">
-            @foreach ($media as $m)
-                <option value="{{ $m->id }}" @if ($post->media->id == $m->id) selected @endif>{{ $m->description }}</option>
-            @endforeach 
-            </select>
-            @if ($errors->has('media_id'))
+            <label for="exampleInputEmail1">Sale</label>
+            <input class="form-control" type="number" name="sale" value="{{ old('sale') }}" placeholder="Sale" required>
+            @if ($errors->has('sale'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('media_id') }}</strong>
+                        <strong>{{ $errors->first('sale') }}</strong>
                 </span>
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Type</label>
-            <select name="type_id" class="form-control">
-                @foreach ($types as $type)
-                <option value="{{ $type->id }}" @if ($post->type->id == $type->id) selected @endif>{{ $type->description }}</option>
-                @endforeach 
-            </select>
-            @if ($errors->has('type_id'))
+            <label for="exampleInputEmail1">Start Date</label>
+            <input class="form-control" type="date" name="start" value="{{ old('start') }}" required>
+            @if ($errors->has('start'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('type_id') }}</strong>
+                        <strong>{{ $errors->first('start') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">End Date</label>
+            <input class="form-control" type="date" name="end" value="{{ old('end') }}" required>
+            @if ($errors->has('end'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('end') }}</strong>
                 </span>
             @endif
         </div>
@@ -82,24 +95,16 @@
             <label for="exampleInputEmail1">Status</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="{{ config('custom.post.status.show') }}"
-                        @if ($post->status == config('custom.post.status.show'))
-                        checked
-                        @endif 
-                    >Show
+                    <input type="radio" name="status" value="{{ config('custom.promotion.status.show') }}" checked>Show
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="{{ config('custom.post.status.hide') }}"
-                        @if ($post->status == config('custom.post.status.hide'))
-                            checked
-                        @endif 
-                    >Hide
+                    <input type="radio" name="status" value="{{ config('custom.promotion.status.hide') }}">Hide
                 </label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">edit</button>
+        <button type="submit" class="btn btn-primary btn-block">Save</button>
     </form>
     </div>
 </div>

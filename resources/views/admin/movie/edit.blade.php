@@ -86,6 +86,11 @@
                 <option value="{{ $m->id }}" @if ($movie->media->id == $m->id) selected @endif>{{ $m->description }}</option>
             @endforeach 
             </select>
+            @if ($errors->has('media_id'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('media_id') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Type</label>
@@ -98,6 +103,11 @@
                 >{{ $type->description }}</option>
                 @endforeach 
             </select>
+            @if ($errors->has('type_id'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('type_id') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Status</label>
