@@ -1,0 +1,75 @@
+
+
+@font-face{
+	font-family: 'proxima_nova';
+	src: url('ProximaNova-Reg.eot');
+	src: url('ProximaNova-Regd41d.eot?#iefix') format('embedded-opentype'),
+		 url('ProximaNova-Reg.html') format('woff2'),
+		 url('ProximaNova-Reg.woff') format('woff'),
+		 url('ProximaNova-Reg.ttf') format('truetype'),
+		 url('ProximaNova-Reg.svg#proxima_nova') format('svg');
+	font-weight: 400;
+	font-style: normal;	
+}
+
+@font-face{
+	font-family: 'proxima_nova';
+	src: url('ProximaNova-Bold.eot');
+	src: url('ProximaNova-Boldd41d.eot?#iefix') format('embedded-opentype'),
+		 url('ProximaNova-Bold.html') format('woff2'),
+		 url('ProximaNova-Bold.woff') format('woff'),
+		 url('ProximaNova-Bold.ttf') format('truetype'),
+		 url('ProximaNova-Bold.svg#proxima_nova') format('svg');
+	font-weight: 700;
+	font-style: normal;	
+}
+
+@font-face{
+	font-family: 'proxima_nova';
+	src: url('ProximaNova-Light.eot');
+	src: url('ProximaNova-Lightd41d.eot?#iefix') format('embedded-opentype'),
+		 url('ProximaNova-Light.html') format('woff2'),
+		 url('ProximaNova-Light.woff') format('woff'),
+		 url('ProximaNova-Light.ttf') format('truetype'),
+		 url('ProximaNova-Light.svg#proxima_nova') format('svg');
+	font-weight: 300;
+	font-style: normal;	
+}
+
+@font-face{
+	font-family: 'proxima_nova';
+	src: url('ProximaNova-RegIt.eot');
+	src: url('ProximaNova-RegItd41d.eot?#iefix') format('embedded-opentype'),
+		 url('ProximaNova-RegIt.html') format('woff2'),
+		 url('ProximaNova-RegIt.woff') format('woff'),
+		 url('ProximaNova-RegIt.ttf') format('truetype'),
+		 url('ProximaNova-RegIt.svg#proxima_nova') format('svg');
+	font-weight: 400;
+	font-style: italic;	
+}
+
+
+@font-face{
+	font-family: 'proxima_nova';
+	src: url('ProximaNova-Sbold.eot');
+	src: url('ProximaNova-Sboldd41d.eot?#iefix') format('embedded-opentype'),
+		 url('ProximaNova-Sbold.html') format('woff2'),
+		 url('ProximaNova-Sbold.woff') format('woff'),
+		 url('ProximaNova-Sbold.ttf') format('truetype'),
+		 url('ProximaNova-Sbold.svg#proxima_nova') format('svg');
+	font-weight: 500;
+	font-style: normal;	
+}
+
+@font-face{
+	font-family: 'Prototype';
+	src: url('Prototype.eot');
+	src: url('Prototyped41d.eot?#iefix') format('embedded-opentype'),
+		 url('Prototype.html') format('woff2'),
+		 url('Prototype.woff') format('woff'),
+		 url('Prototype.ttf') format('truetype'),
+		 url('Prototype.svg#Prototype') format('svg');
+	font-weight: 400;
+	font-style: normal;	
+}
+

@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/login-admin', function () {
     return view('admin.auth.login');
 });
@@ -43,6 +40,14 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 
     Route::resource('promotion', 'PromotionController');
     Route::get('/promotion/delete/{id}', 'PromotionController@destroy');
+});
+
+Route::group(['namespace' => 'Sites'], function() {
+    Route::get('/', 'HomeController@index')->name('index');
+
+    Route::get('/lich-chieu', 'ScheduleController@index')->name('schedule');
+
+    Route::get('/rap', 'CinemaController@index')->name('cinema');
 });
 
 Auth::routes();
