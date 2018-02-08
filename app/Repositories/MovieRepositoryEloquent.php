@@ -9,4 +9,8 @@ class MovieRepositoryEloquent extends AbstractRepositoryEloquent implements Movi
         return new Movie;
     }
     
+    public function getMovieByStatus($status, $with = [], $select = ['*'])
+    {
+        return $this->model()->select($select)->with($with)->where('status', $status)->get();
+    }
 }

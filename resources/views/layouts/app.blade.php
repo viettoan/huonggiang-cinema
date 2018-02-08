@@ -11,70 +11,45 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel='stylesheet' id='contact-form-7-css'  href="{{ asset('wp-content/plugins/contact-form-7/includes/css/styles4906.css?ver=4.7') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='reset-css'  href="{{ asset('wp-content/themes/bhd/assets/css/reset125b.css?ver=4.7.4') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='fonts-css'  href="{{ asset('wp-content/themes/bhd/assets/fonts/font125b.css?ver=4.7.4') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='select2-css'  href="{{ asset('wp-content/themes/bhd/assets/css/select2.min7f0f.css?ver=2.5') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='awesome-css'  href="{{ asset('wp-content/themes/bhd/assets/css/font-awesome.min125b.css?ver=4.7.4') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='bootstrap-css'  href="{{ asset('wp-content/themes/bhd/assets/plugin/bootstrap-3.3.6-dist/css/bootstrap.min125b.css?ver=4.7.4') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='loading-core-css'  href="{{ asset('wp-content/themes/bhd/lib_frontend/css/loading125b.css?ver=4.7.4') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='mCustomScrollbar-core-css'  href="{{ asset('wp-content/themes/bhd/assets/css/jquery.mCustomScrollbar.min125b.css?ver=4.7.4') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='style-core-css'  href="{{ asset('wp-content/themes/bhd/assets/css/style3dd0.css?ver=1514297339') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='style-core-custom-css'  href="{{ asset('wp-content/themes/bhd/lib_frontend/css/style5fba.css?ver=5.2') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='magnific-popup-css'  href="{{ asset('wp-content/themes/bhd/lib_frontend/css/magnific-popup125b.css?ver=4.7.4') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='style-css'  href="{{ asset('wp-content/themes/bhd/style5917.css?t=1514297339&amp;ver=5.57') }}" type='text/css' media='all' />
+	<link rel='stylesheet' id='style_v3-css'  href="{{ asset('wp-content/themes/bhd/v3/style_v35fba.css?ver=5.2') }}" type='text/css' media='all' />
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
+<body class="home blog">
+    <div id="wrapper">
+        @include('layouts.header')
         @yield('content')
+        @include('layouts.footer')
     </div>
+    <div id="toTop">Lên đầu trang</div>
+        <div id="home-popup-image" class="white-popup-block hidden">
+        <a href="#"><img alt="" src="#" ></a>
+    </div>
+            
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset('wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4')}}"></script>
+    <script src="{{asset('wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1')}}"></script>
+    <script src="{{asset('wp-content/plugins/contact-form-7/includes/js/jquery.form.mind03d.js?ver=3.51.0-2014.06.20')}}"></script>
+    <script src="{{asset('wp-content/plugins/contact-form-7/includes/js/scripts4906.js?ver=4.7')}}"></script>
+    <script src="{{asset('wp-content/themes/bhd/assets/scripts/jquery.scrollTo-min5152.js?ver=1.0')}}"></script>
+    <script src="{{asset('wp-content/themes/bhd/assets/scripts/jquery.flexslider-min5152.js?ver=1.0')}}"></script>
+    <script src="{{asset('wp-content/themes/bhd/assets/scripts/select2.min5152.js?ver=1.0')}}"></script>
+    <script src="{{asset('wp-content/themes/bhd/assets/plugin/bootstrap-3.3.6-dist/js/bootstrap.min5152.js?ver=1.0')}}"></script>
+    <script src="{{asset('wp-content/themes/bhd/assets/scripts/jquery.mCustomScrollbar.min5152.js?ver=1.0')}}"></script>
+    <script src="{{asset('wp-content/themes/bhd/assets/scripts/isotope.pkgd.min5152.js?ver=1.0')}}"></script>
+    <script src="{{asset('wp-content/themes/bhd/lib_frontend/js/jquery.magnific-popup.min5152.js?ver=1.0')}}"></script>
+    <script src="{{asset('wp-content/themes/bhd/assets/scripts/main5152.js?ver=1.0')}}"></script>
+    <script src="{{asset('wp-includes/js/wp-embed.min125b.js?ver=4.7.4')}}"></script>
 </body>
 </html>
