@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\PromotionRepository;
 use App\Contracts\CinemaRepository;
+use App\Contracts\MediaRepository;
 use App\Http\Requests\PromotionRequest;
 
 class PromotionController extends Controller
 {
-    protected $promotion, $cinema;
+    protected $promotion, $cinema, $media;
     public function __construct(
         PromotionRepository $promotion,
-        CinemaRepository $cinema
+        CinemaRepository $cinema,
+        MediaRepository $media
     ) {
+        $this->media = $media;
         $this->promotion = $promotion;
         $this->cinema = $cinema;
     }
@@ -25,7 +28,7 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        $promotions = $this->promotion->all(['cinema']);
+        $promotions = $this->promotion->paginate(10, ['cinema']);
 
         return view('admin.promotion.index', compact('promotions'));
     }
@@ -38,8 +41,9 @@ class PromotionController extends Controller
     public function create()
     {
         $cinemas = $this->cinema->all();
-
-        return view('admin.promotion.create', compact('cinemas'));
+        $media = $this->media->getMediaByTypePromotion([]);
+        
+        return view('admin.promotion.create', compact('cinemas', 'media'));
     }
 
     /**
@@ -80,8 +84,9 @@ class PromotionController extends Controller
     {
         $promotion = $this->promotion->find($id, ['cinema']);
         $cinemas = $this->cinema->all();
+        $media = $this->media->getMediaByTypePromotion([]);
 
-        return view('admin.promotion.edit', compact('promotion', 'cinemas'));
+        return view('admin.promotion.edit', compact('promotion', 'cinemas', 'media'));
     }
 
     /**

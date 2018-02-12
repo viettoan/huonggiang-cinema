@@ -57,6 +57,9 @@
     @endif
     </tbody>
   </table>
+  @if (isset($posts)) 
+      {{ $posts->links() }}
+  @endif
 </div>
 @endsection
 @section('script')

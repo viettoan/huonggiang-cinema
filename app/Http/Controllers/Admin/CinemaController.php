@@ -26,7 +26,7 @@ class CinemaController extends Controller
      */
     public function index()
     {
-        $cinemas = $this->cinema->all(['media']);
+        $cinemas = $this->cinema->paginate(10, ['media']);
         return view('admin.cinema.index', compact('cinemas'));
     }
 

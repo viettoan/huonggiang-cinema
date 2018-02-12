@@ -53,6 +53,9 @@
     @endif
     </tbody>
   </table>
+  @if (isset($cinemas)) 
+      {{ $cinemas->links() }}
+  @endif
 </div>
 @endsection
 @section('script')

@@ -55,6 +55,9 @@
     @endif
     </tbody>
   </table>
+  @if (isset($types)) 
+      {{ $types->links() }}
+  @endif
 </div>
 @endsection
 @section('script')

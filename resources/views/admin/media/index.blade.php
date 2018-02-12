@@ -63,6 +63,9 @@
     @endif
     </tbody>
   </table>
+  @if (isset($media)) 
+      {{ $media->links() }}
+  @endif
 </div>
 @endsection
 @section('script')

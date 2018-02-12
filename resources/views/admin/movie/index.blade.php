@@ -58,6 +58,9 @@
     @endif
     </tbody>
   </table>
+  @if (isset($movies)) 
+      {{ $movies->links() }}
+  @endif
 </div>
 @endsection
 @section('script')
