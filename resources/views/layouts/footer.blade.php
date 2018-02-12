@@ -1,5 +1,5 @@
 <footer id="footer">
-	<div class="logo"><img src="wp-content/uploads/2016/05/logo-footer.png" alt=""></div>
+	<div class="logo"><img src="{{ asset('wp-content/uploads/2016/05/logo-footer.png') }}" alt=""></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-6 col-xs-12">

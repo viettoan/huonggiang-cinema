@@ -45,9 +45,13 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 Route::group(['namespace' => 'Sites'], function() {
     Route::get('/', 'HomeController@index')->name('index');
 
-    Route::get('/lich-chieu', 'ScheduleController@index')->name('schedule');
+    Route::get('/lich-chieu', 'ScheduleController@index')->name('schedules');
 
-    Route::get('/rap', 'CinemaController@index')->name('cinema');
+    Route::get('/he-thong-rap', 'CinemaController@index')->name('cinemas');
+
+    Route::get('/movies/{id}', 'MovieController@show')->name('movie');
+    
+    Route::get('/cinemas/{id}', 'CinemaController@show')->name('cinema');
 });
 
 Auth::routes();

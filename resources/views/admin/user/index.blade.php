@@ -52,6 +52,9 @@
     @endif
     </tbody>
   </table>
+  @if (isset($users)) 
+      {{ $users->links() }}
+  @endif
 </div>
 @endsection
 @section('script')

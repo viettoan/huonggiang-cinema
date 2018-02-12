@@ -21,7 +21,7 @@ class MediaController extends Controller
      */
     public function index()
     {
-        $media = $this->media->all();
+        $media = $this->media->paginate(10, []);
 
         return view('admin.media.index', compact('media'));
     }

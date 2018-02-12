@@ -35,4 +35,13 @@ class MediaRepositoryEloquent extends AbstractRepositoryEloquent implements Medi
             ->where('type', config('custom.media.type.post'))
             ->get();
     }
+
+    public function getMediaByTypePromotion($with = [], $select = ['*'])
+    {
+        return $this->model()
+            ->select($select)
+            ->with($with)
+            ->where('type', config('custom.media.type.promotion'))
+            ->get();
+    }
 }

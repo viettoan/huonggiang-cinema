@@ -33,4 +33,16 @@ class CinemaController extends Controller
         $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), ['media']);
         return view('sites.cinemas', compact('cinemas', 'nowShowing', 'newRelease'));
     }
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $cinema = $this->cinema->find($id, []);
+
+        return view('sites.cinema', compact('cinema'));
+    }
 }

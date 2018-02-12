@@ -20,7 +20,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = $this->type->all([]);
+        $types = $this->type->paginate(10, []);
         return view('admin.type.index', compact('types'));
     }
 

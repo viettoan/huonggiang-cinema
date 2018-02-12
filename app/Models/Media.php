@@ -26,6 +26,10 @@ class Media extends Model
     {
         return $this->hasMany(Cinema::class);
     }
+    public function promotions()
+    {
+        return $this->hasMany(Promotion::class);
+    }
     public function getpathAttribute($value)
     {
         return asset(config('custom.defaultMedia') . $value);

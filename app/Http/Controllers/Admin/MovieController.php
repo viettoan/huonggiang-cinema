@@ -33,7 +33,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = $this->movie->all(['media']);
+        $movies = $this->movie->paginate(10, ['media']);
         return view('admin.movie.index', compact('movies'));
     }
 

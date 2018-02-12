@@ -20,9 +20,9 @@
                                         <div class="film--item">
                                             <a class="bhd-trailer-box bhd-trailer" href="https://www.youtube.com/watch?v=jSnzO3v1iD0">Trailer</a>
                                             <span class="meta-box-type"><span class="film--rating">C 13</span> <span class="tech--2d">2D</span></span>
-                                            <a href="">
+                                            <a href="{{ route('movie', ['id' => $movie->id]) }}">
                                                 <img width="245" height="365" src="{{ $movie->media->path }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt=""  />        </a>
-                                            <a href=""><span class="movie--name">{{ $movie->name }}</span></a>
+                                            <a href="{{ route('movie', ['id' => $movie->id]) }}"><span class="movie--name">{{ $movie->name }}</span></a>
                                         </div>
                                         <a href="movies/jumanji-tro-choi-ky-ao/index.html" class="btn--green"><i class="fa fa-ticket"></i>MUA VÉ</a>
                                     </li>
@@ -42,9 +42,9 @@
                                         <div class="film--item">
                                             <a class="bhd-trailer-box bhd-trailer" href="https://www.youtube.com/watch?v=jSnzO3v1iD0">Trailer</a>
                                             <span class="meta-box-type"><span class="film--rating">C 13</span> <span class="tech--2d">2D</span></span>
-                                            <a href="">
+                                            <a href="{{ route('movie', ['id' => $movie->id]) }}">
                                                 <img width="245" height="365" src="{{ $movie->media->path }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt=""/>        </a>
-                                            <a href=""><span class="movie--name">{{ $movie->name }}</span></a>
+                                            <a href="{{ route('movie', ['id' => $movie->id]) }}"><span class="movie--name">{{ $movie->name }}</span></a>
                                         </div>
                                         <a href="movies/jumanji-tro-choi-ky-ao/index.html" class="btn--green"><i class="fa fa-ticket"></i>MUA VÉ</a>
                                     </li>

@@ -59,6 +59,9 @@
     @endif
     </tbody>
   </table>
+  @if (isset($promotions)) 
+      {{ $promotions->links() }}
+  @endif
 </div>
 @endsection
 @section('script')

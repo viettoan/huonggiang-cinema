@@ -9,6 +9,7 @@ class Promotion extends Model
     
     protected $fillable = [
         'cinema_id',
+        'media_id',
         'title',
         'description',
         'content',
@@ -20,5 +21,10 @@ class Promotion extends Model
     public function cinema()
     {
         return $this->belongsTo(Cinema::class);
+    }
+
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
     }
 }

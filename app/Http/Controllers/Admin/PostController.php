@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->post->all(['type']);
+        $posts = $this->post->paginate(10, ['type']);
         return view('admin.post.index', compact('posts'));
     }
 
