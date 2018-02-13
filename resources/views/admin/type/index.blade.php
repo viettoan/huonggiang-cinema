@@ -22,7 +22,6 @@
           <th class="text-center">#</th>
           <th class="text-center">Name</th>
           <th class="text-center">Description</th>
-          <th class="text-center">Type</th>
           <th class="text-center"></th>
       </tr>
     </thead>
@@ -33,15 +32,6 @@
           <th class="text-center">{{ $type->id }}</th>
           <th>{{ $type->name }}</th>
           <th>{{ $type->description }}</th>
-          <th class="text-center">
-            @if (config('custom.types.type') != null)
-                @foreach(config('custom.types.type') as $key => $value)
-                    @if($type->type == $value)
-                    <button class="btn btn-primary">{{ $key }}</button>
-                    @endif
-                @endforeach
-            @endif
-          </th>
           <th>
             <a href = "{{ route('type.edit', ['id' => $type->id]) }}">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

@@ -52,6 +52,14 @@ Route::group(['namespace' => 'Sites'], function() {
     Route::get('/movies/{id}', 'MovieController@show')->name('movie');
     
     Route::get('/cinemas/{id}', 'CinemaController@show')->name('cinema');
+
+    Route::get('/promotion/{id}', 'PromotionController@show')->name('promotion');
+
+    Route::get('/khuyen-mai', 'PromotionController@index')->name('promotions');
+
+    Route::get('/post/{id}', 'PostController@show')->name('post');
+    Route::get('/dich-vu-quang-cao', 'PostController@showAdvertisement')->name('advertisement');
+    Route::get('/tuyen-dung', 'PostController@showRecruitment')->name('recruitment');
 });
 
 Auth::routes();

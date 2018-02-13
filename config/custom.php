@@ -46,6 +46,12 @@ return [
             'hide' => 0,
             'show' => 1
         ],
+        'type' => [
+            'event' => 0,
+            'advertisement' => 1,
+            'recruitment' => 2,
+            'other' => 3
+        ],
     ],
     'promotion' => [
         'status' => [

@@ -46,16 +46,6 @@
                 </span>
             @endif
         </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Type</label>
-            <select name="type" class="form-control">
-                @if (config('custom.types.type') != null)
-                    @foreach(config('custom.types.type') as $key => $type)
-                        <option value="{{ $type }}">{{ $key }}</option>
-                    @endforeach
-                @endif
-            </select>
-        </div>
         <button type="submit" class="btn btn-primary btn-block">Save</button>
     </form>
     </div>

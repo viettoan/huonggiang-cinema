@@ -14,7 +14,7 @@ class Post extends Model
         'content',
         'status',
         'media_id',
-        'type_id',
+        'type',
     ];
     public function user()
     {
@@ -23,10 +23,6 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-    public function type()
-    {
-        return $this->belongsTo(Type::class);
     }
     public function comments()
     {

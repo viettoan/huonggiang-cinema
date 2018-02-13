@@ -67,16 +67,13 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Type</label>
-            <select name="type_id" class="form-control">
-                @foreach ($types as $type)
-                <option value="{{ $type->id }}" @if ($post->type->id == $type->id) selected @endif>{{ $type->description }}</option>
-                @endforeach 
+            <select name="type" class="form-control">
+                @if (config('custom.post.type') != null)
+                    @foreach(config('custom.post.type') as $key => $value)
+                        <option value="{{ $value }}" @if($post->type == $value) selected @endif>{{ $key }}</option>
+                    @endforeach
+                @endif
             </select>
-            @if ($errors->has('type_id'))
-                <span class="help-block">
-                        <strong>{{ $errors->first('type_id') }}</strong>
-                </span>
-            @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Status</label>

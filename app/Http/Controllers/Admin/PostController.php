@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = $this->post->paginate(10, ['type']);
+        $posts = $this->post->paginate(10, []);
         return view('admin.post.index', compact('posts'));
     }
 
@@ -41,9 +41,8 @@ class PostController extends Controller
     public function create()
     {
         $media = $this->media->getMediaByTypePost([]);
-        $types = $this->type->getTypeByPost([]);
 
-        return view('admin.post.create', compact('types', 'media'));
+        return view('admin.post.create', compact('media'));
     }
 
     /**
@@ -82,11 +81,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = $this->post->find($id, ['media', 'type']);
+        $post = $this->post->find($id, ['media']);
         $media = $this->media->getMediaByTypePost([]);
-        $types = $this->type->getTypeByPost([]);
 
-        return view('admin.post.edit', compact('post', 'types', 'media'));
+        return view('admin.post.edit', compact('post', 'media'));
     }
 
     /**

@@ -41,9 +41,15 @@
                 <button class="btn btn-primary">Show</button>
                 @endif
             </th> 
-            <th>
-                {{ $post->type->name }}
-            </th> 
+            <th class="text-center">
+                @if (config('custom.post.type') != null)
+                    @foreach(config('custom.post.type') as $key => $value)
+                        @if($post->type == $value)
+                        <button class="btn btn-primary">{{ $key }}</button>
+                        @endif
+                    @endforeach
+                @endif
+            </th>
             <th>
                 <a href = "{{ route('post.edit', ['id' => $post->id]) }}">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
