@@ -11,4 +11,8 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
         return new Post;
     }
     
+    public function getPostByType($type, $with = [], $select = ['*'])
+    {
+        return $this->model()->select($select)->with($with)->where('type', $type)->where('status', config('custom.post.status.show'))->get();
+    }
 }

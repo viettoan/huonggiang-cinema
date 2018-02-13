@@ -29,7 +29,7 @@ class PostRequest extends FormRequest
             'content' => 'required',
             'media_id' => 'required|numeric',
             'status' => 'required|numeric',
-            'type_id' => 'required|numeric',
+            'type' => 'required|numeric',
         ];
         
         return $arr;

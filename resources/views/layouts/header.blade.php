@@ -9,9 +9,9 @@
             </button>
             <ul id="dropdown--menu-1" class="dropdown--menu js__dropdown_target"><li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a href="{{ route('schedules') }}">Lịch chiếu</a></li>
                 <li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="{{ route('cinemas') }}">Hệ Thống Rạp</a></li>
-                <li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="khuyen-mai/index.html">Khuyến mãi | Sự kiện</a></li>
-                <li id="menu-item-272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-272"><a href="dich-vu-quang-cao/index.html">Dịch vụ quảng cáo</a></li>
-                <li id="menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260"><a href="tuyen-dung/index.html">Tuyển dụng</a></li>
+                <li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="{{ route('promotions') }}">Khuyến mãi | Sự kiện</a></li>
+                <li id="menu-item-272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-272"><a href="{{ route('advertisement') }}">Dịch vụ quảng cáo</a></li>
+                <li id="menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260"><a href="{{ route('recruitment') }}">Tuyển dụng</a></li>
                 <li id="menu-item-3316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3316"><a href="morathegioi/index.html">Mở ra thế giới</a></li>
             </ul>		
         </div>
