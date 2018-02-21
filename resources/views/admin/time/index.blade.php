@@ -6,11 +6,11 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Manage Types</li>
+    <li class="breadcrumb-item active">Manage Times</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
-    <a class="btn btn-primary" href = "{{ route('type.create') }}">
+    <a class="btn btn-primary" href = "{{ route('time.create') }}">
       New
     </a>
     </div>
@@ -20,23 +20,21 @@
     <thead>
       <tr>
           <th class="text-center">#</th>
-          <th class="text-center">Name</th>
-          <th class="text-center">Description</th>
+          <th class="text-center">Time</th>
           <th class="text-center"></th>
       </tr>
     </thead>
     <tbody>
-    @if (isset($types))
-      @foreach ($types as $type)
+    @if (isset($times))
+      @foreach ($times as $time)
       <tr>
-          <th class="text-center">{{ $type->id }}</th>
-          <th>{{ $type->name }}</th>
-          <th>{{ $type->description }}</th>
+          <th class="text-center">{{ $time->id }}</th>
+          <th class="text-center">{{ $time->time }}</th>
           <th>
-            <a href = "{{ route('type.edit', ['id' => $type->id]) }}">
+            <a href = "{{ route('time.edit', ['id' => $time->id]) }}">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
-            <a data-id="{{ $type->id}}" class="delType">
+            <a data-id="{{ $time->id}}" class="delTime">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
           </th>
@@ -45,11 +43,11 @@
     @endif
     </tbody>
   </table>
-  @if (isset($types)) 
-      {{ $types->links() }}
+  @if (isset($times)) 
+      {{ $times->links() }}
   @endif
 </div>
 @endsection
 @section('script')
-  <script src="{{ asset('js/admin/type.js') }}"></script>
+  <script src="{{ asset('js/admin/time.js') }}"></script>
 @endsection

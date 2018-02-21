@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/login-admin', function () {
-    return view('admin.auth.login');
-});
-Route::post('/login-admin', 'Admin\Auth\LoginController@login')->name('login-admin');
 Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/', function () {
         return view('admin.index');
@@ -40,6 +36,12 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 
     Route::resource('promotion', 'PromotionController');
     Route::get('/promotion/delete/{id}', 'PromotionController@destroy');
+
+    Route::resource('promotion', 'PromotionController');
+    Route::get('/promotion/delete/{id}', 'PromotionController@destroy');
+
+    Route::resource('time', 'TimeController');
+    Route::get('/time/delete/{id}', 'TimeController@destroy');
 });
 
 Route::group(['namespace' => 'Sites'], function() {

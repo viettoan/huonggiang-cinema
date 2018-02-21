@@ -53,6 +53,12 @@
             <span class="nav-link-text">Manage Promotions</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="{{route('time.index')}}">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Manage Times</span>
+          </a>
+        </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
