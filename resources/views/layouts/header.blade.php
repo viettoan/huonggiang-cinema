@@ -7,12 +7,29 @@
                 <span><img alt="" src="{{ asset('wp-content/themes/bhd/assets/images/bg-button-menu.jpg') }}"/></span>
                 <span class="txt--menu"></span>
             </button>
-            <ul id="dropdown--menu-1" class="dropdown--menu js__dropdown_target"><li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a href="{{ route('schedules') }}">Lịch chiếu</a></li>
+            <ul id="dropdown--menu-1" class="dropdown--menu js__dropdown_target">
+                <li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a href="{{ route('schedules') }}">Lịch chiếu</a></li>
                 <li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="{{ route('cinemas') }}">Hệ Thống Rạp</a></li>
                 <li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="{{ route('promotions') }}">Khuyến mãi | Sự kiện</a></li>
                 <li id="menu-item-272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-272"><a href="{{ route('advertisement') }}">Dịch vụ quảng cáo</a></li>
                 <li id="menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260"><a href="{{ route('recruitment') }}">Tuyển dụng</a></li>
                 <li id="menu-item-3316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3316"><a href="morathegioi/index.html">Mở ra thế giới</a></li>
+                @if (!Auth::guest())
+                    @if (Auth::user()->role == config('custom.admin'))
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                            <a href="{{ route('dashboard') }}">Admin</a>
+                        </li>
+                    @endif
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom">
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">Logout
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                @endif
             </ul>		
         </div>
         <div id="header">
@@ -38,19 +55,24 @@
                         <img src="{{ asset('wp-content/themes/bhd/assets/images/bhdstar-member.png') }}" alt="MEMBER">
                     </a>
                     <a href="tai-khoan/index.html" class="top--link-mobile"><img src="{{ asset('wp-content/themes/bhd/assets/images/user.png') }}" alt="user" /></a>
+                    @if (Auth::guest())
                     <div class="btn--dropdown-menu js__dropdown" data-target="#dropdown--menu-2">
-                        <a href="#">Đăng Nhập</a>
+                        Đăng Nhập
                     </div>
                     <div id="dropdown--menu-2" class="box--login js__dropdown_target">
-                        <form action="http://www.bhdstar.vn/wp-admin/admin-post.php" method="post">
-                            <input type="hidden" name="action" value="dangnhap">
-                            <input type="hidden" name="bhd_lang" value="vi">
+                        <form method="POST" action="{{ route('login') }}">
+                            {{ csrf_field() }}
                             <div class="controls"><input name="email" type="email" placeholder="Email" class="inp--text"></div>
                             <div class="controls"><input name="password" type="password" placeholder="Password" class="inp--text"></div>
                             <div class="clearfix controls--submit"><input type="submit" value="ĐĂNG NHẬP" class="inp--submit" /><a href="quen-mat-khau/index.html" class="forgot--link">Quên mật khẩu</a></div>
-                        <a class="bhd-dang-ky" href="dang-ky/index.html">Đăng ký thành viên</a>
+                            <a class="bhd-dang-ky" href="{{ route('register') }}">Đăng ký thành viên</a>
                         </form>
                     </div>
+                    @else
+                        <div class="btn--dropdown-menu js__dropdown" data-target="#dropdown--menu-3">
+                            {{ Auth::user()->name }} 
+                        </div>
+                    @endif
                 </div>
                 <img alt="" class="line-header" src="{{ asset('wp-content/themes/bhd/assets/images/line-header1.png') }}"/>
             </div>
