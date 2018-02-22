@@ -6,12 +6,12 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Manage Cinema</li>
+    <li class="breadcrumb-item active">{{ trans('message.title.manage_cinemas') }}</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
     <a class="btn btn-primary" href = "{{ route('cinema.create') }}">
-      New
+    {{ trans('message.action.new') }}
     </a>
     </div>
 </div>
@@ -20,11 +20,11 @@
     <thead>
       <tr>
           <th class="text-center">#</th>
-          <th class="text-center ">Banner</th>
-          <th class="text-center ">Name</th>
-          <th class="text-center ">Address</th>
-          <th class="text-center">Description</th>
-          <th class="text-center">Status</th>
+          <th class="text-center ">{{ trans('message.column.banner') }}</th>
+          <th class="text-center ">{{ trans('message.column.name') }}</th>
+          <th class="text-center ">{{ trans('message.column.address') }}</th>
+          <th class="text-center">{{ trans('message.column.description') }}</th>
+          <th class="text-center">{{ trans('message.column.status') }}</th>
           <th class="text-center"></th>
       </tr>
     </thead>
@@ -39,9 +39,9 @@
           <th>{{ $cinema->description }}</th>
           <th>
             @if ($cinema->status == config('custom.cinema.status.active'))
-                <button class="btn btn-primary">Active</button>
+                <button class="btn btn-primary">{{ trans('message.config.active') }}</button>
             @else
-              <button class="btn btn-danger">Block</button>
+              <button class="btn btn-danger">{{ trans('message.config.block') }}</button>
             @endif
           <th>
             <a href = "{{ route('cinema.edit', ['id' => $cinema->id]) }}">

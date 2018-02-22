@@ -6,11 +6,11 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{ route('type.index') }}">Manage Types</a></li>
-    <li class="breadcrumb-item active">Create Type</li>
+    <li class="breadcrumb-item"><a href="{{ route('type.index') }}">{{ trans('message.title.manage_types') }}</a></li>
+    <li class="breadcrumb-item active">{{ trans('message.title.create_type') }}</li>
 </ol>
 <div class="card card-register mx-auto mt-5">
-    <div class="card-header">Create Type</div>
+    <div class="card-header">{{ trans('message.title.create_type') }}</div>
     <div class="card-body">
     @if (session('error'))
         <div class="alert alert-success">
@@ -27,7 +27,7 @@
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">
-                <label for="exampleInputName">Name</label>
+                <label for="exampleInputName">{{ trans('message.column.name') }}</label>
                 <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="Enter name" required>
                 @if ($errors->has('name'))
                     <span class="help-block">
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Description</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.description') }}</label>
             <input class="form-control" type="text" name="description" value="{{ old('description') }}" placeholder="Description" required>
             @if ($errors->has('description'))
                 <span class="help-block">
@@ -46,7 +46,7 @@
                 </span>
             @endif
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Save</button>
+        <button type="submit" class="btn btn-primary btn-block">{{ trans('message.action.save') }}</button>
     </form>
     </div>
 </div>

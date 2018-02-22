@@ -31,13 +31,14 @@
         @yield('content')
         @include('layouts.footer')
     </div>
-    <div id="toTop">Lên đầu trang</div>
+    <div id="toTop">{{ trans('message.top') }}</div>
         <div id="home-popup-image" class="white-popup-block hidden">
         <a href="#"><img alt="" src="#" ></a>
     </div>
             
 
     <!-- Scripts -->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4')}}"></script>
     <script src="{{asset('wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1')}}"></script>
     <script src="{{asset('wp-content/plugins/contact-form-7/includes/js/jquery.form.mind03d.js?ver=3.51.0-2014.06.20')}}"></script>
@@ -51,5 +52,6 @@
     <script src="{{asset('wp-content/themes/bhd/lib_frontend/js/jquery.magnific-popup.min5152.js?ver=1.0')}}"></script>
     <script src="{{asset('wp-content/themes/bhd/assets/scripts/main5152.js?ver=1.0')}}"></script>
     <script src="{{asset('wp-includes/js/wp-embed.min125b.js?ver=4.7.4')}}"></script>
+
 </body>
 </html>

@@ -42,9 +42,12 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 
     Route::resource('time', 'TimeController');
     Route::get('/time/delete/{id}', 'TimeController@destroy');
+
+    Route::resource('schedule', 'ScheduleController');
+    Route::get('/scheduletime/delete/{id}', 'ScheduleController@destroy');
 });
 
-Route::group(['namespace' => 'Sites'], function() {
+Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function() {
     Route::get('/', 'HomeController@index')->name('index');
 
     Route::get('/lich-chieu', 'ScheduleController@index')->name('schedules');
@@ -66,4 +69,4 @@ Route::group(['namespace' => 'Sites'], function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/localization/{lang}', 'LanguageLocallizationController@index')->name('localization');

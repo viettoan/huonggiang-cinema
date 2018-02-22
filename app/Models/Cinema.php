@@ -18,7 +18,7 @@ class Cinema extends Model
     {
         return $this->hasMany(Promotion::class);
     }
-    public function cinema_schedules()
+    public function cinemaSchedules()
     {
         return $this->hasMany(CinemaSchedule::class);
     }

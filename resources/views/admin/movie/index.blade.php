@@ -6,12 +6,12 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Manage Movies</li>
+    <li class="breadcrumb-item active">{{ trans('message.title.manage_movies') }}</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
     <a class="btn btn-primary" href = "{{ route('movie.create') }}">
-      New
+    {{ trans('message.action.new') }}
     </a>
     </div>
 </div>
@@ -20,11 +20,11 @@
     <thead>
       <tr>
           <th class="text-center">#</th>
-          <th class="text-center ">Movie poster</th>
-          <th class="text-center ">Name</th>
-          <th class="text-center ">Time</th>
-          <th class="text-center ">Release Date</th>
-          <th class="text-center">Status</th>
+          <th class="text-center ">{{ trans('message.column.movie_poster') }}</th>
+          <th class="text-center ">{{ trans('message.column.name') }}</th>
+          <th class="text-center ">{{ trans('message.column.time') }}</th>
+          <th class="text-center ">{{ trans('message.column.release_date') }}</th>
+          <th class="text-center">{{ trans('message.column.status') }}</th>
           <th class="text-center"></th>
       </tr>
     </thead>
@@ -39,11 +39,11 @@
             <th>{{ $movie->release_date }}</th>
             <th class="text-center">
                 @if ($movie->status == config('custom.movie.status.new_release'))
-                    <button class="btn btn-primary">New Release</button>
+                    <button class="btn btn-primary">{{ trans('message.config.new_release') }}</button>
                 @elseif ($movie->status == config('custom.movie.status.now_showing'))
-                    <button class="btn btn-success">Now Showing</button>
+                    <button class="btn btn-success">{{ trans('message.config.now_showing') }}</button>
                 @else
-                    <button class="btn btn-danger">Stop Showing</button>
+                    <button class="btn btn-danger">{{ trans('message.config.stop_showing') }}</button>
                 @endif
             <th>
                 <a href = "{{ route('movie.edit', ['id' => $movie->id]) }}">

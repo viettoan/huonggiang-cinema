@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="index.html">{{ trans('message.title.admin') }}</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,49 +14,55 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('user.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Users</span>
+            <span class="nav-link-text">{{ trans('message.title.manage_users') }}</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('movie.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Movie</span>
+            <span class="nav-link-text">{{ trans('message.title.manage_movies') }}</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('cinema.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Cinema</span>
+            <span class="nav-link-text">{{ trans('message.title.manage_cinemas') }}</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('type.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Types</span>
+            <span class="nav-link-text">{{ trans('message.title.manage_types') }}</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('media.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Media</span>
+            <span class="nav-link-text">{{ trans('message.title.manage_media') }}</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('post.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Posts</span>
+            <span class="nav-link-text">{{ trans('message.title.manage_posts') }}</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('promotion.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Promotions</span>
+            <span class="nav-link-text">{{ trans('message.title.manage_promotions') }}</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('time.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Manage Times</span>
+            <span class="nav-link-text">{{ trans('message.title.manage_times') }}</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="{{route('schedule.index')}}">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">{{ trans('message.title.manage_schedules') }}</span>
           </a>
         </li>
       </ul>

@@ -8,22 +8,22 @@
                 <span class="txt--menu"></span>
             </button>
             <ul id="dropdown--menu-1" class="dropdown--menu js__dropdown_target">
-                <li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a href="{{ route('schedules') }}">Lịch chiếu</a></li>
-                <li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="{{ route('cinemas') }}">Hệ Thống Rạp</a></li>
-                <li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="{{ route('promotions') }}">Khuyến mãi | Sự kiện</a></li>
-                <li id="menu-item-272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-272"><a href="{{ route('advertisement') }}">Dịch vụ quảng cáo</a></li>
-                <li id="menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260"><a href="{{ route('recruitment') }}">Tuyển dụng</a></li>
-                <li id="menu-item-3316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3316"><a href="morathegioi/index.html">Mở ra thế giới</a></li>
+                <li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a href="{{ route('schedules') }}">{{ trans('message.title.schedule') }}</a></li>
+                <li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="{{ route('cinemas') }}">{{ trans('message.title.cinema_system') }}</a></li>
+                <li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="{{ route('promotions') }}">{{ trans('message.title.promotions') }}</a></li>
+                <li id="menu-item-272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-272"><a href="{{ route('advertisement') }}">{{ trans('message.title.advertisement') }}</a></li>
+                <li id="menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260"><a href="{{ route('recruitment') }}">{{ trans('message.title.recruitment') }}</a></li>
+                <li id="menu-item-3316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3316"><a href="morathegioi/index.html">{{ trans('message.title.open_world') }}</a></li>
                 @if (!Auth::guest())
                     @if (Auth::user()->role == config('custom.admin'))
                         <li class="menu-item menu-item-type-custom menu-item-object-custom">
-                            <a href="{{ route('dashboard') }}">Admin</a>
+                            <a href="{{ route('dashboard') }}">{{ trans('message.title.admin') }}</a>
                         </li>
                     @endif
                     <li class="menu-item menu-item-type-custom menu-item-object-custom">
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">Logout
+                                        document.getElementById('logout-form').submit();">{{ trans('message.title.logout') }}
                         </a>
                         <form method="POST" action="{{ route('logout') }}" id="logout-form">
                             {{ csrf_field() }}
@@ -43,8 +43,8 @@
                     <li><a target="_blank" href="morathegioi/index.html"><img src="{{ asset('wp-content/themes/bhd/assets/images/mrtg1.png') }}" alt="lich chieu" /></a></li>
                 </ul>
                 <div class="language">
-                    <a class="active" href="index.html">VN</a>
-                    | <a class="not-active" href="en/index.html">EN</a>
+                    <a class="@if (Session::get('locale') == 'vi') active @endif" href="{{ route('localization', ['lang' => 'vi']) }}">VN</a>
+                    | <a class="@if (Session::get('locale') == 'en') active @endif" href="{{ route('localization', ['lang' => 'en']) }}">EN</a>
                 </div>
                 <a class="hotline" href="he-thong-rap/index.html"><span><img src="{{ asset('wp-content/themes/bhd/assets/images/phone.png') }}"  alt="hotline bhd"/> : </span>1900 2099</a>
                 <div class="header--right">
@@ -57,15 +57,15 @@
                     <a href="tai-khoan/index.html" class="top--link-mobile"><img src="{{ asset('wp-content/themes/bhd/assets/images/user.png') }}" alt="user" /></a>
                     @if (Auth::guest())
                     <div class="btn--dropdown-menu js__dropdown" data-target="#dropdown--menu-2">
-                        Đăng Nhập
+                    {{ trans('message.title.login') }}
                     </div>
                     <div id="dropdown--menu-2" class="box--login js__dropdown_target">
                         <form method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
                             <div class="controls"><input name="email" type="email" placeholder="Email" class="inp--text"></div>
                             <div class="controls"><input name="password" type="password" placeholder="Password" class="inp--text"></div>
-                            <div class="clearfix controls--submit"><input type="submit" value="ĐĂNG NHẬP" class="inp--submit" /><a href="quen-mat-khau/index.html" class="forgot--link">Quên mật khẩu</a></div>
-                            <a class="bhd-dang-ky" href="{{ route('register') }}">Đăng ký thành viên</a>
+                            <div class="clearfix controls--submit"><input type="submit" value="{{ trans('message.title.login') }}" class="inp--submit" /><a href="quen-mat-khau/index.html" class="forgot--link">{{ trans('message.action.forgot_password') }}</a></div>
+                            <a class="bhd-dang-ky" href="{{ route('register') }}">{{ trans('message.title.register') }}</a>
                         </form>
                     </div>
                     @else
