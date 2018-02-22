@@ -6,12 +6,12 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Manage Media</li>
+    <li class="breadcrumb-item active">{{ trans('message.title.manage_media') }}</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
     <a class="btn btn-primary" href = "{{ route('media.create') }}">
-      New
+    {{ trans('message.action.new') }}
     </a>
     </div>
 </div>
@@ -20,10 +20,10 @@
     <thead>
       <tr>
           <th class="text-center">#</th>
-          <th class="text-center ">File</th>
-          <th class="text-center">Description</th>
-          <th class="text-center">Status</th>
-          <th class="text-center">Type</th>
+          <th class="text-center ">{{ trans('message.column.file') }}</th>
+          <th class="text-center">{{ trans('message.column.description') }}</th>
+          <th class="text-center">{{ trans('message.column.status') }}</th>
+          <th class="text-center">{{ trans('message.column.type') }}</th>
           <th class="text-center"></th>
       </tr>
     </thead>
@@ -36,9 +36,9 @@
           <th>{{ $m->description }}</th>
           <th class="text-center">
             @if ($m->status == config('custom.media.status.show'))
-                <button class="btn btn-primary">Show</button>
+                <button class="btn btn-primary">{{ trans('message.config.show') }}</button>
             @else
-            <button class="btn btn-warning">Hide</button>
+            <button class="btn btn-warning">{{ trans('message.config.hide') }}</button>
             @endif
           </th>
           <th class="text-center">

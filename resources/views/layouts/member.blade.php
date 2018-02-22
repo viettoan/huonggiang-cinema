@@ -19,6 +19,6 @@
                 
             </ul>
         </div>
-        <a href="dang-ky/index.html" class="btn--white">ĐĂNG KÝ NGAY</a>
+        <a href="dang-ky/index.html" class="btn--white">{{ trans('message.title.register') }}</a>
     </div>
 </div>

@@ -6,11 +6,11 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{ route('promotion.index') }}">Manage Promotions</a></li>
-    <li class="breadcrumb-item active">Edit Promotion</li>
+    <li class="breadcrumb-item"><a href="{{ route('promotion.index') }}">{{ trans('message.title.manage_promotions') }}</a></li>
+    <li class="breadcrumb-item active">{{ trans('message.title.edit_promotion') }}</li>
 </ol>
 <div class="card card-register mx-auto mt-5">
-    <div class="card-header">Edit Promotion</div>
+    <div class="card-header">{{ trans('message.title.edit_promotion') }}</div>
     <div class="card-body">
     @if (session('error'))
         <div class="alert alert-success">
@@ -26,7 +26,7 @@
         <input type="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="exampleInputEmail1">Cinema</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.cinema') }}</label>
             <select name="cinema_id" class="form-control">
                 @foreach ($cinemas as $cinema)
                 <option value="{{ $cinema->id }}" @if ($promotion->cinema->id == $cinema->id) @endif>{{ $cinema->name }}</option>
@@ -39,7 +39,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Banner</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.banner') }}</label>
             <select name="media_id" class="form-control">
             @foreach ($media as $m)
                 <option value="{{ $m->id }}" @if ($promotion->media->id == $m->id) selected @endif>{{ $m->description }}</option>
@@ -52,7 +52,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Title</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.title') }}</label>
             <input class="form-control" type="text" name="title" value="{{ $promotion->title }}" placeholder="Title" required>
             @if ($errors->has('title'))
                 <span class="help-block">
@@ -61,7 +61,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Description</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.description') }}</label>
             <textarea class="form-control" rows="5" name="description" required>{{ $promotion->description }}</textarea>
             @if ($errors->has('description'))
                 <span class="help-block">
@@ -70,7 +70,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Content</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.content') }}</label>
             <textarea class="form-control" rows="5" name="content" required>{{ $promotion->content }}</textarea>
             @if ($errors->has('content'))
                 <span class="help-block">
@@ -79,7 +79,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Sale</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.sale') }}</label>
             <input class="form-control" type="number" name="sale" value="{{ $promotion->sale }}" placeholder="Time" required>
             @if ($errors->has('sale'))
                 <span class="help-block">
@@ -88,7 +88,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Start Date</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.start_date') }}</label>
             <input class="form-control" type="date" name="start" value="{{ $promotion->start }}" required>
             @if ($errors->has('start'))
                 <span class="help-block">
@@ -97,7 +97,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">End Date</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.end_date') }}</label>
             <input class="form-control" type="date" name="end" value="{{ $promotion->end }}" required>
             @if ($errors->has('end'))
                 <span class="help-block">
@@ -106,14 +106,14 @@
             @endif
         </div>
         <div class="form-group">
-        <label for="exampleInputEmail1">Status</label>
+        <label for="exampleInputEmail1">{{ trans('message.column.status') }}</label>
         <div class="radio">
             <label>
                 <input type="radio" name="status" value="{{ config('custom.promotion.status.show') }}"
                     @if ($promotion->status == config('custom.promotion.status.show'))
                     checked
                     @endif 
-                >Show
+                >{{ trans('message.config.show') }}
             </label>
         </div>
         <div class="radio">
@@ -122,11 +122,11 @@
                     @if ($promotion->status == config('custom.promotion.status.hide'))
                         checked
                     @endif 
-                >Hide
+                >{{ trans('message.config.hide') }}
             </label>
         </div>
     </div>
-        <button type="submit" class="btn btn-primary btn-block">Edit</button>
+        <button type="submit" class="btn btn-primary btn-block">{{ trans('message.action.edit') }}</button>
     </form>
     </div>
 </div>

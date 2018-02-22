@@ -6,11 +6,11 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{ route('cinema.index') }}">Manage Cinemas</a></li>
-    <li class="breadcrumb-item active">Edit Cinema</li>
+    <li class="breadcrumb-item"><a href="{{ route('cinema.index') }}">{{ trans('message.title.manage_cinemas') }}</a></li>
+    <li class="breadcrumb-item active">{{ trans('message.title.edit_cinema') }}</li>
 </ol>
 <div class="card card-register mx-auto mt-5">
-    <div class="card-header">Edit Cinema</div>
+    <div class="card-header">{{ trans('message.title.edit_cinema') }}</div>
     <div class="card-body">
     @if (session('error'))
         <div class="alert alert-success">
@@ -26,7 +26,7 @@
         <input type="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="exampleInputEmail1">Name</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.name') }}</label>
             <input class="form-control" type="text" name="name" value="{{ $cinema->name }}" placeholder="Name" required>
             @if ($errors->has('name'))
                 <span class="help-block">
@@ -35,7 +35,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Address</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.address') }}</label>
             <input class="form-control" type="text" name="address" value="{{ $cinema->address }}" placeholder="Address" required>
             @if ($errors->has('address'))
                 <span class="help-block">
@@ -44,7 +44,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Description</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.description') }}</label>
             <textarea class="form-control" rows="5" name="description" required>{{ $cinema->description }}</textarea>
             @if ($errors->has('description'))
                 <span class="help-block">
@@ -53,7 +53,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Banner</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.banner') }}</label>
             <select name="media_id" class="form-control">
             @foreach ($media as $m)
             <option value="{{ $m->id }}" @if ($cinema->media->id == $m->id) selected @endif>{{ $m->description }}</option>
@@ -66,19 +66,19 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Status</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.status') }}</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="{{ config('custom.cinema.status.active') }}" @if ($cinema->status == config('custom.cinema.status.active')) checked @endif>Active
+                    <input type="radio" name="status" value="{{ config('custom.cinema.status.active') }}" @if ($cinema->status == config('custom.cinema.status.active')) checked @endif>{{ trans('message.config.active') }}
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="{{ config('custom.cinema.status.block') }}" @if ($cinema->status == config('custom.cinema.status.block')) checked @endif>Block
+                    <input type="radio" name="status" value="{{ config('custom.cinema.status.block') }}" @if ($cinema->status == config('custom.cinema.status.block')) checked @endif>{{ trans('message.config.block') }}
                 </label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Edit</button>
+        <button type="submit" class="btn btn-primary btn-block">{{ trans('message.action.edit') }}</button>
     </form>
     </div>
 </div>

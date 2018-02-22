@@ -15,7 +15,6 @@ class TypeRepositoryEloquent extends AbstractRepositoryEloquent implements TypeR
         return $this->model()
             ->select($select)
             ->with($with)
-            ->where('type', config('custom.types.type.movie'))
             ->get();
     }
 
@@ -24,7 +23,6 @@ class TypeRepositoryEloquent extends AbstractRepositoryEloquent implements TypeR
         return $this->model()
             ->select($select)
             ->with($with)
-            ->where('type', config('custom.types.type.post'))
             ->get();
     }
 }

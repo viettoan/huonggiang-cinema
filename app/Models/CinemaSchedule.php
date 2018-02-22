@@ -10,7 +10,7 @@ class CinemaSchedule extends Model
     protected $fillable = [
         'cinema_id',
         'movie_id',
-        'day_id',
+        'schedule_id',
         'price',
     ];
     public function cinema()
@@ -20,5 +20,9 @@ class CinemaSchedule extends Model
     public function movie()
     {
         return $this->belongsTo(Movie::class);
+    }
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class);
     }
 }

@@ -6,11 +6,11 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Manage Users</a></li>
-    <li class="breadcrumb-item active">Edit User</li>
+    <li class="breadcrumb-item"><a href="{{ route('user.index') }}">{{ trans('message.title.manage_users') }}</a></li>
+    <li class="breadcrumb-item active">{{ trans('message.title.edit_user') }}</li>
 </ol>
 <div class="card card-register mx-auto mt-5">
-    <div class="card-header">Edit User</div>
+    <div class="card-header">{{ trans('message.title.edit_user') }}</div>
     <div class="card-body">
     @if (session('error'))
         <div class="alert alert-success">
@@ -29,7 +29,7 @@
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">
-                <label for="exampleInputName">Name</label>
+                <label for="exampleInputName">{{ trans('message.column.name') }}</label>
                 <input class="form-control" type="text" name="name" value="{{ $user->name }}" placeholder="Enter name" required>
                 @if ($errors->has('name'))
                     <span class="help-block">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.email') }}</label>
             <input class="form-control" type="email" name="email" value="{{ $user->email }}" placeholder="Enter email" required>
             @if ($errors->has('email'))
                 <span class="help-block">
@@ -49,7 +49,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Address</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.address') }}</label>
             <input class="form-control" type="text" name="address" value="{{ $user->address }}" placeholder="Enter Address" required>
             @if ($errors->has('address'))
                 <span class="help-block">
@@ -58,32 +58,32 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Gender</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.gender') }}</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="gender" value="1" @if ($user->gender == 1) checked @endif>Nam
+                    <input type="radio" name="gender" value="1" @if ($user->gender == 1) checked @endif>{{ trans('message.config.male') }}
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="gender" value="0" @if ($user->gender == 0) checked @endif>Nữ
+                    <input type="radio" name="gender" value="0" @if ($user->gender == 0) checked @endif>{{ trans('message.config.female') }}
                 </label>
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Role</label>
+            <label for="exampleInputEmail1">{{ trans('message.column.role') }}</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="role" value="1" @if ($user->role == 1) checked @endif >Admin
+                    <input type="radio" name="role" value="1" @if ($user->role == 1) checked @endif >{{ trans('message.config.admin') }}
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="role" value="0" @if ($user->role == 0) checked @endif >User
+                    <input type="radio" name="role" value="0" @if ($user->role == 0) checked @endif >{{ trans('message.config.user') }}
                 </label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Edit</button>
+        <button type="submit" class="btn btn-primary btn-block">{{ trans('message.action.edit') }}</button>
     </form>
     </div>
 </div>

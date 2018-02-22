@@ -6,12 +6,12 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Manage Users</li>
+    <li class="breadcrumb-item active">{{ trans('message.title.manage_users') }}</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
     <a class="btn btn-primary" href = "{{ route('user.create') }}">
-      New
+    {{ trans('message.action.new') }}
     </a>
     </div>
     <div class="col-md-5"><input type="text" name="search" id="search" placeholder="Search ..." class="form-control"></div>
@@ -21,10 +21,10 @@
     <thead>
       <tr>
           <th class="text-center">#</th>
-          <th class="text-center ">Avatar</th>
-          <th class="text-center">Name</th>
-          <th class="text-center">Email</th>
-          <th class="text-center">Role</th>
+          <th class="text-center ">{{ trans('message.column.avatar') }}</th>
+          <th class="text-center">{{ trans('message.column.name') }}</th>
+          <th class="text-center">{{ trans('message.column.email') }}</th>
+          <th class="text-center">{{ trans('message.column.role') }}</th>
           <th class="text-center"></th>
       </tr>
     </thead>

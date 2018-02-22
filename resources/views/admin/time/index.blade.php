@@ -6,12 +6,12 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Manage Times</li>
+    <li class="breadcrumb-item active">{{ trans('message.title.manage_times') }}</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
     <a class="btn btn-primary" href = "{{ route('time.create') }}">
-      New
+    {{ trans('message.action.new') }}
     </a>
     </div>
 </div>
@@ -20,7 +20,7 @@
     <thead>
       <tr>
           <th class="text-center">#</th>
-          <th class="text-center">Time</th>
+          <th class="text-center">{{ trans('message.column.time') }}</th>
           <th class="text-center"></th>
       </tr>
     </thead>

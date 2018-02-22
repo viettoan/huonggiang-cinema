@@ -6,12 +6,12 @@
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Manage Promotions</li>
+    <li class="breadcrumb-item active">{{ trans('message.title.manage_promotions') }}</li>
 </ol>
 <div class="row header-custom">
     <div class="col-md-1">
     <a class="btn btn-primary" href = "{{ route('promotion.create') }}">
-      New
+    {{ trans('message.action.new') }}
     </a>
     </div>
 </div>
@@ -20,12 +20,12 @@
     <thead>
         <tr>
             <th class="text-center">#</th>
-            <th class="text-center ">Cinema</th>
-            <th class="text-center ">Title</th>
-            <th class="text-center">Start Date</th>
-            <th class="text-center">End Date</th>
-            <th class="text-center">Sale</th>
-            <th class="text-center">Status</th>
+            <th class="text-center ">{{ trans('message.column.cinema') }}</th>
+            <th class="text-center ">{{ trans('message.column.title') }}</th>
+            <th class="text-center">{{ trans('message.column.start_date') }}</th>
+            <th class="text-center">{{ trans('message.column.end_date') }}</th>
+            <th class="text-center">{{ trans('message.column.sale') }}</th>
+            <th class="text-center">{{ trans('message.column.status') }}</th>
             <th class="text-center"></th>
         </tr>
     </thead>
@@ -41,9 +41,9 @@
             <th>{{ $promotion->sale }}</th>
             <th>
                 @if ($promotion->status == config('custom.promotion.status.hide'))
-                    <button class="btn btn-warning">Hide</button>
+                    <button class="btn btn-warning">{{ trans('message.config.hide') }}</button>
                 @else
-                <button class="btn btn-primary">Show</button>
+                <button class="btn btn-primary">{{ trans('message.config.show') }}</button>
                 @endif
             </th>
             <th>

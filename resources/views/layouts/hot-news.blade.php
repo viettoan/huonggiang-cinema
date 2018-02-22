@@ -2,7 +2,7 @@
     <div class="container">
         <div class="title">
             <img src="{{ asset('wp-content/themes/bhd/assets/images/bg-tittle-hotnews.png') }}"/>
-            <span>TIN NÓNG</span>
+            <span>{{ trans('message.hot_news') }}</span>
         </div>
         <div class="slider--flexslider js__flexslider">
             <ul class="slides clearfix">

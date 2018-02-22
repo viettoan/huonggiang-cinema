@@ -43,6 +43,14 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Contracts\TimeRepository::class,
             \App\Repositories\TimeRepositoryEloquent::class,
         ],
+        'schedule' => [
+            \App\Contracts\ScheduleRepository::class,
+            \App\Repositories\ScheduleRepositoryEloquent::class,
+        ],
+        'cinemaSchedule' => [
+            \App\Contracts\CinemaScheduleRepository::class,
+            \App\Repositories\CinemaScheduleRepositoryEloquent::class,
+        ],
     ];
     /**
      * Bootstrap the application services.
