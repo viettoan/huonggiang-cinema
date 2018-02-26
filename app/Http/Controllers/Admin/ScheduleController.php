@@ -3,15 +3,33 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ScheduleRequest;
 use App\Http\Controllers\Controller;
 use App\Contracts\MovieRepository;
 use App\Contracts\CinemaRepository;
 use App\Contracts\ScheduleRepository;
+use App\Contracts\ScheduleTimeRepository;
 use App\Contracts\CinemaScheduleRepository;
 use App\Contracts\TimeRepository;
 
 class ScheduleController extends Controller
 {
+    protected $movie, $cinema, $schedule, $cinemaSchedule, $time, $scheduleTime;
+    public function __construct(
+        MovieRepository $movie,
+        CinemaRepository $cinema,
+        ScheduleRepository $schedule,
+        CinemaScheduleRepository $cinemaSchedule,
+        TimeRepository $time,
+        ScheduleTimeRepository $scheduleTime
+    ) {
+        $this->movie = $movie;
+        $this->schedule = $schedule;
+        $this->cinema = $cinema;
+        $this->cinemaSchedule = $cinemaSchedule;
+        $this->time = $time;
+        $this->scheduleTime = $scheduleTime;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +37,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
+        $cinemaSchedules = $this->cinemaSchedule->paginate(10, ['cinema', 'movie', 'schedule.scheduleTime']);
+        
+        return view('admin.schedules.index', compact('cinemaSchedules'));
     }
 
     /**
@@ -29,7 +49,11 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $cinemas = $this->cinema->getCinemaByStatus(config('custom.cinema.status.active'));
+        $movies = $this->movie->getMovieByNotStatus(config('custom.movie.status.stop_showing'));
+        $times = $this->time->all();
+
+        return view('admin.schedules.create', compact('cinemas', 'movies', 'times'));
     }
 
     /**
@@ -38,9 +62,35 @@ class ScheduleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ScheduleRequest $request)
     {
-        //
+        $error = true;
+        $scheduleData = [
+            'day' => $request->day,
+        ];
+
+        $schedule = $this->schedule->create($scheduleData);
+
+        if ($schedule) {
+            foreach ($request->time_id as $time_id) {
+                $scheduleTimeData = [
+                    'schedule_id' => $schedule->id,
+                    'time_id' => $time_id,
+                ];
+    
+                $scheduleTime = $this->scheduleTime->create($scheduleTimeData);
+            }
+            $scheduleCinemaData = [
+                'cinema_id' => $request->cinema_id,
+                'movie_id' => $request->movie_id,
+                'schedule_id' => $schedule->id
+            ];
+            if ($this->cinemaSchedule->create($scheduleCinemaData)) {
+                return redirect()->route('schedule.create')->with('error', trans('The schedule has been successfully created!'));
+            } else {
+                return redirect()->route('schedule.create')->with('success', trans('The schedule has been created failed!'));
+            }
+        }
     }
 
     /**
@@ -62,7 +112,14 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $cinemas = $this->cinema->getCinemaByStatus(config('custom.cinema.status.active'));
+        $movies = $this->movie->getMovieByNotStatus(config('custom.movie.status.stop_showing'));
+        $times = $this->time->all();
+        $cinemaSchedule = $this->cinemaSchedule->find($id, ['cinema', 'movie', 'schedule.scheduleTime.time']);
+        $scheduleTimes = $this->scheduleTime->getMovieByScheduleId($cinemaSchedule->schedule->id)->pluck('time_id')->toArray();
+
+        return view('admin.schedules.edit', compact('cinemas', 'movies', 'times', 'cinemaSchedule', 'scheduleTimes'));
     }
 
     /**

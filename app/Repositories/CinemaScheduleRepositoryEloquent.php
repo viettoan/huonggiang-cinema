@@ -9,4 +9,5 @@ class CinemaScheduleRepositoryEloquent extends AbstractRepositoryEloquent implem
     {
         return new CinemaSchedule;
     }
+
 }
