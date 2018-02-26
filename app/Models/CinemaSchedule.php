@@ -11,8 +11,9 @@ class CinemaSchedule extends Model
         'cinema_id',
         'movie_id',
         'schedule_id',
-        'price',
     ];
+    protected $table = 'cinema_schedule';
+    
     public function cinema()
     {
         return $this->belongsTo(Cinema::class);

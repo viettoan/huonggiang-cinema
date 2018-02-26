@@ -8,7 +8,6 @@ class Schedule extends Model
 {
     protected $fillable = [
         'day',
-        'time_id',
     ];
 
     public function cinemaSchedules()
@@ -16,8 +15,8 @@ class Schedule extends Model
         return $this->hasMany(CinemaSchedule::class);
     }
 
-    public function time()
+    public function scheduleTime()
     {
-        return $this->belongsTo(Time::class);
+        return $this->hasMany(ScheduleTime::class);
     }
 }
