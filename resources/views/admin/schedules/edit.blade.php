@@ -9,6 +9,9 @@
     <li class="breadcrumb-item"><a href="{{ route('schedule.index') }}">{{ trans('message.title.manage_schedules') }}</a></li>
     <li class="breadcrumb-item active">{{ trans('message.title.edit_schedule') }}</li>
 </ol>
+<i class="fas fa-camera-retro fa-xs"></i>
+
+
 <div class="card card-register mx-auto mt-5">
     <div class="card-header">{{ trans('message.title.edit_schedule') }}</div>
     <div class="card-body">
@@ -42,14 +45,13 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">{{ trans('message.column.day') }}</label>
-            <select name="day" class="form-control">
-                @if (config('custom.days') != null)
-                    @foreach(config('custom.days') as $key => $day)
-                        <option value="{{ $day }}" @if ($day == $cinemaSchedule->schedule->day) selected @endif>{{ $key }}</option>
-                    @endforeach
-                @endif
-            </select>
+            <label for="exampleInputEmail1">{{ trans('message.column.date') }}</label>
+            <input class="form-control" type="date" name="date" value="{{ $cinemaSchedule->schedule->date }}" required>
+            @if ($errors->has('date'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('date') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
         <label for="exampleInputEmail1">{{ trans('message.column.time') }}</label>

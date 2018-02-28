@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     protected $fillable = [
-        'day',
+        'date',
     ];
 
     public function cinemaSchedules()
@@ -18,5 +18,10 @@ class Schedule extends Model
     public function scheduleTime()
     {
         return $this->hasMany(ScheduleTime::class);
+    }
+
+    public function room()
+    {
+        return $this->belongsTo(Schedule::class);
     }
 }

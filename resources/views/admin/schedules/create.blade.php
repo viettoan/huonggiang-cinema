@@ -41,14 +41,13 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">{{ trans('message.column.day') }}</label>
-            <select name="day" class="form-control">
-                @if (config('custom.days') != null)
-                    @foreach(config('custom.days') as $key => $day)
-                        <option value="{{ $day }}">{{ $key }}</option>
-                    @endforeach
-                @endif
-            </select>
+            <label for="exampleInputEmail1">{{ trans('message.column.date') }}</label>
+            <input class="form-control" type="date" name="date" value="{{ old('date') }}" required>
+            @if ($errors->has('date'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('date') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
         <label for="exampleInputEmail1">{{ trans('message.column.time') }}</label>
