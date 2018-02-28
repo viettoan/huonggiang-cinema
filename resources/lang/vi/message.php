@@ -81,7 +81,7 @@ return [
         'gender' => 'Giới tính',
         'password' => 'Mật khẩu',
         'confirm_password' => 'Nhập lại mật khẩu',
-        'day' => 'Ngày',
+        'date' => 'Ngày',
     ],
     'config' => [
         'active' => 'Active',

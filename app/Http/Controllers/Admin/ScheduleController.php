@@ -11,17 +11,19 @@ use App\Contracts\ScheduleRepository;
 use App\Contracts\ScheduleTimeRepository;
 use App\Contracts\CinemaScheduleRepository;
 use App\Contracts\TimeRepository;
+use App\Contracts\RoomRepository;
 
 class ScheduleController extends Controller
 {
-    protected $movie, $cinema, $schedule, $cinemaSchedule, $time, $scheduleTime;
+    protected $movie, $cinema, $schedule, $cinemaSchedule, $time, $scheduleTime, $room;
     public function __construct(
         MovieRepository $movie,
         CinemaRepository $cinema,
         ScheduleRepository $schedule,
         CinemaScheduleRepository $cinemaSchedule,
         TimeRepository $time,
-        ScheduleTimeRepository $scheduleTime
+        ScheduleTimeRepository $scheduleTime,
+        RoomRepository $room
     ) {
         $this->movie = $movie;
         $this->schedule = $schedule;
@@ -29,6 +31,7 @@ class ScheduleController extends Controller
         $this->cinemaSchedule = $cinemaSchedule;
         $this->time = $time;
         $this->scheduleTime = $scheduleTime;
+        $this->room = $room;
     }
     /**
      * Display a listing of the resource.
@@ -66,7 +69,7 @@ class ScheduleController extends Controller
     {
         $error = true;
         $scheduleData = [
-            'day' => $request->day,
+            'date' => $request->date,
         ];
 
         $schedule = $this->schedule->create($scheduleData);

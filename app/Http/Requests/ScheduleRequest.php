@@ -24,7 +24,7 @@ class ScheduleRequest extends FormRequest
     public function rules()
     {
         $arr = [
-            'day' => 'required|numeric',
+            'date' => 'required|date',
             'time_id' => 'required',
             'movie_id' => 'required|numeric',
             'cinema_id' => 'required|numeric',
