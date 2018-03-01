@@ -147,4 +147,11 @@ class ScheduleController extends Controller
     {
         //
     }
+
+    public function newRoomUi(Request $request)
+    {
+        $roomUi = view('admin.schedules.ui-elements.new-room')->render();
+
+        return response(['ui' => $roomUi]);
+    }
 }

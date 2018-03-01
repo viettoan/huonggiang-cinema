@@ -15,7 +15,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: '/admin/movie/delete/' + id,
+                    url: '/admin/schedule/delete/' + id,
                     type: 'GET',
                     success: function (res) {
                         swal(
@@ -36,5 +36,19 @@ $(document).ready(function() {
               )
             }
         });    
+    });
+
+    //add new room
+    $(document).on('click', '.new-room', function () {
+        $.ajax({
+            url: '/admin/new-room-ui',
+            type: 'GET',
+            success: function (res) {
+                $('.admin-schedule').append(res.ui);
+            }
+        });
+    });
+    $(document).on('click', '.del-room', function () {
+        $(this).parents('.room-action').parent().remove();
     });
 });

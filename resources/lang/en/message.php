@@ -81,7 +81,8 @@ return [
         'gender' => 'Gender',
         'password' => 'Password',
         'confirm_password' => 'Confirm Password',
-        'date' => 'Date'
+        'date' => 'Date',
+        'room' => 'Room',
     ],
     'config' => [
         'active' => 'Active',

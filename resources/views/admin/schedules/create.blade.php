@@ -49,19 +49,31 @@
                 </span>
             @endif
         </div>
-        <div class="form-group">
-        <label for="exampleInputEmail1">{{ trans('message.column.time') }}</label>
-            <select class="js-example-basic-multiple form-control" name="time_id[]" multiple="multiple">
-                @foreach ($times as $time)
-                <option value="{{ $time->id }}">{{ $time->time }}</option>
-                @endforeach 
-            </select>
-            @if ($errors->has('time'))
-                <span class="help-block">
-                        <strong>{{ $errors->first('time') }}</strong>
-                </span>
-            @endif
+        <div class="admin-schedule row">
+            <div class="col-md-12 row">
+                <div class="room col-md-10">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">{{ trans('message.column.room') }}</label>
+                        <select name="room_id[]" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">{{ trans('message.column.time') }}</label>
+                        <select class="js-example-basic-multiple form-control" name="time_id[]" multiple="multiple">
+                        </select>
+                        @if ($errors->has('time'))
+                            <span class="help-block">
+                                    <strong>{{ $errors->first('time') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-1 room-action">
+                    <i class="fas fa-plus-circle new-room"></i>
+                </div>
+            </div>
         </div>
+        
         <button type="submit" class="btn btn-primary btn-block">{{ trans('message.action.save') }}</button>
     </form>
     </div>
