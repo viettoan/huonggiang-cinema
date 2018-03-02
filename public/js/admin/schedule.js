@@ -37,18 +37,28 @@ $(document).ready(function() {
             }
         });    
     });
+    //get room by date
+    $('.admin-schedule').hide();
+    $(document).on('change', '#date', function () {
+        $('.admin-schedule').show();
+    });
 
-    //add new room
-    $(document).on('click', '.new-room', function () {
+    $(document).on('change', '.room_id', function () {
+        var room_id = $(this).val();
+        var date = $('#date').val();
+        var element = $(this);
+
         $.ajax({
-            url: '/admin/new-room-ui',
+            url: '/admin/get-time',
             type: 'GET',
+            data: {'date': date, 'room_id': room_id},
             success: function (res) {
-                $('.admin-schedule').append(res.ui);
+                var html = '';
+                for (var i = 0; i < res.times.length; i++) {
+                    html += `<option value="${res.times[i].id}">${res.times[i].time}</option>`;
+                }
+                element.parents('.room').find('.time_id').html(html);
             }
         });
-    });
-    $(document).on('click', '.del-room', function () {
-        $(this).parents('.room-action').parent().remove();
     });
 });

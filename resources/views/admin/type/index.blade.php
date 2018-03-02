@@ -34,10 +34,10 @@
           <th>{{ $type->description }}</th>
           <th>
             <a href = "{{ route('type.edit', ['id' => $type->id]) }}">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <i class="fas fa-edit"></i>
             </a>
             <a data-id="{{ $type->id}}" class="delType">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
+              <i class="fas fa-trash-alt"></i>
             </a>
           </th>
       </tr>

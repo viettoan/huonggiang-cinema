@@ -51,7 +51,8 @@ return [
         'forgot_password' => 'Forgot Your Password?',
         'share' => 'Share',
         'comment' => 'Comment',
-        'buy_ticket' => 'Buy Ticket'
+        'buy_ticket' => 'Buy Ticket',
+        'select_room' => 'Select a room',
     ],
     'column' => [
         'cinema' => 'Cinema',

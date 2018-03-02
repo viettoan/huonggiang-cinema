@@ -45,7 +45,7 @@
             @endif
           <th>
             <a href = "{{ route('cinema.edit', ['id' => $cinema->id]) }}">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <i class="fas fa-edit"></i>
             </a>
           </th>
       </tr>
