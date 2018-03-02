@@ -51,7 +51,8 @@ return [
         'forgot_password' => 'Quên mật khẩu?',
         'share' => 'Chia sẻ',
         'comment' => 'Bình luận',
-        'buy_ticket' => 'Mua vé'
+        'buy_ticket' => 'Mua vé',
+        'select_room' => 'Chọn Phòng'
     ],
     'column' => [
         'cinema' => 'Rạp',
@@ -82,6 +83,7 @@ return [
         'password' => 'Mật khẩu',
         'confirm_password' => 'Nhập lại mật khẩu',
         'date' => 'Ngày',
+        'room' => 'Phòng'
     ],
     'config' => [
         'active' => 'Active',

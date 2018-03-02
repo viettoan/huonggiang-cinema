@@ -28,6 +28,7 @@ class ScheduleRequest extends FormRequest
             'time_id' => 'required',
             'movie_id' => 'required|numeric',
             'cinema_id' => 'required|numeric',
+            'room_id' => 'required',
         ];
         
         return $arr;

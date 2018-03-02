@@ -54,9 +54,9 @@ class ScheduleController extends Controller
     {
         $cinemas = $this->cinema->getCinemaByStatus(config('custom.cinema.status.active'));
         $movies = $this->movie->getMovieByNotStatus(config('custom.movie.status.stop_showing'));
-        $times = $this->time->all();
+        $rooms = $this->room->all();
 
-        return view('admin.schedules.create', compact('cinemas', 'movies', 'times'));
+        return view('admin.schedules.create', compact('cinemas', 'movies', 'rooms'));
     }
 
     /**
@@ -70,8 +70,8 @@ class ScheduleController extends Controller
         $error = true;
         $scheduleData = [
             'date' => $request->date,
+            'room_id' => $request->room_id,
         ];
-
         $schedule = $this->schedule->create($scheduleData);
 
         if ($schedule) {
@@ -146,5 +146,27 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getRoom(Request $request)
+    {
+        $roomActive = $this->schedule->getScheduleByColumn('date', $request->date)->pluck('room_id')->toArray();
+        $rooms = $this->room->getRoomFree($roomActive);
+    
+        return response(['rooms' => $rooms]);
+    }
+
+    public function getTime(Request $request)
+    {
+        $schedules = $this->schedule->getScheduleByDateAndRoom($request->date, $request->room_id, ['scheduleTime']);
+        $timeActive = array();
+        foreach ($schedules as $schedule) {
+            foreach ($schedule->scheduleTime as $scheduleTime) {
+                array_push($timeActive, $scheduleTime->time_id);
+            }
+        }
+        $times = $this->time->getTimeFree($timeActive);
+
+        return response(['times' => $times]);
     }
 }

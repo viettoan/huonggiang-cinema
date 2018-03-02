@@ -8,6 +8,7 @@ class Schedule extends Model
 {
     protected $fillable = [
         'date',
+        'room_id'
     ];
 
     public function cinemaSchedules()

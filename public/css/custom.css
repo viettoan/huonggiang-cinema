@@ -59,3 +59,22 @@ ul.pagination li.disabled span{
     border: 1px solid #ddd;
     margin: 4px;
 }
+
+.admin-schedule .room {
+    border: 1px solid rgba(0,0,0,.125);
+    margin-left: 14px;
+    margin-bottom: 10px;
+    border-radius: .25rem;
+}
+
+.admin-schedule .room-action {
+    padding-top: 80px;
+}
+
+.admin-schedule .room-action .new-room {
+    color: #007bff;
+}
+
+.admin-schedule .room-action .del-room {
+    color: #d9534f;
+}

@@ -52,10 +52,10 @@
           </th>
           <th>
             <a href = "{{ route('media.edit', ['id' => $m->id]) }}">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <i class="fas fa-edit"></i>
             </a>
             <a data-id="{{ $m->id}}" class="delMedia">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
+              <i class="fas fa-trash-alt"></i>
             </a>
           </th>
       </tr>

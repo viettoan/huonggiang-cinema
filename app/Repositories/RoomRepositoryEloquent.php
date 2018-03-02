@@ -9,4 +9,9 @@ class RoomRepositoryEloquent extends AbstractRepositoryEloquent implements RoomR
     {
         return new Room;
     }
+
+    public function getRoomFree($roomActive = [], $with = [], $select = ['*'])
+    {
+        return $this->model()->with($with)->select($select)->whereNotIn('id', $roomActive)->get(); 
+    }    
 }

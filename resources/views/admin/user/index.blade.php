@@ -39,11 +39,11 @@
           <th>{{ $user->role }}</th>
           <th>
             <a href = "{{ route('user.edit', ['id' => $user->id]) }}">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <i class="fas fa-edit"></i>
             </a>
             @if (Auth::id() != $user->id)
             <a data-id="{{ $user->id}}" class="delUser">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
+              <i class="fas fa-trash-alt"></i>
             </a>
             @endif
           </th>

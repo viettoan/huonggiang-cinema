@@ -15,7 +15,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: '/admin/movie/delete/' + id,
+                    url: '/admin/schedule/delete/' + id,
                     type: 'GET',
                     success: function (res) {
                         swal(
@@ -36,5 +36,29 @@ $(document).ready(function() {
               )
             }
         });    
+    });
+    //get room by date
+    $('.admin-schedule').hide();
+    $(document).on('change', '#date', function () {
+        $('.admin-schedule').show();
+    });
+
+    $(document).on('change', '.room_id', function () {
+        var room_id = $(this).val();
+        var date = $('#date').val();
+        var element = $(this);
+
+        $.ajax({
+            url: '/admin/get-time',
+            type: 'GET',
+            data: {'date': date, 'room_id': room_id},
+            success: function (res) {
+                var html = '';
+                for (var i = 0; i < res.times.length; i++) {
+                    html += `<option value="${res.times[i].id}">${res.times[i].time}</option>`;
+                }
+                element.parents('.room').find('.time_id').html(html);
+            }
+        });
     });
 });

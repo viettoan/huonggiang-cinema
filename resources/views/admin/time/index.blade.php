@@ -32,10 +32,10 @@
           <th class="text-center">{{ $time->time }}</th>
           <th>
             <a href = "{{ route('time.edit', ['id' => $time->id]) }}">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <i class="fas fa-edit"></i>
             </a>
             <a data-id="{{ $time->id}}" class="delTime">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
+              <i class="fas fa-trash-alt"></i>
             </a>
           </th>
       </tr>

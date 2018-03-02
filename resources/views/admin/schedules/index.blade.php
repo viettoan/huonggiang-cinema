@@ -36,11 +36,11 @@
             <th class="text-center"></th> 
             <th>
                 <a href = "{{ route('schedule.edit', ['id' => $cinemaSchedule->id]) }}">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <i class="fas fa-edit"></i>
                 </a>
                 <a data-id="{{ $cinemaSchedule->id}}" class="delCinemaSchedule">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </a>
+                    <i class="fas fa-trash-alt"></i>
+                </a>
             </th>
         </tr>
       @endforeach

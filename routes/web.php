@@ -44,7 +44,9 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/time/delete/{id}', 'TimeController@destroy');
 
     Route::resource('schedule', 'ScheduleController');
-    Route::get('/scheduletime/delete/{id}', 'ScheduleController@destroy');
+    Route::get('/schedule/delete/{id}', 'ScheduleController@destroy');
+    Route::get('/get-room', 'ScheduleController@getRoom');
+    Route::get('/get-time', 'ScheduleController@getTime');
 });
 
 Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function() {

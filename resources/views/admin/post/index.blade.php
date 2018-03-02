@@ -52,11 +52,11 @@
             </th>
             <th>
                 <a href = "{{ route('post.edit', ['id' => $post->id]) }}">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <i class="fas fa-edit"></i>
                 </a>
                 <a data-id="{{ $post->id}}" class="delPost">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </a>
+                    <i class="fas fa-trash-alt"></i>
+                </a>
             </th>
         </tr>
       @endforeach
