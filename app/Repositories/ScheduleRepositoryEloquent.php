@@ -13,5 +13,5 @@ class ScheduleRepositoryEloquent extends AbstractRepositoryEloquent implements S
     public function getScheduleByDateAndRoom($date, $room_id, $with = [], $select = ['*'])
     {
         return $this->model()->with($with)->select($select)->where('date', $date)->where('room_id', $room_id)->get();
-    }    
+    }
 }

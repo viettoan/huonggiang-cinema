@@ -10,4 +10,13 @@ class CinemaScheduleRepositoryEloquent extends AbstractRepositoryEloquent implem
         return new CinemaSchedule;
     }
 
+    public function getSchedules($paginate, $with = [], $select = ['*'])
+    {
+        return $this->model()->with($with)->select($select)->distinct()->paginate($paginate);
+    }
+
+    public function getSchedulesByMovieAndCinema($movie_id, $cinema_id, $with = [], $select = ['*'])
+    {
+        return $this->model()->with($with)->select($select)->where('movie_id', $movie_id)->where('cinema_id', $cinema_id)->get();
+    }    
 }

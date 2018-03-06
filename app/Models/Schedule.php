@@ -23,6 +23,6 @@ class Schedule extends Model
 
     public function room()
     {
-        return $this->belongsTo(Schedule::class);
+        return $this->belongsTo(Room::class);
     }
 }

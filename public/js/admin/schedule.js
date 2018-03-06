@@ -61,4 +61,20 @@ $(document).ready(function() {
             }
         });
     });
+
+    //show cinema schedule 
+    $(document).on('click', '.cinema-schedule', function () {
+        var movie_id = $(this).data('movie');
+        var cinema_id = $(this).data('cinema');
+
+        $.ajax({
+            url: '/admin/get-schedules',
+            method: 'GET',
+            data: {'movie_id': movie_id, 'cinema_id': cinema_id},
+            success: function (res) {
+                console.log(res);
+                $('#schedule').modal('show');
+            }
+        });
+    });
 });

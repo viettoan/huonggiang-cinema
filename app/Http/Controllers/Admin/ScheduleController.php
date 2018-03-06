@@ -40,7 +40,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $cinemaSchedules = $this->cinemaSchedule->paginate(10, ['cinema', 'movie', 'schedule.scheduleTime']);
+        $cinemaSchedules = $this->cinemaSchedule->getSchedules(10, ['cinema', 'movie', 'schedule.scheduleTime'], ['movie_id', 'cinema_id']);
         
         return view('admin.schedules.index', compact('cinemaSchedules'));
     }
@@ -168,5 +168,12 @@ class ScheduleController extends Controller
         $times = $this->time->getTimeFree($timeActive);
 
         return response(['times' => $times]);
+    }
+
+    public function getSchedules(Request $request)
+    {
+        $schedules = $this->cinemaSchedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id, ['schedule.scheduleTime', 'schedule.room']);
+        
+        return response(['schedules' => $schedules]);
     }
 }
