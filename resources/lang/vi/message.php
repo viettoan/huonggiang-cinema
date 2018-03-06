@@ -43,6 +43,7 @@ return [
         'advertisement' => 'Quảng cáo',
         'home' => 'Trang chủ',
         'events' => 'Sự kiện',
+        'cinema_schedule' => 'Lịch chiếu',
     ],
     'action' => [
         'edit' => 'Sửa',
@@ -52,7 +53,8 @@ return [
         'share' => 'Chia sẻ',
         'comment' => 'Bình luận',
         'buy_ticket' => 'Mua vé',
-        'select_room' => 'Chọn Phòng'
+        'select_room' => 'Chọn Phòng',
+        'close' => 'Đóng'
     ],
     'column' => [
         'cinema' => 'Rạp',

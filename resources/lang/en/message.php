@@ -43,6 +43,7 @@ return [
         'advertisement' => 'Advertisement',
         'home' => 'Home',
         'events' => 'Events',
+        'cinema_schedule' => 'Cinema Schedule',
     ],
     'action' => [
         'edit' => 'Edit',
@@ -53,6 +54,7 @@ return [
         'comment' => 'Comment',
         'buy_ticket' => 'Buy Ticket',
         'select_room' => 'Select a room',
+        'close' => 'Close',
     ],
     'column' => [
         'cinema' => 'Cinema',
