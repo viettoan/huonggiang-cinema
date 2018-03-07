@@ -172,7 +172,7 @@ class ScheduleController extends Controller
 
     public function getSchedules(Request $request)
     {
-        $schedules = $this->cinemaSchedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id, ['schedule.scheduleTime', 'schedule.room']);
+        $schedules = $this->cinemaSchedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id, ['schedule.scheduleTime.time', 'schedule.room']);
         
         return response(['schedules' => $schedules]);
     }
