@@ -23,7 +23,8 @@
           <th class="text-center ">{{ trans('message.column.banner') }}</th>
           <th class="text-center ">{{ trans('message.column.name') }}</th>
           <th class="text-center ">{{ trans('message.column.address') }}</th>
-          <th class="text-center">{{ trans('message.column.description') }}</th>
+          <th class="text-center">{{ trans('message.column.city') }}</th>
+          <th class="text-center">{{ trans('message.column.cinema_system') }}</th>
           <th class="text-center">{{ trans('message.column.status') }}</th>
           <th class="text-center"></th>
       </tr>
@@ -36,7 +37,8 @@
           <th><img class="img-responsive media-file" src="{{ $cinema->media->path }}"></th>
           <th>{{ $cinema->name }}</th>
           <th>{{ $cinema->address }}</th>
-          <th>{{ $cinema->description }}</th>
+          <th>{{ $cinema->city->name }}</th>
+          <th>{{ $cinema->cinemaSystem->name }}</th>
           <th>
             @if ($cinema->status == config('custom.cinema.status.active'))
                 <button class="btn btn-primary">{{ trans('message.config.active') }}</button>

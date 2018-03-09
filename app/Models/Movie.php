@@ -18,10 +18,6 @@ class Movie extends Model
         'media_id',
     ];
 
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class);
-    }
     public function comments()
     {
         return $this->morphMany(Booking::class, 'commentable');
@@ -34,9 +30,9 @@ class Movie extends Model
     {
         return $this->belongsTo(Media::class);
     }
-    public function cinemaSchedules()
+    public function schedules()
     {
-        return $this->hasMany(CinemaSchedule::class);
+        return $this->hasMany(Schedule::class);
     }
     public function trailers()
     {

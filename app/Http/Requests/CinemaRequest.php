@@ -24,6 +24,8 @@ class CinemaRequest extends FormRequest
     public function rules()
     {
         $arr = [
+            'cinema_system_id' => 'required|numeric',
+            'city_id' => 'required|numeric',
             'name' => 'required|max:255' ,
             'address' => 'required|max:255',
             'description' => 'required',

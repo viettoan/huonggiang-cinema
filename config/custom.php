@@ -34,6 +34,12 @@ return [
             'active' => 1,
         ],
     ],
+    'cinema_system' => [
+        'status' => [
+            'block' => 0,
+            'active' => 1,
+        ]
+    ],
     'movie' => [
         'status' => [
             'new_release' => 0,

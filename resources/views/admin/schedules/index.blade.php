@@ -27,22 +27,22 @@
             </tr>
         </thead>
         <tbody>
-        @if (isset($cinemaSchedules))
-        @foreach ($cinemaSchedules as $cinemaSchedule)
+        @if (isset($schedules))
+        @foreach ($schedules as $schedule)
             <tr>
-                <th class="text-center">{{ $cinemaSchedule->id }}</th>
-                <th class="text-center ">{{ $cinemaSchedule->cinema->name }}</th>
-                <th class="text-center ">{{ $cinemaSchedule->movie->name }}</th>
+                <th class="text-center">{{ $schedule->id }}</th>
+                <th class="text-center ">{{ $schedule->cinema->name }}</th>
+                <th class="text-center ">{{ $schedule->movie->name }}</th>
                 <th class="text-center">
-                    <a class="cinema-schedule" data-movie="{{ $cinemaSchedule->movie_id }}" data-cinema="{{ $cinemaSchedule->cinema_id }}">
+                    <a class="cinema-schedule" data-movie="{{ $schedule->movie_id }}" data-cinema="{{ $cinemaSchedule->cinema_id }}">
                         <i class="fas fa-edit"></i>
                     </a>
                 </th> 
                 <th>
-                    <a href = "{{ route('schedule.edit', ['id' => $cinemaSchedule->id]) }}">
+                    <a href = "{{ route('schedule.edit', ['id' => $schedule->id]) }}">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a data-id="{{ $cinemaSchedule->id}}" class="delCinemaSchedule">
+                    <a data-id="{{ $schedule->id}}" class="delSchedule">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </th>
@@ -81,8 +81,8 @@
         </div>
         </div>
     </div>
-  @if (isset($posts)) 
-      {{ $posts->links() }}
+  @if (isset($schedules)) 
+      {{ $schedules->links() }}
   @endif
 </div>
 @endsection

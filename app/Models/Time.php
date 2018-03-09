@@ -11,8 +11,8 @@ class Time extends Model
         'time',
     ];
 
-    public function scheduleTime()
+    public function roomTime()
     {
-        return $this->hasMany(ScheduleTime::class);
+        return $this->hasMany(RoomTime::class);
     } 
 }

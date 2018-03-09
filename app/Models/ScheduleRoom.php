@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ScheduleTime extends Model
+class ScheduleRoom extends Model
 {
     protected $fillable = [
-        'time_id',
-        'schedule_id'
+        'room_id',
+        'schedule_id',
+        'date',
     ];
 
-    protected $table = 'schedule_time';
+    protected $table = 'schedule_room';
 
-    public function time()
+    public function room()
     {
-        return $this->belongsTo(Time::class);
+        return $this->belongsTo(Room::class);
     }
 
     public function schedule()

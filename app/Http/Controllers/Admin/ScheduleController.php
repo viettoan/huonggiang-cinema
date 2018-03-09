@@ -8,29 +8,26 @@ use App\Http\Controllers\Controller;
 use App\Contracts\MovieRepository;
 use App\Contracts\CinemaRepository;
 use App\Contracts\ScheduleRepository;
-use App\Contracts\ScheduleTimeRepository;
-use App\Contracts\CinemaScheduleRepository;
+use App\Contracts\RoomTimeRepository;
 use App\Contracts\TimeRepository;
 use App\Contracts\RoomRepository;
 
 class ScheduleController extends Controller
 {
-    protected $movie, $cinema, $schedule, $cinemaSchedule, $time, $scheduleTime, $room;
+    protected $movie, $cinema, $schedule, $time, $roomTime, $room;
     public function __construct(
         MovieRepository $movie,
         CinemaRepository $cinema,
         ScheduleRepository $schedule,
-        CinemaScheduleRepository $cinemaSchedule,
         TimeRepository $time,
-        ScheduleTimeRepository $scheduleTime,
+        RoomTimeRepository $roomTime,
         RoomRepository $room
     ) {
         $this->movie = $movie;
         $this->schedule = $schedule;
         $this->cinema = $cinema;
-        $this->cinemaSchedule = $cinemaSchedule;
         $this->time = $time;
-        $this->scheduleTime = $scheduleTime;
+        $this->roomTime = $roomTime;
         $this->room = $room;
     }
     /**
@@ -40,9 +37,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $cinemaSchedules = $this->cinemaSchedule->getSchedules(10, ['cinema', 'movie', 'schedule.scheduleTime'], ['movie_id', 'cinema_id']);
+        $schedules = $this->schedule->getSchedules(10, ['cinema', 'movie', 'scheduleTime'], ['movie_id', 'cinema_id']);
         
-        return view('admin.schedules.index', compact('cinemaSchedules'));
+        return view('admin.schedules.index', compact('schedule'));
     }
 
     /**
@@ -69,8 +66,8 @@ class ScheduleController extends Controller
     {
         $error = true;
         $scheduleData = [
-            'date' => $request->date,
-            'room_id' => $request->room_id,
+            'cinema_id' => $request->cinema_id,
+            'movie_id' => $request->movie_id,
         ];
         $schedule = $this->schedule->create($scheduleData);
 

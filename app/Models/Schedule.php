@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     protected $fillable = [
-        'date',
-        'room_id'
+        'cinema_id',
+        'movie_id'
     ];
 
-    public function cinemaSchedules()
+    public function scheduleRoom()
     {
-        return $this->hasMany(CinemaSchedule::class);
+        return $this->hasMany(ScheduleRoom::class);
     }
 
-    public function scheduleTime()
+    public function cinema()
     {
-        return $this->hasMany(ScheduleTime::class);
+        return $this->belongsTo(Cinema::class);
     }
 
-    public function room()
+    public function movie()
     {
-        return $this->belongsTo(Room::class);
+        return $this->belongsTo(Movie::class);
     }
 }
