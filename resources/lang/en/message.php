@@ -86,6 +86,8 @@ return [
         'confirm_password' => 'Confirm Password',
         'date' => 'Date',
         'room' => 'Room',
+        'city' => 'City',
+        'cinema_system' => 'Cinema System'
     ],
     'config' => [
         'active' => 'Active',

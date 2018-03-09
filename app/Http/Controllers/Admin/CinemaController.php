@@ -6,18 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\CinemaRepository;
 use App\Contracts\MediaRepository;
+use App\Contracts\CityRepository;
+use App\Contracts\CinemaSystemRepository;
 use App\Http\Requests\CinemaRequest;
 
 class CinemaController extends Controller
 {
-    protected $cinema, $media;
+    protected $cinema, $media, $city, $cinemaSystem;
     public function __construct(
         CinemaRepository $cinema,
-        MediaRepository $media
+        MediaRepository $media,
+        CityRepository $city,
+        CinemaSystemRepository $cinemaSystem
     )
     {
         $this->cinema = $cinema;
         $this->media = $media;
+        $this->city = $city;
+        $this->cinemaSystem = $cinemaSystem;
     }
     /**
      * Display a listing of the resource.
@@ -26,7 +32,8 @@ class CinemaController extends Controller
      */
     public function index()
     {
-        $cinemas = $this->cinema->paginate(10, ['media']);
+        $cinemas = $this->cinema->paginate(10, ['media', 'city', 'cinemaSystem']);
+
         return view('admin.cinema.index', compact('cinemas'));
     }
 
@@ -38,8 +45,10 @@ class CinemaController extends Controller
     public function create()
     {
         $media = $this->media->getMediaByTypeCinema([]);
+        $cities = $this->city->all();
+        $cinemaSystems = $this->cinemaSystem->getCinemaSystemByStatus(config('custom.cinema_system.status.active'));
 
-        return view('admin.cinema.create', compact('media'));
+        return view('admin.cinema.create', compact('media', 'cities', 'cinemaSystems'));
     }
 
     /**
@@ -78,10 +87,12 @@ class CinemaController extends Controller
      */
     public function edit($id)
     {
-        $cinema = $this->cinema->find($id, []);
+        $cinema = $this->cinema->find($id, ['media', 'city', 'cinemaSystem']);
         $media = $this->media->getMediaByTypeCinema([]);
+        $cities = $this->city->all();
+        $cinemaSystems = $this->cinemaSystem->getCinemaSystemByStatus(config('custom.cinema_system.status.active'));
 
-        return view('admin.cinema.edit', compact('cinema', 'media'));
+        return view('admin.cinema.edit', compact('cinema', 'media', 'cities', 'cinemaSystems'));
     }
 
     /**

@@ -66,6 +66,22 @@
             @endif
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.city') }}</label>
+            <select name="city_id" class="form-control">
+            @foreach ($cities as $city)
+            <option value="{{ $city->id }}" @if ($cinema->city->id == $city->id) selected @endif>{{ $city->name }}</option>
+            @endforeach 
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.cinema_system') }}</label>
+            <select name="cinema_system_id" class="form-control">
+            @foreach ($cinemaSystems as $cinemaSystem)
+            <option value="{{ $cinemaSystem->id }}"  @if ($cinema->cinemaSystem->id == $cinemaSystem->id) selected @endif>{{ $cinemaSystem->name }}</option>
+            @endforeach 
+            </select>
+        </div>
+        <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.status') }}</label>
             <div class="radio">
                 <label>

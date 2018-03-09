@@ -10,8 +10,13 @@ class Room extends Model
         'name',
     ];
 
-    public function schedules()
+    public function roomTime()
     {
-        return $this->hasMany(Schedule::class);
+        return $this->hasMany(RoomTime::class);
+    }
+
+    public function scheduleRoom()
+    {
+        return $this->hasMany(ScheduleRoom::class);
     } 
 }

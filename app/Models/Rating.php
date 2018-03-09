@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class Rating extends Model
 {
-    
     protected $fillable = [
-        'schedule_id',
+        'movie_id',
         'user_id',
-        'status',
+        'value',
     ];
 
     public function user()
@@ -18,8 +17,8 @@ class Booking extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function schedule()
+    public function movie()
     {
-        return $this->belongsTo(Schedule::class);
+        return $this->belongsTo(Movie::class);
     }
 }

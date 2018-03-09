@@ -8,6 +8,8 @@ class Cinema extends Model
 {
     
     protected $fillable = [
+        'cinema_system_id',
+        'city_id',
         'name',
         'address',
         'description',
@@ -18,12 +20,20 @@ class Cinema extends Model
     {
         return $this->hasMany(Promotion::class);
     }
-    public function cinemaSchedules()
+    public function schedules()
     {
         return $this->hasMany(CinemaSchedule::class);
     }
     public function media()
     {
         return $this->belongsTo(Media::class);
+    }
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+    public function cinemaSystem()
+    {
+        return $this->belongsTo(CinemaSystem::class);
     }
 }
