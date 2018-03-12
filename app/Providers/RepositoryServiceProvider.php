@@ -55,14 +55,6 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Contracts\ScheduleTimeRepository::class,
             \App\Repositories\ScheduleTimeRepositoryEloquent::class,
         ],
-        'scheduleRoom' => [
-            \App\Contracts\ScheduleRoomRepository::class,
-            \App\Repositories\ScheduleRoomRepositoryEloquent::class,
-        ],
-        'room' => [
-            \App\Contracts\RoomRepository::class,
-            \App\Repositories\RoomRepositoryEloquent::class,
-        ],
         'systemCinema' => [
             \App\Contracts\CinemaSystemRepository::class,
             \App\Repositories\CinemaSystemRepositoryEloquent::class,

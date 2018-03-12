@@ -44,10 +44,14 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/time/delete/{id}', 'TimeController@destroy');
 
     Route::resource('schedule', 'ScheduleController');
+    Route::get('/create-schedule', 'ScheduleController@store');
     Route::get('/schedule/delete/{id}', 'ScheduleController@destroy');
-    Route::get('/get-room', 'ScheduleController@getRoom');
+    Route::get('/get-movie', 'ScheduleController@getMovie');
     Route::get('/get-time', 'ScheduleController@getTime');
+    Route::get('/get-time-ui', 'ScheduleController@getTimeUi');
     Route::get('/get-schedules', 'ScheduleController@getSchedules');
+    Route::get('/store-schedule-time', 'ScheduleController@storeScheduleTime');
+    Route::get('/remove-schedule-time', 'ScheduleController@removeScheduleTime');
 });
 
 Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function() {

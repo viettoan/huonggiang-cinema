@@ -19,7 +19,6 @@
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <th class="text-center">#</th>
                 <th class="text-center ">{{ trans('message.column.cinema') }}</th>
                 <th class="text-center ">{{ trans('message.column.movie') }}</th>
                 <th class="text-center">{{ trans('message.column.schedule') }}</th>  
@@ -30,11 +29,10 @@
         @if (isset($schedules))
         @foreach ($schedules as $schedule)
             <tr>
-                <th class="text-center">{{ $schedule->id }}</th>
                 <th class="text-center ">{{ $schedule->cinema->name }}</th>
                 <th class="text-center ">{{ $schedule->movie->name }}</th>
                 <th class="text-center">
-                    <a class="cinema-schedule" data-movie="{{ $schedule->movie_id }}" data-cinema="{{ $cinemaSchedule->cinema_id }}">
+                    <a class="cinema-schedule" data-movie="{{ $schedule->movie_id }}" data-cinema="{{ $schedule->cinema_id }}">
                         <i class="fas fa-edit"></i>
                     </a>
                 </th> 
@@ -62,18 +60,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="text-center ">{{ trans('message.column.date') }}</th>
-                            <th class="text-center ">{{ trans('message.column.room') }}</th>
-                            <th class="text-center">{{ trans('message.column.time') }}</th>  
-                            <th class="text-center"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div class="admin-schedule">
+                    
+                </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('message.action.close') }}</button>
@@ -87,5 +76,8 @@
 </div>
 @endsection
 @section('script')
+    <script>
+            $('.time-multiple-0').select2();
+    </script>
   <script src="{{ asset('js/admin/schedule.js') }}"></script>
 @endsection

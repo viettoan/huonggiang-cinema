@@ -44,6 +44,7 @@ return [
         'home' => 'Home',
         'events' => 'Events',
         'cinema_schedule' => 'Cinema Schedule',
+        'schedule_time' => 'Create time',
     ],
     'action' => [
         'edit' => 'Edit',
@@ -55,6 +56,8 @@ return [
         'buy_ticket' => 'Buy Ticket',
         'select_room' => 'Select a room',
         'close' => 'Close',
+        'next' => 'Next',
+        'remove' => 'Remove',
     ],
     'column' => [
         'cinema' => 'Cinema',
@@ -109,4 +112,5 @@ return [
     'about' => 'About BHD Start',
     'hot_news' => 'Hot News',
     'trailer' => 'Trailer',
+    'choose_one_cinema' => 'Choose a movie theater',
 ];
