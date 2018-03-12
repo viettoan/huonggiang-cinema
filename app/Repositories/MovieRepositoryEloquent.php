@@ -17,4 +17,9 @@ class MovieRepositoryEloquent extends AbstractRepositoryEloquent implements Movi
     {
         return $this->model()->select($select)->with($with)->where('status', '!=', $status)->get();
     }
+
+    public function getMovieHaveNotSchedule($movies = [], $with = [], $select = ['*'])
+    {
+        return $this->model()->select($select)->with($with)->whereNotIn('id', $movies)->get();
+    }
 }

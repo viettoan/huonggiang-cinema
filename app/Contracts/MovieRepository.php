@@ -6,4 +6,5 @@ interface MovieRepository extends AbstractRepository
 {
     public function getMovieByStatus($status, $with = [], $select = ['*']);
     public function getMovieByNotStatus($status, $with = [], $select = ['*']);
+    public function getMovieHaveNotSchedule($movies = [], $with = [], $select = ['*']);
 }

@@ -11,9 +11,9 @@ class Schedule extends Model
         'movie_id'
     ];
 
-    public function scheduleRoom()
+    public function scheduleTime()
     {
-        return $this->hasMany(ScheduleRoom::class);
+        return $this->hasMany(ScheduleTime::class);
     }
 
     public function cinema()

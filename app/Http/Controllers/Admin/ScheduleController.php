@@ -8,27 +8,24 @@ use App\Http\Controllers\Controller;
 use App\Contracts\MovieRepository;
 use App\Contracts\CinemaRepository;
 use App\Contracts\ScheduleRepository;
-use App\Contracts\RoomTimeRepository;
 use App\Contracts\TimeRepository;
-use App\Contracts\RoomRepository;
+use App\Contracts\ScheduleTimeRepository;
 
 class ScheduleController extends Controller
 {
-    protected $movie, $cinema, $schedule, $time, $roomTime, $room;
+    protected $movie, $cinema, $schedule, $time, $scheduleTime;
     public function __construct(
         MovieRepository $movie,
         CinemaRepository $cinema,
         ScheduleRepository $schedule,
         TimeRepository $time,
-        RoomTimeRepository $roomTime,
-        RoomRepository $room
+        ScheduleTimeRepository $scheduleTime
     ) {
         $this->movie = $movie;
         $this->schedule = $schedule;
         $this->cinema = $cinema;
         $this->time = $time;
-        $this->roomTime = $roomTime;
-        $this->room = $room;
+        $this->scheduleTime = $scheduleTime;
     }
     /**
      * Display a listing of the resource.
@@ -37,9 +34,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = $this->schedule->getSchedules(10, ['cinema', 'movie', 'scheduleTime'], ['movie_id', 'cinema_id']);
+        $schedules = $this->schedule->getSchedules(10, ['cinema', 'movie'], ['movie_id', 'cinema_id']);
         
-        return view('admin.schedules.index', compact('schedule'));
+        return view('admin.schedules.index', compact('schedules'));
     }
 
     /**
@@ -50,10 +47,8 @@ class ScheduleController extends Controller
     public function create()
     {
         $cinemas = $this->cinema->getCinemaByStatus(config('custom.cinema.status.active'));
-        $movies = $this->movie->getMovieByNotStatus(config('custom.movie.status.stop_showing'));
-        $rooms = $this->room->all();
 
-        return view('admin.schedules.create', compact('cinemas', 'movies', 'rooms'));
+        return view('admin.schedules.create', compact('cinemas'));
     }
 
     /**
@@ -62,34 +57,19 @@ class ScheduleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ScheduleRequest $request)
+    public function store(Request $request)
     {
-        $error = true;
         $scheduleData = [
             'cinema_id' => $request->cinema_id,
             'movie_id' => $request->movie_id,
         ];
-        $schedule = $this->schedule->create($scheduleData);
+        $schedule = $this->schedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id)->first();
+        if (count($schedule) == 0) {
+            $schedule = $this->schedule->create($scheduleData);
+        }
 
         if ($schedule) {
-            foreach ($request->time_id as $time_id) {
-                $scheduleTimeData = [
-                    'schedule_id' => $schedule->id,
-                    'time_id' => $time_id,
-                ];
-    
-                $scheduleTime = $this->scheduleTime->create($scheduleTimeData);
-            }
-            $scheduleCinemaData = [
-                'cinema_id' => $request->cinema_id,
-                'movie_id' => $request->movie_id,
-                'schedule_id' => $schedule->id
-            ];
-            if ($this->cinemaSchedule->create($scheduleCinemaData)) {
-                return redirect()->route('schedule.create')->with('error', trans('The schedule has been successfully created!'));
-            } else {
-                return redirect()->route('schedule.create')->with('success', trans('The schedule has been created failed!'));
-            }
+            return response(['schedule' => $schedule]);
         }
     }
 
@@ -145,32 +125,61 @@ class ScheduleController extends Controller
         //
     }
 
-    public function getRoom(Request $request)
+    public function getMovie(Request $request)
     {
-        $roomActive = $this->schedule->getScheduleByColumn('date', $request->date)->pluck('room_id')->toArray();
-        $rooms = $this->room->getRoomFree($roomActive);
-    
-        return response(['rooms' => $rooms]);
+        $movieActive = $this->schedule->getMovieByCinema($request->cinema_id)->pluck('movie_id')->toArray();
+        $movies = $this->movie->getMovieHaveNotSchedule($movieActive);
+
+        return response(['movies' => $movies]);
     }
 
     public function getTime(Request $request)
     {
-        $schedules = $this->schedule->getScheduleByDateAndRoom($request->date, $request->room_id, ['scheduleTime']);
-        $timeActive = array();
-        foreach ($schedules as $schedule) {
-            foreach ($schedule->scheduleTime as $scheduleTime) {
-                array_push($timeActive, $scheduleTime->time_id);
-            }
+        $scheduleTime = $this->scheduleTime->getByDateAndScheduleId($request->date, $request->schedule_id);
+        if (count($scheduleTime) > 0) {
+            return response(['status' => 0]);
         }
-        $times = $this->time->getTimeFree($timeActive);
-
+        $times = $this->time->all();
+        
         return response(['times' => $times]);
     }
 
     public function getSchedules(Request $request)
     {
-        $schedules = $this->cinemaSchedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id, ['schedule.scheduleTime.time', 'schedule.room']);
+        $schedule = $this->schedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id)->first();
         
-        return response(['schedules' => $schedules]);
+        $scheduleTimes = $this->scheduleTime->getByScheduleId($schedule->id, [], ['time_id', 'schedule_id', 'date']);
+        return response(['scheduleTimes' => $scheduleTimes]);
+    }
+
+    public function storeScheduleTime(Request $request)
+    {
+        $error = false;
+        foreach ($request->time as $time) {
+            $data = [
+                'time_id' => $time,
+                'schedule_id' => $request->schedule_id,
+                'date' => $request->date,
+            ];
+            $scheduleTime = $this->scheduleTime->create($data);
+        }
+    }
+
+    public function removeScheduleTime(Request $request)
+    {
+        $error = false;
+        foreach ($request->time as $time) {
+            $scheduleTime = $this->scheduleTime->getByDateAndTimeIdAndScheduleId($request->date, $time, $request->schedule_id)->pluck('id');
+
+            $this->scheduleTime->delete($scheduleTime);
+        }
+    }
+
+    public function getTimeUi(Request $request)
+    {
+        $index = $request->index;
+        $html = view('admin.schedules.ui.time-ui', compact('index'))->render();
+
+        return response(['html' => $html]);
     }
 }

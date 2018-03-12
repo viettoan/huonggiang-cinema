@@ -44,6 +44,7 @@ return [
         'home' => 'Trang chủ',
         'events' => 'Sự kiện',
         'cinema_schedule' => 'Lịch chiếu',
+        'schedule_time' => 'Thời gian'
     ],
     'action' => [
         'edit' => 'Sửa',
@@ -54,7 +55,9 @@ return [
         'comment' => 'Bình luận',
         'buy_ticket' => 'Mua vé',
         'select_room' => 'Chọn Phòng',
-        'close' => 'Đóng'
+        'close' => 'Đóng',
+        'next' => 'Tạo lịch chiếu',
+        'remove' => 'Xóa',
     ],
     'column' => [
         'cinema' => 'Rạp',
@@ -109,4 +112,5 @@ return [
     'about' => 'Về BHD Start',
     'hot_news' => 'Tin nóng',
     'trailer' => 'Trailer',
+    'choose_one_cinema' => 'Bạn hãy chọn một rạp chiếu phim',
 ];
