@@ -148,8 +148,23 @@ class ScheduleController extends Controller
     {
         $schedule = $this->schedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id)->first();
         
-        $scheduleTimes = $this->scheduleTime->getByScheduleId($schedule->id, [], ['time_id', 'schedule_id', 'date']);
-        return response(['scheduleTimes' => $scheduleTimes]);
+        $scheduleTimes = $this->scheduleTime->getByScheduleId($schedule->id, ['time'], ['time_id', 'schedule_id', 'date']);
+        $dates = $this->scheduleTime->getDateByScheduleId($schedule->id, [], ['date']);
+
+        $data = [
+        ];
+        foreach ($dates as $date) {
+            $times = [];
+            foreach ($scheduleTimes as $scheduleTime) {
+                
+                if ($scheduleTime->date == $date) {
+                    array_push($times, $scheduleTime->time);
+                }
+            }
+            $data[$date] = $times;
+        }
+        $html = view('admin.schedules.ui.list-schedule', compact('data'))->render();
+        return response(['html' => $html]);
     }
 
     public function storeScheduleTime(Request $request)
@@ -174,7 +189,6 @@ class ScheduleController extends Controller
             $this->scheduleTime->delete($scheduleTime);
         }
     }
-
     public function getTimeUi(Request $request)
     {
         $index = $request->index;
