@@ -47,11 +47,13 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/create-schedule', 'ScheduleController@store');
     Route::get('/schedule/delete/{id}', 'ScheduleController@destroy');
     Route::get('/get-movie', 'ScheduleController@getMovie');
+    Route::get('/get-technology', 'ScheduleController@getTechnology');
     Route::get('/get-time', 'ScheduleController@getTime');
     Route::get('/get-time-ui', 'ScheduleController@getTimeUi');
     Route::get('/get-schedules', 'ScheduleController@getSchedules');
     Route::get('/store-schedule-time', 'ScheduleController@storeScheduleTime');
     Route::get('/remove-schedule-time', 'ScheduleController@removeScheduleTime');
+    Route::get('/edit-schedule-time', 'ScheduleController@editScheduleTime');
 });
 
 Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function() {

@@ -63,6 +63,14 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Contracts\CityRepository::class,
             \App\Repositories\CityRepositoryEloquent::class,
         ],
+        'technology' => [
+            \App\Contracts\TechnologyRepository::class,
+            \App\Repositories\TechnologyRepositoryEloquent::class,
+        ],
+        'movie_technology' => [
+            \App\Contracts\MovieTechnologyRepository::class,
+            \App\Repositories\MovieTechnologyRepositoryEloquent::class,
+        ],
     ];
     /**
      * Bootstrap the application services.

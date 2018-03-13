@@ -38,6 +38,11 @@
             <select name="movie_id" class="form-control" id="movie_id">
             </select>
         </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.technology') }}</label>
+            <select name="movie_technology_id" class="form-control" id="movie_technology_id">
+            </select>
+        </div>
         <button type="button" class="btn btn-primary btn-block btn-save-schedule">{{ trans('message.action.next') }}</button>
     </form>
     </div>
@@ -53,8 +58,9 @@
             </div>
             <div class="modal-body">
                 <div class="admin-schedule">
+                <input class="form-control" type="hidden" id="schedule-id" value="" required>
                     <div class="room col-md-12" data-index='0'>
-                        <input class="form-control" type="hidden" id="schedule-id" value="{{ old('date') }}" required>
+                        
                         <div class="form-group">
                             <label for="exampleInputEmail1">{{ trans('message.column.date') }}</label>
                             <input class="form-control date" type="date" name="date" value="{{ old('date') }}" required>
@@ -76,6 +82,7 @@
                         </div>
                         <div class="col-md-12 text-center">
                             <button type="button" class="btn btn-primary col-md-2 btn-save-schedule-time">{{ trans('message.action.save') }}</button>
+                            <button type="button" class="btn btn-primary col-md-2 btn-edit-schedule-time">{{ trans('message.action.edit') }}</button>
                             <button type="button" class="btn btn-danger col-md-2 btn-remove-schedule-time">{{ trans('message.action.remove') }}</button>
                         </div>
                     </div>

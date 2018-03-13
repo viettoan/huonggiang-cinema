@@ -21,8 +21,9 @@
     @yield('style')
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <input class="form-control" type="hidden" id="schedule-id" value="{{ $schedule->id }}" required>
     @php 
-        $index = 0;
+        $index = 1;
     @endphp
     @foreach ($data as $key => $element)
     <div class="room col-md-12" data-index='{{ $index }}'>
@@ -38,8 +39,10 @@
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.time') }}</label>
             <select class="time-multiple-{{ $index }} form-control time_id" name="time_id[]" multiple="multiple">
-                @foreach ($element as $val)
-                    <option value="{{ $val->id }}" selected>{{ $val->time }}</option>
+                @foreach ($times as $time)
+                    <option value="{{ $time->id }}" @if (in_array($time->id, $element))
+                        selected
+                    @endif>{{ $time->time }}</option>
                 @endforeach 
             </select>
         </div>
@@ -52,6 +55,32 @@
      $index++;
     @endphp
     @endforeach
+    <div class="room col-md-12" data-index='{{ $index }}'>
+        <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.date') }}</label>
+            <input class="form-control date" type="date" name="date" value="{{ old('date') }}" required>
+            @if ($errors->has('date'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('date') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.time') }}</label>
+            <select class="time-multiple-{{ $index }} form-control time_id" name="time_id[]" multiple="multiple">
+            </select>
+            @if ($errors->has('time'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('time') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary col-md-2 btn-save-schedule-time">{{ trans('message.action.save') }}</button>
+            <button type="button" class="btn btn-primary col-md-2 btn-edit-schedule-time">{{ trans('message.action.edit') }}</button>
+            <button type="button" class="btn btn-danger col-md-2 btn-remove-schedule-time">{{ trans('message.action.remove') }}</button>
+        </div>
+    </div>
     
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -73,9 +102,12 @@
     <script>
         $(document).ready(function(){
             var index = {{ $index }};
-                for (var i = 0; i < index; i++) {
+                for (var i = 1; i <= index; i++) {
                 $('.time-multiple-' + i).select2();
             }
+
+            $('.time-multiple-' + index).parents('.room').find('.btn-remove-schedule-time').hide();
+            $('.time-multiple-' + index).parents('.room').find('.btn-edit-schedule-time').hide();
         });
         
     </script>

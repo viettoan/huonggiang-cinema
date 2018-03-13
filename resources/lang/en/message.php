@@ -90,7 +90,8 @@ return [
         'date' => 'Date',
         'room' => 'Room',
         'city' => 'City',
-        'cinema_system' => 'Cinema System'
+        'cinema_system' => 'Cinema System',
+        'technology' => 'Technology',
     ],
     'config' => [
         'active' => 'Active',

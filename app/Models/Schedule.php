@@ -8,7 +8,8 @@ class Schedule extends Model
 {
     protected $fillable = [
         'cinema_id',
-        'movie_id'
+        'movie_id',
+        'movie_technology_id',
     ];
 
     public function scheduleTime()
@@ -25,4 +26,5 @@ class Schedule extends Model
     {
         return $this->belongsTo(Movie::class);
     }
+
 }

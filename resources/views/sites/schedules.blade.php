@@ -6,7 +6,7 @@
         <ul>
             <li class="product--title">
                 <h3 class="js__tab js__active" data-target="#movies-schedule">{{ trans('message.title.schedule') }}</h3>
-                <h3 class="js__tab" data-target="#cinemas-schedule">{{ trans('message.title.cinem_shedule') }}</h3>
+                <h3 class="js__tab" data-target="#cinemas-schedule">{{ trans('message.title.cinema_schedule') }}</h3>
             </li>
             <li id="movies-schedule" class="list--film js__tab_content js__active">
                 <div class="scroll--wrapper js__film">
