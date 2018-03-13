@@ -91,6 +91,7 @@ return [
         'room' => 'Phòng',
         'city' => 'Thành phố',
         'cinema_system' => 'Hệ thống rạp',
+        'technology' => 'Công nghệ',
     ],
     'config' => [
         'active' => 'Active',

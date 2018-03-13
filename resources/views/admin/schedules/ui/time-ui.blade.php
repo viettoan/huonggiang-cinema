@@ -22,7 +22,6 @@
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <div class="room col-md-12" data-index='{{ $index }}'>
-        <input class="form-control" type="hidden" id="schedule-id" value="{{ old('date') }}" required>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.date') }}</label>
             <input class="form-control date" type="date" name="date" value="{{ old('date') }}" required>
@@ -44,6 +43,7 @@
         </div>
         <div class="col-md-12 text-center">
             <button type="button" class="btn btn-primary col-md-2 btn-save-schedule-time">{{ trans('message.action.save') }}</button>
+            <button type="button" class="btn btn-primary col-md-2 btn-edit-schedule-time">{{ trans('message.action.edit') }}</button>
             <button type="button" class="btn btn-danger col-md-2 btn-remove-schedule-time">{{ trans('message.action.remove') }}</button>
         </div>
     </div>
@@ -67,9 +67,8 @@
     <script>
             var index = {{ $index }};
             $('.time-multiple-' + index).select2();
-
             $('.time-multiple-' + index).parents('.room').find('.btn-remove-schedule-time').hide();
-        
+            $('.time-multiple-' + index).parents('.room').find('.btn-edit-schedule-time').hide();
     </script>
 </body>
 </html>

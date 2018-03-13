@@ -58,7 +58,6 @@
             </div>
             <div class="modal-body">
                 <div class="admin-schedule">
-                    
                 </div>
             </div>
             <div class="modal-footer">
@@ -73,8 +72,5 @@
 </div>
 @endsection
 @section('script')
-    <script>
-            $('.time-multiple-0').select2();
-    </script>
   <script src="{{ asset('js/admin/schedule.js') }}"></script>
 @endsection

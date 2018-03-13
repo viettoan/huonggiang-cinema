@@ -10,22 +10,25 @@ use App\Contracts\CinemaRepository;
 use App\Contracts\ScheduleRepository;
 use App\Contracts\TimeRepository;
 use App\Contracts\ScheduleTimeRepository;
+use App\Contracts\MovieTechnologyRepository;
 
 class ScheduleController extends Controller
 {
-    protected $movie, $cinema, $schedule, $time, $scheduleTime;
+    protected $movie, $cinema, $schedule, $time, $scheduleTime, $movieTechnology;
     public function __construct(
         MovieRepository $movie,
         CinemaRepository $cinema,
         ScheduleRepository $schedule,
         TimeRepository $time,
-        ScheduleTimeRepository $scheduleTime
+        ScheduleTimeRepository $scheduleTime,
+        MovieTechnologyRepository $movieTechnology
     ) {
         $this->movie = $movie;
         $this->schedule = $schedule;
         $this->cinema = $cinema;
         $this->time = $time;
         $this->scheduleTime = $scheduleTime;
+        $this->movieTechnology = $movieTechnology;
     }
     /**
      * Display a listing of the resource.
@@ -34,7 +37,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = $this->schedule->getSchedules(10, ['cinema', 'movie'], ['movie_id', 'cinema_id']);
+        $schedules = $this->schedule->getSchedules(10, ['cinema', 'movie'], ['id', 'movie_id', 'cinema_id']);
         
         return view('admin.schedules.index', compact('schedules'));
     }
@@ -62,6 +65,7 @@ class ScheduleController extends Controller
         $scheduleData = [
             'cinema_id' => $request->cinema_id,
             'movie_id' => $request->movie_id,
+            'movie_technology_id' => $request->movie_technology_id,
         ];
         $schedule = $this->schedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id)->first();
         if (count($schedule) == 0) {
@@ -120,9 +124,18 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $scheduleTimes = $this->scheduleTime->getByScheduleId($id);
+            foreach ($scheduleTimes as $time) {
+                $this->scheduleTime->delete($time->id);
+            }
+            if ($this->schedule->delete($id)) {
+                return response(['status' => trans('messages.success')]);
+            }
+            return response(['status' => trans('messages.failed')]);
+        }
     }
 
     public function getMovie(Request $request)
@@ -131,6 +144,13 @@ class ScheduleController extends Controller
         $movies = $this->movie->getMovieHaveNotSchedule($movieActive);
 
         return response(['movies' => $movies]);
+    }
+
+    public function getTechnology(Request $request)
+    {
+        $movieTechnologies = $this->movieTechnology->getByMovieid($request->movie_id, ['technology']);
+
+        return response(['movieTechnologies' => $movieTechnologies]);
     }
 
     public function getTime(Request $request)
@@ -150,7 +170,6 @@ class ScheduleController extends Controller
         
         $scheduleTimes = $this->scheduleTime->getByScheduleId($schedule->id, ['time'], ['time_id', 'schedule_id', 'date']);
         $dates = $this->scheduleTime->getDateByScheduleId($schedule->id, [], ['date']);
-
         $data = [
         ];
         foreach ($dates as $date) {
@@ -158,12 +177,13 @@ class ScheduleController extends Controller
             foreach ($scheduleTimes as $scheduleTime) {
                 
                 if ($scheduleTime->date == $date) {
-                    array_push($times, $scheduleTime->time);
+                    array_push($times, $scheduleTime->time->id);
                 }
             }
             $data[$date] = $times;
         }
-        $html = view('admin.schedules.ui.list-schedule', compact('data'))->render();
+        $times = $this->time->all();
+        $html = view('admin.schedules.ui.list-schedule', compact('data', 'times', 'schedule'))->render();
         return response(['html' => $html]);
     }
 
@@ -182,13 +202,30 @@ class ScheduleController extends Controller
 
     public function removeScheduleTime(Request $request)
     {
-        $error = false;
         foreach ($request->time as $time) {
             $scheduleTime = $this->scheduleTime->getByDateAndTimeIdAndScheduleId($request->date, $time, $request->schedule_id)->pluck('id');
-
-            $this->scheduleTime->delete($scheduleTime);
+            if (count($scheduleTime) > 0) {
+                $this->scheduleTime->delete($scheduleTime);
+            }
         }
     }
+
+    public function editScheduleTime(Request $request)
+    {
+        $timeExist = $this->scheduleTime->getByDateAndScheduleId($request->date, $request->schedule_id);
+        foreach ($timeExist as $time) {
+                $this->scheduleTime->delete($time->id);
+        }
+        foreach ($request->time as $time) {
+            $data = [
+                'time_id' => $time,
+                'schedule_id' => $request->schedule_id,
+                'date' => $request->date,
+            ];
+            $createScheduleTime = $this->scheduleTime->create($data);
+        }
+    }
+
     public function getTimeUi(Request $request)
     {
         $index = $request->index;
@@ -196,4 +233,5 @@ class ScheduleController extends Controller
 
         return response(['html' => $html]);
     }
+
 }
