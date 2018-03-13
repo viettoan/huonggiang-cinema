@@ -79,34 +79,13 @@ $(document).ready(function() {
     $(document).on('click', '.cinema-schedule', function () {
         var cinema_id = $(this).data('cinema');
         var movie_id = $(this).data('movie');
-
         $.ajax({
             url: '/admin/get-schedules',
             method: 'GET',
             data: {'cinema_id': cinema_id, 'movie_id': movie_id},
             success: function (res) {
-                console.log(res.scheduleTimes);
-                // for (var i = 0 ; i < res.schedules.schedule_time.length; i++) {
-                //     var html = `
-                //     <div class="room col-md-12" data-index='${i}'>
-                //         <input class="form-control" type="hidden" id="schedule-id" required>
-                //         <div class="form-group">
-                //             <label for="exampleInputEmail1">Date</label>
-                //             <input class="form-control date" type="date" name="date" value="${res.schedules.schedule_time[i].date}" required>
-                //         </div>
-                //         <div class="form-group">
-                //             <label for="exampleInputEmail1">Time</label>
-                //             <select class="time-multiple-${i} form-control time_id" name="time_id[]" multiple="multiple">
-
-                //             </select>
-                //         </div>
-                //         <div class="col-md-12 text-center">
-                //             <button type="button" class="btn btn-primary col-md-2 btn-save-schedule-time">{{ trans('message.action.save') }}</button>
-                //             <button type="button" class="btn btn-danger col-md-2 btn-remove-schedule-time">{{ trans('message.action.remove') }}</button>
-                //         </div>
-                //     </div>
-                //     `
-                // }
+                $('.admin-schedule').html(res.html);
+                $('#schedule').modal('show');
             }
         })
     })

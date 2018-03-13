@@ -37,9 +37,6 @@
                     </a>
                 </th> 
                 <th>
-                    <a href = "{{ route('schedule.edit', ['id' => $schedule->id]) }}">
-                        <i class="fas fa-edit"></i>
-                    </a>
                     <a data-id="{{ $schedule->id}}" class="delSchedule">
                         <i class="fas fa-trash-alt"></i>
                     </a>
