@@ -24,7 +24,7 @@
 	<link rel='stylesheet' id='magnific-popup-css'  href="{{ asset('wp-content/themes/bhd/lib_frontend/css/magnific-popup125b.css?ver=4.7.4') }}" type='text/css' media='all' />
 	<link rel='stylesheet' id='style-css'  href="{{ asset('wp-content/themes/bhd/style5917.css?t=1514297339&amp;ver=5.57') }}" type='text/css' media='all' />
 	<link rel='stylesheet' id='style_v3-css'  href="{{ asset('wp-content/themes/bhd/v3/style_v35fba.css?ver=5.2') }}" type='text/css' media='all' />
-    @yield('css');
+    @yield('css')
 </head>
 <body class="home blog">
     <div id="wrapper">

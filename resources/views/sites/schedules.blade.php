@@ -1,8 +1,22 @@
 @extends('layouts.app')
 @section('css')
 <style>
-    .list--film  {
-        font-size: 14px !important;
+    .list-option {
+        background: #151f28;
+        color:#fff;
+        float:left;
+        font-size: 20px;
+        box-shadow: 3px 5px 21px 0px rgba(5, 12, 17, 1);
+        margin-left: 15px;
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+
+    .list-cinema {
+        width:400px;
+    }
+    .list-city {
+        width:300px;
     }
 </style>
 @endsection
@@ -40,13 +54,19 @@
 				</li>
 
                 <li class="list--film js__tab_content" id="cinema-schedule">
-                    <div style="background: #fff; color:#333;">
-                        <p style="background: #fff; color:#333;"> test</p>
-                    </div>
+                    <select class="list-option list-cinema clearfix" style="">
+                        <option>CGV</option>
+                        <option>Lotte</option>
+                    </select>
+                    <select class="list-option list-city clearfix" style="">
+                        <option>Hà Nội</option>
+                        <option>Thái Bình</option>
+                    </select>
+                    <div class="clearfix"></div>
                     <ul class="list--info clearfix bhd-lich-chieu-chon-rap">
                         @if (isset($cinemas))
                             @foreach($cinemas as $cinema)
-                            <li class="post-848 cinemas type-cinemas status-publish has-post-thumbnail hentry category-city-tp-ha-noi" id="rap-0000000007">
+                            <li class="post-848 cinemas type-cinemas status-publish has-post-thumbnail hentry category-city-tp-ha-noi" id="rap-0000000007" >
                                 <div class="info">
                                     <div class="inside" data-id="0000000007">
                                         <h4 class="title">{{ $cinema->name }}</h4>
