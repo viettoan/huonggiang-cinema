@@ -26,7 +26,7 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.name') }}</label>
-            <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="Name" required>
+            <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="{{ trans('message.column.name') }}" required>
             @if ($errors->has('name'))
                 <span class="help-block">
                         <strong>{{ $errors->first('name') }}</strong>
@@ -35,10 +35,19 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.address') }}</label>
-            <input class="form-control" type="text" name="address" value="{{ old('address') }}" placeholder="Address" required>
+            <input class="form-control" type="text" name="address" value="{{ old('address') }}" placeholder="{{ trans('message.column.address') }}" required>
             @if ($errors->has('address'))
                 <span class="help-block">
                         <strong>{{ $errors->first('address') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.location') }}</label>
+            <input class="form-control" type="text" name="location" value="{{ old('location') }}" placeholder="{{ trans('message.column.location') }}" required>
+            @if ($errors->has('location'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('location') }}</strong>
                 </span>
             @endif
         </div>
