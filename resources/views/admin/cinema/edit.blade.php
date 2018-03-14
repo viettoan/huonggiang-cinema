@@ -44,6 +44,15 @@
             @endif
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.location') }}</label>
+            <input class="form-control" type="text" name="location" value="{{ $cinema->location }}" placeholder="Location" required>
+            @if ($errors->has('location'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('location') }}</strong>
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.description') }}</label>
             <textarea class="form-control" rows="5" name="description" required>{{ $cinema->description }}</textarea>
             @if ($errors->has('description'))

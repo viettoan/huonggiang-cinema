@@ -58,6 +58,7 @@ return [
         'close' => 'Đóng',
         'next' => 'Tạo lịch chiếu',
         'remove' => 'Xóa',
+        'view_location' => 'Xem vị trí'        
     ],
     'column' => [
         'cinema' => 'Rạp',
@@ -92,6 +93,7 @@ return [
         'city' => 'Thành phố',
         'cinema_system' => 'Hệ thống rạp',
         'technology' => 'Công nghệ',
+        'location' => 'Vị trí'
     ],
     'config' => [
         'active' => 'Active',

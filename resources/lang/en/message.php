@@ -58,6 +58,7 @@ return [
         'close' => 'Close',
         'next' => 'Next',
         'remove' => 'Remove',
+        'view_location' => 'View Location'
     ],
     'column' => [
         'cinema' => 'Cinema',
@@ -92,6 +93,7 @@ return [
         'city' => 'City',
         'cinema_system' => 'Cinema System',
         'technology' => 'Technology',
+        'location' => 'Location'
     ],
     'config' => [
         'active' => 'Active',

@@ -1,5 +1,5 @@
 <div class="section--promotion">
-		<h1 class="title"><strong class="js__active js__promotion_tab" data-target="#promotion-1"><span data-text="Khuyến mãi">{{ trans('message.title.promotions') }}</span></strong> <span data-text="|">|</span> <strong data-target="#promotion-2" class="js__promotion_tab"><span data-text="Sự kiện">Sự kiện</span></strong></h1>
+		<h1 class="title"><strong class="js__active js__promotion_tab" data-target="#promotion-1"><span>{{ trans('message.title.promotions') }}</span></strong> <span data-text="|">|</span> <strong data-target="#promotion-2" class="js__promotion_tab"><span >{{ trans('message.title.events') }}</span></strong></h1>
 		<div class="container">
 			<div id="promotion-1" class="flexslider js__flexslider_promotion js__promotion_tab_content js__active">
 				<ul class="slides">

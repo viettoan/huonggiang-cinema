@@ -31,6 +31,7 @@ class CinemaRequest extends FormRequest
             'description' => 'required',
             'media_id' => 'required|numeric',
             'status' => 'required|numeric',
+            'location' => 'required|max:255',
         ];
         
         return $arr;
