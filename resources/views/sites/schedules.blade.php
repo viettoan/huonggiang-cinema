@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('css')
+
 <style>
     .list-option {
         background: #151f28;
@@ -17,6 +18,40 @@
     }
     .list-city {
         width:300px;
+    }
+    #scheduleTime {
+        z-index: 99999999999 !important;
+    }
+
+    .date {
+        width: 90px;
+        border: 2px solid #222;
+    }
+    .btn-rounded strong {
+        font-size: 24px;
+        margin-left: -10px;
+    }
+    .btn-rounded > div {
+        padding-left:5px;
+    }
+
+    .schedule-time {
+        margin-bottom: 30px;
+    }
+
+    .schedule-time img{
+        width: 165px;
+        height: 245px;
+        margin-left: 20px;
+    }
+    .schedule-time .times button{
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .schedule-time .times button:hover{
+        background-color: #449d44;
+        color: #fff;
     }
 </style>
 @endsection
@@ -66,7 +101,7 @@
                     <ul class="list--info clearfix bhd-lich-chieu-chon-rap">
                         @if (isset($cinemas))
                             @foreach($cinemas as $cinema)
-                            <li class="post-848 cinemas type-cinemas status-publish has-post-thumbnail hentry category-city-tp-ha-noi" id="rap-0000000007" >
+                            <li class="post-848 cinemas type-cinemas status-publish has-post-thumbnail hentry category-city-tp-ha-noi" id="rap-0000000007" data-toggle="modal" data-target="#scheduleTime" >
                                 <div class="info">
                                     <div class="inside" data-id="0000000007">
                                         <h4 class="title">{{ $cinema->name }}</h4>
@@ -83,6 +118,150 @@
 			
 		</div><!-- .container -->
 	</div><!-- .section- -product-view -->
-    @include('layouts.promotion')
+    <div class="section--promotion">
+	</div>
+    <!-- Modal -->
+<div class="modal fade" id="scheduleTime" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{ trans('message.title.cinema_schedule') }}</h4>
+      </div>
+      <div class="modal-body ">
+        <div class="schedule-date row">
+            <div class="col-md-2 text-center">
+                <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
+                    <div class="col-md-6">
+                        <span>03</span><br>
+                        <small>Thu</small>
+                    </div>
+                    <strong class="col-md-6">15</strong>
+                </a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
+                    <div class="col-md-6">
+                        <span>03</span><br>
+                        <small>Thu</small>
+                    </div>
+                    <strong class="col-md-6">15</strong>
+                </a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
+                    <div class="col-md-6">
+                        <span>03</span><br>
+                        <small>Thu</small>
+                    </div>
+                    <strong class="col-md-6">15</strong>
+                </a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
+                    <div class="col-md-6">
+                        <span>03</span><br>
+                        <small>Thu</small>
+                    </div>
+                    <strong class="col-md-6">15</strong>
+                </a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
+                    <div class="col-md-6">
+                        <span>03</span><br>
+                        <small>Thu</small>
+                    </div>
+                    <strong class="col-md-6">15</strong>
+                </a>
+            </div>
+            <div class="col-md-2 text-center">
+                <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
+                    <div class="col-md-6">
+                        <span>03</span><br>
+                        <small>Thu</small>
+                    </div>
+                    <strong class="col-md-6">15</strong>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div class="schedule-time row">
+                <div class="col-md-3">
+                    <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
+                </div>
+                <div class="col-md-9">
+                    <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
+                    <div class="times">
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                    </div>
+                </div>
+            </div>
+            <div class="schedule-time row">
+                <div class="col-md-3">
+                    <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
+                </div>
+                <div class="col-md-9">
+                    <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
+                    <div class="times">
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                    </div>
+                </div>
+            </div>
+            <div class="schedule-time row">
+                <div class="col-md-3">
+                    <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
+                </div>
+                <div class="col-md-9">
+                    <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
+                    <div class="times">
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                    </div>
+                </div>
+            </div>
+            <div class="schedule-time row">
+                <div class="col-md-3">
+                    <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
+                </div>
+                <div class="col-md-9">
+                    <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
+                    <div class="times">
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                        <button class="btn col-md-2 btn-default">14:00</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+@endsection
+@section('script')
+<script src="{{ asset('js/sites/schedule.js') }}"></script>
+<script>
+
+</script>
 @endsection

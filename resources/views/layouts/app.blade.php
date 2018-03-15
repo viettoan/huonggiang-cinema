@@ -53,5 +53,6 @@
     <script src="{{asset('wp-content/themes/bhd/lib_frontend/js/jquery.magnific-popup.min5152.js?ver=1.0')}}"></script>
     <script src="{{asset('wp-content/themes/bhd/assets/scripts/main5152.js?ver=1.0')}}"></script>
     <script src="{{asset('wp-includes/js/wp-embed.min125b.js?ver=4.7.4')}}"></script>
+    @yield('script')
 </body>
 </html>
