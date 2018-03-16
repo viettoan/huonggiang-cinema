@@ -8,8 +8,14 @@ class CinemaRepositoryEloquent extends AbstractRepositoryEloquent implements Cin
     {
         return new Cinema;
     }
+
     public function getCinemaByStatus($status, $with = [], $select = ['*'])
     {
         return $this->model()->select($select)->with($with)->where('status', $status)->get();
     }
+
+    public function getByCinemaSystemAndCity($cinemaSystem, $city, $with = [], $select = ['*'])
+    {
+        return $this->model()->select($select)->with($with)->where('cinema_system_id', $cinemaSystem)->where('city_id', $city)->get();
+    }    
 }
