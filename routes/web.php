@@ -60,6 +60,9 @@ Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function(
     Route::get('/', 'HomeController@index')->name('index');
 
     Route::get('/lich-chieu', 'ScheduleController@index')->name('schedules');
+    Route::get('/get-cinemas', 'ScheduleController@getCinema');
+    Route::get('/get-cinema-schedule', 'ScheduleController@getSchedule');
+    Route::get('/get-dates', 'ScheduleController@getDate');
 
     Route::get('/he-thong-rap', 'CinemaController@index')->name('cinemas');
 

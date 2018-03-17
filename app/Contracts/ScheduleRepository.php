@@ -8,7 +8,7 @@ interface ScheduleRepository extends AbstractRepository
 
     public function getMovieByCinema($cinema_id, $with = [], $select = ['*']);
 
-    public function getScheduleByDateAndRoom($date, $room_id, $with = [], $select = ['*']);
+    public function getScheduleByCinemaAndDate($cinema_id, $date, $with = [], $select = ['*']);
     
     public function getSchedulesByMovieAndCinema($movie_id, $cinema_id, $with = [], $select = ['*']);
 }
