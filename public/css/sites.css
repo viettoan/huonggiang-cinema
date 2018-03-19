@@ -68,3 +68,10 @@
 .about--us-content {
     width: 800px;
 }
+
+.schedule-date button div{
+    color: #fff;
+}
+.schedule-date button strong{
+    color: #fff;
+}

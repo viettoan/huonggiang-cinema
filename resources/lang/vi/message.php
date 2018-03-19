@@ -116,4 +116,5 @@ return [
     'hot_news' => 'Tin nóng',
     'trailer' => 'Trailer',
     'choose_one_cinema' => 'Bạn hãy chọn một rạp chiếu phim',
-];
+    'none_schedule' => 'Không có lịch chiếu phim!'
+ ];

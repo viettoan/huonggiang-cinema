@@ -16,130 +16,14 @@
             <div class="button--share">
                 <a href="javascript:fbShare('index.html', 'Fb Share', 'Facebook share popup', '', 520, 350)" class="btn--fb-share"><i class="fa fa-facebook"></i>{{ trans('message.action.share') }}</a>
             </div>
-            <div class="movie-schedules">
+            <div class="movie-schedules" id="scheduleTime" data-cinema="{{ $cinema->id }}">
                 <h3 class="text-center">{{ trans('message.title.schedule') }}</h3>
                 <div class="schedule-date row">
-                    <div class="col-md-2 text-center">
-                        <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
-                            <div class="col-md-6">
-                                <span>03</span><br>
-                                <small>Thu</small>
-                            </div>
-                            <strong class="col-md-6">15</strong>
-                        </a>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
-                            <div class="col-md-6">
-                                <span>03</span><br>
-                                <small>Thu</small>
-                            </div>
-                            <strong class="col-md-6">15</strong>
-                        </a>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
-                            <div class="col-md-6">
-                                <span>03</span><br>
-                                <small>Thu</small>
-                            </div>
-                            <strong class="col-md-6">15</strong>
-                        </a>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
-                            <div class="col-md-6">
-                                <span>03</span><br>
-                                <small>Thu</small>
-                            </div>
-                            <strong class="col-md-6">15</strong>
-                        </a>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
-                            <div class="col-md-6">
-                                <span>03</span><br>
-                                <small>Thu</small>
-                            </div>
-                            <strong class="col-md-6">15</strong>
-                        </a>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <a class="btn btn-rounded btn btn-icon btn-success date active text-center">
-                            <div class="col-md-6">
-                                <span>03</span><br>
-                                <small>Thu</small>
-                            </div>
-                            <strong class="col-md-6">15</strong>
-                        </a>
-                    </div>
+                    
                 </div>
                 <hr>
-                <div>
-                    <div class="schedule-time row">
-                        <div class="col-md-3">
-                            <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
-                        </div>
-                        <div class="col-md-9">
-                            <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
-                            <div class="times">
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="schedule-time row">
-                        <div class="col-md-3">
-                            <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
-                        </div>
-                        <div class="col-md-9">
-                            <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
-                            <div class="times">
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="schedule-time row">
-                        <div class="col-md-3">
-                            <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
-                        </div>
-                        <div class="col-md-9">
-                            <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
-                            <div class="times">
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="schedule-time row">
-                        <div class="col-md-3">
-                            <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
-                        </div>
-                        <div class="col-md-9">
-                            <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
-                            <div class="times">
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                                <button class="btn col-md-2 btn-default">14:00</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="cinema-schedule">
+                
                 </div>
             </div>
             <div class="comment">
@@ -197,4 +81,7 @@
     </div>
 </div>
 @include('layouts.promotion')
+@endsection
+@section('script')
+<script src="{{ asset('js/sites/cinema.js') }}"></script>
 @endsection
