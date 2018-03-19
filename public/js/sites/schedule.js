@@ -63,7 +63,27 @@ $(document).ready(function () {
             type: 'GET',
             data: {'cinema_id': cinema_id, 'date': date},
             success: function (res) {
-                var scheduleDate = '';
+                var html = '';
+                for (var i = 0; i < res.schedules.length; i++) {
+                    var schedule_time = res.schedules[i].schedule_time;
+                    html += `
+                    <div class="schedule-time row">
+                        <div class="col-md-3">
+                            <img src="${ res.schedules[i].movie.media.path }">
+                        </div>
+                        <div class="col-md-9">
+                            <h4>${ res.schedules[i].movie.name }</h4>
+                            <div class="times">`;
+                    for (var j = 0; j < schedule_time.length; j++) {
+                        html += `<button class="btn col-md-2 btn-default">${ schedule_time[j].time.time }</button>`;
+                    }
+                    html += `</div>
+                        </div>
+                    </div>
+                    `;
+                }
+                console.log(html);
+                console.log($('.cinema-schedule').html(html));
                 
             }
         });

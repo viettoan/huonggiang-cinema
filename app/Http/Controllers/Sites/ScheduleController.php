@@ -10,19 +10,21 @@ use App\Contracts\MovieRepository;
 use App\Contracts\CinemaSystemRepository;
 use App\Contracts\CityRepository;
 use App\Contracts\ScheduleRepository;
+use App\Contracts\ScheduleTimeRepository;
 use DatePeriod;
 use DateInterval;
 
 class ScheduleController extends Controller
 {
-    protected $cinema, $media, $movie, $cinemaSystem, $city, $schedule;
+    protected $cinema, $media, $movie, $cinemaSystem, $city, $schedule, $scheduleTime;
     public function __construct(
         CinemaRepository $cinema,
         MediaRepository $media,
         MovieRepository $movie,
         CinemaSystemRepository $cinemaSystem,
         CityRepository $city,
-        ScheduleRepository $schedule
+        ScheduleRepository $schedule,
+        ScheduleTimeRepository $scheduleTime
     )
     {
         $this->cinema = $cinema;
@@ -31,6 +33,7 @@ class ScheduleController extends Controller
         $this->cinemaSystem = $cinemaSystem;
         $this->city = $city;
         $this->schedule = $schedule;
+        $this->scheduleTime = $scheduleTime;
     }
     /**
      * Display a listing of the resource.
@@ -60,7 +63,8 @@ class ScheduleController extends Controller
     {
         $cinema_id = $request->cinema_id;
         $date = $request->date;
-        $schedules = $this->schedule->getScheduleByCinemaAndDate($cinema_id, $date);
+        $scheduleByDate = $this->scheduleTime->getByDate($date)->pluck('schedule_id')->toArray();
+        $schedules = $this->schedule->getMovieByCinema($scheduleByDate, $cinema_id, ['scheduleTime.time', 'movie.media']);
 
         return response(['schedules' => $schedules]);
     }

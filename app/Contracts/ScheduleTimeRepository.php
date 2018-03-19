@@ -9,6 +9,8 @@ interface ScheduleTimeRepository extends AbstractRepository
     public function getByDateAndTimeIdAndScheduleId($date, $time_id, $schedule_id, $with = [], $select = ['*']);
 
     public function getByScheduleId($schedule_id, $with = [], $select = ['*']);
+    
+    public function getByDate($date, $with = [], $select = ['*']);
 
     public function getDateByScheduleId($schedule_id, $with = [], $select = ['*']);
 }

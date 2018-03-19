@@ -24,6 +24,11 @@ class ScheduleTimeRepositoryEloquent extends AbstractRepositoryEloquent implemen
     {
         return $this->model()->with($with)->select($select)->where('schedule_id', $schedule_id)->get();                
     }
+
+    public function getByDate($date, $with = [], $select = ['*'])
+    {
+        return $this->model()->with($with)->select($select)->where('date', $date)->get();                
+    }
     
     public function getDateByScheduleId($schedule_id, $with = [], $select = ['*'])
     {
