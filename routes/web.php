@@ -61,7 +61,8 @@ Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function(
 
     Route::get('/lich-chieu', 'ScheduleController@index')->name('schedules');
     Route::get('/get-cinemas', 'ScheduleController@getCinema');
-    Route::get('/get-cinema-schedule', 'ScheduleController@getSchedule');
+    Route::get('/get-cinema-schedule', 'ScheduleController@getScheduleByCinema');
+    Route::get('/get-movie-schedule', 'ScheduleController@getScheduleByMovie');
     Route::get('/get-dates', 'ScheduleController@getDate');
 
     Route::get('/he-thong-rap', 'CinemaController@index')->name('cinemas');

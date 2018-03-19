@@ -59,13 +59,25 @@ class ScheduleController extends Controller
         return response(['cinemas' => $cinemas]);
     }
 
-    public function getSchedule(Request $request)
+    public function getScheduleByCinema(Request $request)
     {
         $cinema_id = $request->cinema_id;
         $date = $request->date;
-        $scheduleByDate = $this->scheduleTime->getByDate($date)->pluck('schedule_id')->toArray();
-        $schedules = $this->schedule->getMovieByCinema($scheduleByDate, $cinema_id, ['scheduleTime.time', 'movie.media']);
+        $schedules = $this->schedule->getByCinema($cinema_id, ['scheduleTime' => function ($query) use ($date) {
+            $query->where('date', '=', $date)->with('time');
+        }, 'movie.media']);
+        
+        return response(['schedules' => $schedules]);
+    }
 
+    public function getScheduleByMovie(Request $request)
+    {
+        $movie_id = $request->movie_id;
+        $date = $request->date;
+        $schedules = $this->schedule->getByMovie($movie_id, ['scheduleTime' => function ($query) use ($date) {
+            $query->where('date', '=', $date)->with('time');
+        }, 'cinema.media']);
+        
         return response(['schedules' => $schedules]);
     }
 

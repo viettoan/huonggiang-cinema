@@ -73,6 +73,7 @@
         </div>
         <hr>
         <div class="cinema-schedule">
+            <p>{{ trans('message.none_schedule') }}</p>
         </div>
       </div>
     </div>

@@ -116,4 +116,5 @@ return [
     'hot_news' => 'Hot News',
     'trailer' => 'Trailer',
     'choose_one_cinema' => 'Choose a movie theater',
+    'none_schedule' => 'There is no movie schedule!',
 ];
