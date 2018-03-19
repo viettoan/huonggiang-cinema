@@ -15,9 +15,9 @@ class ScheduleRepositoryEloquent extends AbstractRepositoryEloquent implements S
         return $this->model()->with($with)->select($select)->distinct()->paginate($paginate);
     }
 
-    public function getMovieByCinema($cinema_id, $with = [], $select = ['*'])
+    public function getMovieByCinema($schedule = [], $cinema_id, $with = [], $select = ['*'])
     {
-        return $this->model()->with($with)->select($select)->where('cinema_id', $cinema_id)->get();
+        return $this->model()->with($with)->select($select)->whereIn('id', $schedule)->where('cinema_id', $cinema_id)->get();
     }
 
     public function getScheduleByCinemaAndDate($cinema_id, $date, $with = [], $select = ['*'])
@@ -28,5 +28,6 @@ class ScheduleRepositoryEloquent extends AbstractRepositoryEloquent implements S
     public function getSchedulesByMovieAndCinema($movie_id, $cinema_id, $with = [], $select = ['*'])
     {
         return $this->model()->with($with)->select($select)->where('movie_id', $movie_id)->where('cinema_id', $cinema_id)->get();
-    }  
+    }
+
 }

@@ -72,73 +72,8 @@
             
         </div>
         <hr>
-        <div>
-            <div class="schedule-time row">
-                <div class="col-md-3">
-                    <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
-                </div>
-                <div class="col-md-9">
-                    <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
-                    <div class="times">
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                    </div>
-                </div>
-            </div>
-            <div class="schedule-time row">
-                <div class="col-md-3">
-                    <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
-                </div>
-                <div class="col-md-9">
-                    <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
-                    <div class="times">
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                    </div>
-                </div>
-            </div>
-            <div class="schedule-time row">
-                <div class="col-md-3">
-                    <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
-                </div>
-                <div class="col-md-9">
-                    <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
-                    <div class="times">
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                    </div>
-                </div>
-            </div>
-            <div class="schedule-time row">
-                <div class="col-md-3">
-                    <img src="http://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-Tomb-Rider-470x700-poster.jpg-2-165x245.jpg">
-                </div>
-                <div class="col-md-9">
-                    <h4>TOMB RAIDER: HUYỀN THOẠI BẮT ĐẦU</h4>
-                    <div class="times">
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                        <button class="btn col-md-2 btn-default">14:00</button>
-                    </div>
-                </div>
-            </div>
+        <div class="cinema-schedule">
         </div>
-        
       </div>
     </div>
   </div>
