@@ -4,11 +4,12 @@
 <div class="warper-content">
     <div class="page--news cinema--background">
         <div class="container">
-            <h1 class="about--us-title-title">{{ trans('message.title.cinema_system') }}</h1>
-            <div>
-                <ul class="list--news row js__isotope">
-                    @if (isset($cinemas))
-                        @foreach($cinemas as $cinema)
+            @if (isset($cinemaSystems))
+                @foreach ($cinemaSystems as $cinemaSystem)
+                <h1 class="about--us-title-title">{{ $cinemaSystem->name }}</h1><hr>
+                <div>
+                    <ul class="list--news row js__isotope">
+                        @foreach ($cinemaSystem->cinemas as $cinema)
                             <li class="col-md-3 col-sm-6 col-xs-12 js__isotope_item">
                             <div class="news--item">
                                     <a href="{{ route('cinema', ['id' => $cinema->id]) }}"> <img width="247" height="330" src="../wp-content/uploads/2017/06/BHD-Star_HeThongRap-01-247x330.jpg" class="attachment-news-thumb size-news-thumb wp-post-image" alt="" srcset="http://www.bhdstar.vn/wp-content/uploads/2017/06/BHD-Star_HeThongRap-01-247x330.jpg 247w, http://www.bhdstar.vn/wp-content/uploads/2017/06/BHD-Star_HeThongRap-01-245x327.jpg 245w, http://www.bhdstar.vn/wp-content/uploads/2017/06/BHD-Star_HeThongRap-01-184x245.jpg 184w, http://www.bhdstar.vn/wp-content/uploads/2017/06/BHD-Star_HeThongRap-01-470x627.jpg 470w, http://www.bhdstar.vn/wp-content/uploads/2017/06/BHD-Star_HeThongRap-01-77x103.jpg 77w, http://www.bhdstar.vn/wp-content/uploads/2017/06/BHD-Star_HeThongRap-01-268x357.jpg 268w, http://www.bhdstar.vn/wp-content/uploads/2017/06/BHD-Star_HeThongRap-01.jpg 1313w" sizes="(max-width: 247px) 100vw, 247px" /></a>
@@ -18,9 +19,10 @@
                                 </div>
                             </li>
                         @endforeach
-                    @endif
-                </ul>
-            </div>
+                    </ul>
+                </div>
+                @endforeach
+            @endif
         </div><!-- .container -->
     </div><!-- .section- -product-view -->
 

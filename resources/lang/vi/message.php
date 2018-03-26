@@ -35,7 +35,7 @@ return [
         'logout' => 'Thoát',
         'schedule' => 'Lịch chiếu phim',
         'cinema_schedule' => 'Lịch chiếu theo rạp',
-        'cinema_system' => 'Hệ thống rạp',
+        'cinema_systems' => 'Hệ thống rạp',
         'recruitment' => 'Tuyển dụng',
         'contact' => 'Liên hệ',
         'promotions' => 'Khuyến mãi',
