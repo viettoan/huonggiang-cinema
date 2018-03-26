@@ -35,7 +35,7 @@ return [
         'logout' => 'Logout',
         'schedule' => 'Movie Schedule',
         'cinema_schedule' => 'Cinema Schedule',
-        'cinema_system' => 'Cinema System',
+        'cinema_systems' => 'Cinema Systems',
         'recruitment' => 'Recruitment',
         'contact' => 'Contact',
         'promotions' => 'Promotions',

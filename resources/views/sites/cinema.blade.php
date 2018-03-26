@@ -4,7 +4,7 @@
 <div class="warper-content">
 <div class="page--wrapper">
     <div class="container">
-        <h1 class="about--us-title">{{ trans('message.title.cinema_system') }}</h1>
+        <h1 class="about--us-title">{{ trans('message.title.cinema_systems') }}</h1>
         <div class="about--us-content col-md-8">
             <h3 class="content--title">{{ $cinema->name }}</h3>
             <div class="text--content">
@@ -33,49 +33,14 @@
         </div>
         <div class="about--us-sidebar col-md-4">
             <ul class="list-cinema">
+                @foreach ($cinema->cinemaSystem->cinemas as $cinema)
                 <li>
-                    <a class="item--cinema" href="../bhd-star-vincom-pham-ngoc-thach/index.html">
+                    <a class="item--cinema" href="{{ route('cinema', ['id' => $cinema->id]) }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span>PHẠM NGỌC THẠCH &#8211; HÀ NỘI</span>
+                        <span>{{ $cinema->name }} &#8211; {{ $cinema->city->name }}</span>
                     </a>
                 </li>
-                <li>
-                    <a class="item--cinema" href="../bhd-star-vincom-le-van-viet/index.html">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span>BHD STAR LÊ VĂN VIỆT</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="item--cinema" href="../bhd-star-vincom-thao-dien/index.html">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span>BHD STAR THẢO ĐIỀN</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="item--cinema" href="../bhd-star-vincom-quang-trung/index.html">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span>BHD STAR QUANG TRUNG</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="item--cinema" href="../bhd-star-pham-hung/index.html">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span>BHD STAR PHẠM HÙNG</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="item--cinema" href="index.html">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span>BHD STAR BITEXCO</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="item--cinema" href="../bhd-star-maximark-32/index.html">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span>BHD STAR 3/2</span>
-                    </a>
-                </li>
-                
+                @endforeach
             </ul>
         </div>
     </div>
