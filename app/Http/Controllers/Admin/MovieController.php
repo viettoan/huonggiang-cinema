@@ -8,23 +8,28 @@ use App\Contracts\MovieRepository;
 use App\Contracts\MovieTypeRepository;
 use App\Contracts\MediaRepository;
 use App\Contracts\TypeRepository;
-
+use App\Contracts\CinemaRepository;
+use App\Contracts\BookingMovieRepository;
 use App\Http\Requests\MovieRequest;
 
 class MovieController extends Controller
 {
-    protected $movie, $media, $type, $movieType;
+    protected $movie, $media, $type, $movieType, $cinema, $bookingMovie;
     public function __construct(
         MovieRepository $movie,
         MediaRepository $media,
         TypeRepository $type,
-        MovieTypeRepository $movieType
+        MovieTypeRepository $movieType,
+        CinemaRepository $cinema,
+        BookingMovieRepository $bookingMovie
     )
     {
         $this->movie = $movie;
         $this->media = $media;
         $this->type = $type;
         $this->movieType = $movieType;
+        $this->cinema = $cinema;
+        $this->bookingMovie = $bookingMovie;
     }
     /**
      * Display a listing of the resource.
@@ -158,6 +163,32 @@ class MovieController extends Controller
                 return response(['status' => trans('messages.success')]);
             }
             return response(['status' => trans('messages.failed')]);
+        }
+    }
+
+    public function getCinema(Request $request)
+    {
+        if ($request->ajax()) {
+            $movieId = $request->get('movie_id', null);
+            $cinemas = $this->cinema->getCinemaByStatus(config('custom.cinema.status.active'), [
+                'bookingMovies' => function($query) use ($movieId) {
+                    $query->where('movie_id', $movieId);
+                }
+            ]);
+
+            $view = view('admin.movie.ui.list_cinema_add_booking', compact(['cinemas', 'movieId']));
+
+            return response($view);
+        }
+    }
+
+    public function storeBookingMovie(Request $request)
+    {
+        $data = $request->all();
+        if ($this->bookingMovie->create($data)) {
+            return response(['success' => 'The booking link has been successfully added!']);
+        } else {
+            return response(['failed' => 'The booking link has been created failed!']);
         }
     }
 }
