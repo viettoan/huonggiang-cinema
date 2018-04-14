@@ -54,6 +54,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/store-schedule-time', 'ScheduleController@storeScheduleTime');
     Route::get('/remove-schedule-time', 'ScheduleController@removeScheduleTime');
     Route::get('/edit-schedule-time', 'ScheduleController@editScheduleTime');
+    Route::resource('cinema_system', 'CinemaSystemController');
+    Route::get('/cinema_system/delete/{id}', 'CinemaSystemController@destroy');
 });
 
 Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function() {

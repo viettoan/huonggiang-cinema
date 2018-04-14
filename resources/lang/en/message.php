@@ -2,6 +2,7 @@
 
 return [
     'title' => [
+        'manage_cinema_systems' => 'Manage Cinema Systems',
         'manage_schedules' => 'Manage Schedules',
         'edit_schedule' => 'Edit Schedule',
         'create_schedule' => 'Create Schedule',

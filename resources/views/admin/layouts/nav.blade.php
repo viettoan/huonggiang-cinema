@@ -65,6 +65,12 @@
             <span class="nav-link-text">{{ trans('message.title.manage_schedules') }}</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="{{route('cinema_system.index')}}">
+            <i class="fas fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">{{ trans('message.title.manage_cinema_systems') }}</span>
+          </a>
+        </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
