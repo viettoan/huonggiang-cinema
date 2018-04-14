@@ -37,6 +37,7 @@ $(document).ready(function () {
                             </div>
                             <div class="col-md-9">
                                 <h4>${ res.schedules[i].cinema.name }</h4>
+                                <a href="${ (res.schedules[i].cinema.booking_movies) ? res.schedules[i].cinema.booking_movies.link : '' }" class="btn--green"><i class="fa fa-ticket"></i>Buy Ticket</a>
                                 <div class="times">`;
                         for (var j = 0; j < schedule_time.length; j++) {
                             html += `<button class="btn col-md-2 btn-default">${ schedule_time[j].time.time }</button>`;
