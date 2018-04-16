@@ -47,4 +47,9 @@ class Movie extends Model
     {
         return $this->hasMany(MovieTechnology::class);
     }
+
+    public function bookingMovies()
+    {
+        return $this->hasMany(BookingMovie::class);
+    }
 }

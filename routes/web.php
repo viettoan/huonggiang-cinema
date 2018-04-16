@@ -18,6 +18,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 
     Route::resource('user', 'UserController');
     Route::get('/user/delete/{id}', 'UserController@destroy');
+    Route::get('/search-user', 'UserController@search');
 
     Route::resource('cinema', 'CinemaController');
     Route::get('/cinema/delete/{id}', 'CinemaController@destroy');
@@ -37,11 +38,11 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::resource('promotion', 'PromotionController');
     Route::get('/promotion/delete/{id}', 'PromotionController@destroy');
 
-    Route::resource('promotion', 'PromotionController');
-    Route::get('/promotion/delete/{id}', 'PromotionController@destroy');
-
     Route::resource('time', 'TimeController');
     Route::get('/time/delete/{id}', 'TimeController@destroy');
+
+    Route::resource('cinema_system', 'CinemaSystemController');
+    Route::get('/cinema_system/delete/{id}', 'CinemaSystemController@destroy');
 
     Route::resource('schedule', 'ScheduleController');
     Route::get('/create-schedule', 'ScheduleController@store');
@@ -54,6 +55,19 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/store-schedule-time', 'ScheduleController@storeScheduleTime');
     Route::get('/remove-schedule-time', 'ScheduleController@removeScheduleTime');
     Route::get('/edit-schedule-time', 'ScheduleController@editScheduleTime');
+
+    Route::get('/get-cinema-add-booking', 'MovieController@getCinema');
+    Route::get('/store-booking-movie', 'MovieController@storeBookingMovie');
+
+    Route::resource('technology', 'TechnologyController');
+    Route::get('/technology/delete/{id}', "TechnologyController@destroy");
+
+    Route::resource('trailer', 'TrailerController');
+    Route::get('/trailer/delete/{id}', 'TrailerController@destroy');
+
+    Route::resource('city', 'CityController');
+    Route::get('/city/delete/{id}', 'CityController@destroy');
+
 });
 
 Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function() {

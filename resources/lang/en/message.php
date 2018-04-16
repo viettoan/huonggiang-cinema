@@ -2,6 +2,7 @@
 
 return [
     'title' => [
+        'add_booking_cinema' => 'Add Booking Cinema',
         'manage_schedules' => 'Manage Schedules',
         'edit_schedule' => 'Edit Schedule',
         'create_schedule' => 'Create Schedule',
@@ -45,6 +46,19 @@ return [
         'events' => 'Events',
         'cinema_schedule' => 'Cinema Schedule',
         'schedule_time' => 'Create time',
+        'manage_cinema_systems' => 'Manage Cinema Systems',
+        'create_cinema_system' => 'Create Cinema Systems',
+        'edit_cinema_system' => 'Edit Cinema System',
+        'manage_technologies' => "Manage Technologies",
+        'create_technology' => 'Create Technology',
+        'edit_technology' => 'Edit Technology',
+        'manage_trailers' => "Manage Trailers",
+        'create_trailer' => 'Create Trailer',
+        'edit_trailer' => 'Edit Trailer',
+        'manage_cities' => "Manage Cities",
+        'create_city' => 'Create City',
+        'edit_city' => 'Edit City',
+
     ],
     'action' => [
         'edit' => 'Edit',

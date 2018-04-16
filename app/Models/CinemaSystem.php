@@ -16,4 +16,8 @@ class CinemaSystem extends Model
     {
         return $this->hasMany(Cinema::class);
     }
+    public function bookingMovies()
+    {
+        return $this->hasMany(BookingMovie::class);
+    }
 }
