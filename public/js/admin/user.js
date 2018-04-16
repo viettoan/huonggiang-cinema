@@ -2,7 +2,6 @@ $(document).ready(function() {
     $(document).on('click', '.delUser', function () {
         var id = $(this).data('id');
         var selector = $(this);
-
         swal({
             title: 'Are you sure?',
             text: 'You will not be able to recover this imaginary file!',
@@ -15,8 +14,7 @@ $(document).ready(function() {
                 $.ajax({
                     url: '/admin/user/delete/' + id,
                     type: 'GET',
-                    success: function (response) {
-                        console.log(response);
+                    success: function (res) {
                         swal(
                             'Deleted!',
                             'Your imaginary file has been deleted.',
@@ -25,6 +23,7 @@ $(document).ready(function() {
                         selector.parents('tr').remove();
                     }
                 });
+              
             // result.dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
             } else if (result.dismiss === 'cancel') {
               swal(
@@ -34,18 +33,5 @@ $(document).ready(function() {
               )
             }
         });    
-    });
-
-    //search by username
-    $(document).on('keyup', '.search', function() {
-        var keyword = $(this).val();
-        $.ajax({
-            url: '/admin/search-user',
-            method: 'GET',
-            data: {keyword: keyword},
-            success: function (response) {
-                $('.table-responsive').html(response.users);
-            }
-        });
     });
 });

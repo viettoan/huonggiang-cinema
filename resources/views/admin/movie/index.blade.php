@@ -46,13 +46,10 @@
                     <button class="btn btn-danger">{{ trans('message.config.stop_showing') }}</button>
                 @endif
             <th>
-                <a class="booking-cinema" data-movie={{ $movie->id }}>
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
                 <a href = "{{ route('movie.edit', ['id' => $movie->id]) }}">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a data-movie="{{ $movie->id}}" class="delMovie">
+                <a data-id="{{ $movie->id}}" class="delMovie">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </th>
@@ -61,48 +58,9 @@
     @endif
     </tbody>
   </table>
-  <!-- Modal -->
-  <div class="modal fade" id="booking" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ trans('message.title.cinema_schedule') }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="booking-movie">
-                </div>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('message.action.close') }}</button>
-            </div>
-        </div>
-        </div>
-    </div>
   @if (isset($movies)) 
       {{ $movies->links() }}
   @endif
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="booking_cinema_system" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{ trans('message.title.add_booking_cinema') }}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ trans('message.action.close') }}</button>
-        </div>
-    </div>
-    </div>
 </div>
 @endsection
 @section('script')

@@ -37,46 +37,4 @@ $(document).ready(function() {
             }
         });    
     });
-
-    //click add booking cinema
-    $(document).on('click', '.booking-cinema', function() {
-        var movie_id = $(this).data('movie');
-        console.log(movie_id);
-        $.ajax({
-            method: 'GET',
-            url: '/admin/get-cinema-add-booking',
-            data: {'movie_id': movie_id},
-            success: function (res) {
-                $('#booking_cinema_system').find('.modal-body').html(res);
-                $('#booking_cinema_system').modal('show');
-            }
-        })
-    });
-
-    //change link or add booking link movie
-    $(document).on('change', '.add_link_booking_movie', function() {
-        var movie_id = $(this).data('movie');
-        var cinema_id = $(this).data('cinema');
-        var link = $(this).val();
-        var data = {
-            'movie_id': movie_id,
-            'cinema_id': cinema_id,
-            'link': link,
-        }
-        $.ajax({
-            method: 'GET',
-            url: '/admin/store-booking-movie',
-            data: data,
-            success: function (res) {
-                if (res.success != null) {
-                    toastr.success(res.success, '', {timeOut: 5000});
-
-                } 
-                if (res.failed != null) {
-                    toastr.success(res.failed, '', {timeOut: 5000});
-
-                }
-            }
-        })
-    })
 });

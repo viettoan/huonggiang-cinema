@@ -11,12 +11,4 @@ class UserRepositoryEloquent extends AbstractRepositoryEloquent implements UserR
         return new User;
     }
     
-    public function search($keyword, $with = [], $select = '*')
-    {
-        return $this->model()
-            ->with($with)
-            ->select($select)
-            ->where('name', 'like', '%' . $keyword . '%')
-            ->paginate(10);
-    }
 }

@@ -111,13 +111,4 @@ class UserController extends Controller
             return response(['status' => trans('messages.failed')]);
         }
     }
-
-    public function search(Request $request)
-    {
-        if ($request->ajax()) {
-            $users = $this->user->search($request->keyword);
-            $view = view('admin.user.list_user', compact('users'))->render();
-            return response(['users' => $view]);
-        }
-    }
 }

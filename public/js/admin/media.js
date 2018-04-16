@@ -39,7 +39,6 @@ $(document).ready(function() {
     //Event review file media
     $(document).on('change', '#file-media', function() {
         var file = event.target.files[0] || event.dataTransfer.files[0];
-        console.log(file);
         createFile(file);
     });
 

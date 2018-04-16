@@ -76,12 +76,12 @@
             <label for="exampleInputEmail1">{{ trans('message.column.gender') }}</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="gender" value="{{ config('custom.male') }}" checked>{{ trans('message.config.male') }}
+                    <input type="radio" name="gender" value="1" checked>{{ trans('message.config.male') }}
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="gender" value="{{ config('custom.female') }}">{{ trans('message.config.female') }}
+                    <input type="radio" name="gender" value="0">{{ trans('message.config.female') }}
                 </label>
             </div>
         </div>
@@ -89,12 +89,12 @@
             <label for="exampleInputEmail1">Role</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="role" value="{{ config('custom.admin') }}">{{ trans('message.config.admin') }}
+                    <input type="radio" name="role" value="1">{{ trans('message.config.admin') }}
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="role" value="{{ config('custom.user') }}" checked>{{ trans('message.config.user') }}
+                    <input type="radio" name="role" value="0" checked>{{ trans('message.config.user') }}
                 </label>
             </div>
         </div>

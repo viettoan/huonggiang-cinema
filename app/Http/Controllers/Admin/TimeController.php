@@ -46,9 +46,9 @@ class TimeController extends Controller
         $data = $request->all();
 
         if ($this->time->create($data)) {
-            return redirect()->route('time.create')->with('success', trans('The time has been successfully created'));
+            return redirect()->route('time.create')->with('error', trans('The time has been successfully created!'));
         } else {
-            return redirect()->route('time.create')->with('error', trans('The time has been created failed'));
+            return redirect()->route('time.create')->with('success', trans('The time has been created failed!'));
         }
     }
 
@@ -88,9 +88,9 @@ class TimeController extends Controller
         $data = $request->all();
         
         if ($this->time->update($id, $data)) {
-            return redirect()->route('time.edit', ['id' => $id])->with('success', trans('The time has been successfully edited'));
+            return redirect()->route('time.edit', ['id' => $id])->with('error', trans('The time has been successfully edited!'));
         } else {
-            return redirect()->route('time.edit', ['id' => $id])->with('error', trans('The time has been edited failed'));
+            return redirect()->route('time.edit', ['id' => $id])->with('success', trans('The time has been edited failed!'));
         }
     }
 
