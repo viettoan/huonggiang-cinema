@@ -38,7 +38,7 @@ class ScheduleController extends Controller
     public function index()
     {
         $schedules = $this->schedule->getSchedules(10, ['cinema', 'movie'], ['id', 'movie_id', 'cinema_id']);
-        
+
         return view('admin.schedules.index', compact('schedules'));
     }
 
@@ -142,7 +142,7 @@ class ScheduleController extends Controller
     {
         $movieActive = $this->schedule->getByCinema($request->cinema_id)->pluck('movie_id')->toArray();
         $movies = $this->movie->getMovieHaveNotSchedule($movieActive);
-
+        
         return response(['movies' => $movies]);
     }
 

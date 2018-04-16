@@ -30,7 +30,9 @@ $(document).ready(function() {
 
     //get movie by cinema event
     $(document).on('change', '#cinema_id', function () {
+
         var cinema_id = $(this).val();
+        console.log(cinema_id);
         var element = $(this);
         getMovie(cinema_id, element);
     });
@@ -144,6 +146,7 @@ $(document).ready(function() {
             type: 'GET',
             data: {'cinema_id': cinema_id},
             success: function (res) {
+                console.log(1);
                 var html = '';
                 html += `<option>Choose one Movie</option>`;
                 for (var i = 0; i < res.movies.length; i++) {

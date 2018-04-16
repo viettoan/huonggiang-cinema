@@ -14,7 +14,9 @@ use App\Http\Requests\MovieRequest;
 
 class MovieController extends Controller
 {
+
     protected $movie, $media, $type, $movieType, $cinema, $bookingMovie;
+
     public function __construct(
         MovieRepository $movie,
         MediaRepository $media,
@@ -39,7 +41,8 @@ class MovieController extends Controller
     public function index()
     {
         $movies = $this->movie->paginate(10, ['media']);
-        return view('admin.movie.index', compact('movies'));
+        $cinemaSystems = $this->cinemaSyste->all();
+        return view('admin.movie.index', compact('movies', $cinemaSystems));
     }
 
     /**

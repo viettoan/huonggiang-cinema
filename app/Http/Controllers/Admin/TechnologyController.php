@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Contracts\TimeRepository;
-use App\Http\Requests\TimeRequest;
+use App\Contracts\TechnologyRepository;
+use App\Http\Requests\TechnologyRequest;
 
-class TimeController extends Controller
+class TechnologyController extends Controller
 {
-    protected $time;
-    public function __construct(TimeRepository $time) {
-        $this->time = $time;
+    protected $technology;
+    public function __construct(TechnologyRepository $technology){
+        $this->technology =$technology;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +20,8 @@ class TimeController extends Controller
      */
     public function index()
     {
-        $times = $this->time->paginate(10, []);
-        return view('admin.time.index', compact('times'));
+        $technologies = $this->technology->paginate(10, []);
+        return view('admin.technology.index', compact('technologies'));
     }
 
     /**
@@ -32,7 +31,7 @@ class TimeController extends Controller
      */
     public function create()
     {
-        return view('admin.time.create');
+        return view('admin.technology.create');
     }
 
     /**
@@ -41,14 +40,14 @@ class TimeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TimeRequest $request)
+    public function store(TechnologyRequest $request)
     {
         $data = $request->all();
 
-        if ($this->time->create($data)) {
-            return redirect()->route('time.create')->with('success', trans('The time has been successfully created'));
+        if ($this->technology->create($data)) {
+            return redirect()->route('technology.create')->with('success', trans('The technology has been successfully created'));
         } else {
-            return redirect()->route('time.create')->with('error', trans('The time has been created failed'));
+            return redirect()->route('technology.create')->with('error', trans('The technology has been created failed'));
         }
     }
 
@@ -71,9 +70,9 @@ class TimeController extends Controller
      */
     public function edit($id)
     {
-        $time = $this->time->find($id, []);
+        $technology = $this->technology->find($id, []);
 
-        return view('admin.time.edit', compact('time'));
+        return view('admin.technology.edit', compact('technology'));
     }
 
     /**
@@ -83,14 +82,14 @@ class TimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TimeRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         
-        if ($this->time->update($id, $data)) {
-            return redirect()->route('time.edit', ['id' => $id])->with('success', trans('The time has been successfully edited'));
+        if ($this->technology->update($id, $data)) {
+            return redirect()->route('technology.edit', ['id' => $id])->with('success', trans('The technology has been successfully edited'));
         } else {
-            return redirect()->route('time.edit', ['id' => $id])->with('error', trans('The time has been edited failed'));
+            return redirect()->route('technology.edit', ['id' => $id])->with('error', trans('The technology has been edited failed'));
         }
     }
 
@@ -100,10 +99,10 @@ class TimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        if ($request->ajax()) {
-            if ($this->time->delete($id)) {
+       if ($request->ajax()) {
+            if ($this->technology->delete($id)) {
                 return response(['status' => trans('messages.success')]);
             }
             return response(['status' => trans('messages.failed')]);

@@ -45,7 +45,20 @@ return [
         'home' => 'Trang chủ',
         'events' => 'Sự kiện',
         'cinema_schedule' => 'Lịch chiếu',
-        'schedule_time' => 'Thời gian'
+        'schedule_time' => 'Thời gian',
+        'manage_cinema_systems' => 'Quản lý hệ thống rạp chiếu phim',
+        'create_cinema_system' => 'Tạo mới hệ thống rạp chiếu phim',
+        'edit_cinema_system' => 'Cập nhật hệ thống rạp chiếu phim',
+        'manage_technologies' => "Quản lý công nghệ",
+        'create_technology' => 'Tạo mới công nghệ',
+        'edit_technology' => 'Cập nhật công nghệ',
+        'manage_trailers' => "Quản lý trailer",
+        'create_trailer' => 'Tạo mới trailer',
+        'edit_trailer' => 'Cập nhật trailer',
+        'manage_cities' => "Quản lý thành phố",
+        'create_city' => 'Tạo mới thành phố',
+        'edit_city' => 'Cập nhật thành phố',
+        
     ],
     'action' => [
         'edit' => 'Sửa',
