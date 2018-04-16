@@ -37,8 +37,4 @@ class Cinema extends Model
     {
         return $this->belongsTo(CinemaSystem::class);
     }
-    public function bookingMovies()
-    {
-        return $this->hasMany(BookingMovie::class);
-    }
 }

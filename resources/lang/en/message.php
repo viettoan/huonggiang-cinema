@@ -2,7 +2,6 @@
 
 return [
     'title' => [
-        'add_booking_cinema' => 'Add Booking Cinema',
         'manage_schedules' => 'Manage Schedules',
         'edit_schedule' => 'Edit Schedule',
         'create_schedule' => 'Create Schedule',
