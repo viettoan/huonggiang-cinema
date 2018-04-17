@@ -9,10 +9,6 @@ use App\Http\Requests\TechnologyRequest;
 
 class TechnologyController extends Controller
 {
-    protected $technology;
-    public function __construct(TechnologyRepository $technology){
-        $this->technology =$technology;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -101,11 +97,13 @@ class TechnologyController extends Controller
      */
     public function destroy($id)
     {
+
        if ($request->ajax()) {
             if ($this->technology->delete($id)) {
                 return response(['status' => trans('messages.success')]);
             }
             return response(['status' => trans('messages.failed')]);
         }
+
     }
 }
