@@ -73,7 +73,7 @@ class ScheduleController extends Controller
                         $query->where('cinema_id', $cinema_id);
                     },
                     'media'
-                ])
+                ]);
             }
         ]);
         
@@ -94,7 +94,7 @@ class ScheduleController extends Controller
                         $query->where('movie_id', $movie_id);
                     },
                     'media'
-                ])
+                ]);
             }
         ]);
         
