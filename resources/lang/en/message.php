@@ -107,7 +107,8 @@ return [
         'city' => 'City',
         'cinema_system' => 'Cinema System',
         'technology' => 'Technology',
-        'location' => 'Location'
+        'location' => 'Location',
+        'code'=>'Code',
     ],
     'config' => [
         'active' => 'Active',
