@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,6 +67,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::resource('city', 'CityController');
     Route::get('/city/delete/{id}', 'CityController@destroy');
 
+    Route::resource('/technology', 'TechnologyController');
+    Route::get('/technology/delete/{id}', 'TechnologyController@destroy');
 });
 
 Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function() {
