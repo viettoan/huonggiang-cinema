@@ -41,8 +41,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = $this->movie->paginate(10, ['media']);
-        $cinemaSystems = $this->cinemaSyste->all();
-        return view('admin.movie.index', compact('movies', $cinemaSystems));
+        return view('admin.movie.index', compact('movies'));
     }
 
     /**
