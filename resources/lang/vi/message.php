@@ -107,7 +107,8 @@ return [
         'city' => 'Thành phố',
         'cinema_system' => 'Hệ thống rạp',
         'technology' => 'Công nghệ',
-        'location' => 'Vị trí'
+        'location' => 'Vị trí',
+        'code' => 'Mã nhúng',
     ],
     'config' => [
         'active' => 'Active',

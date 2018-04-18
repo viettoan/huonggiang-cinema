@@ -75,6 +75,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Contracts\BookingMovieRepository::class,
             \App\Repositories\BookingMovieRepositoryEloquent::class,
         ],
+        'trailer' => [
+        \App\Contracts\TrailerRepository::class,
+        \App\Repositories\TrailerRepositoryEloquent::class,
+        ],
     ];
     /**
      * Bootstrap the application services.
