@@ -1,5 +1,9 @@
 @extends('layouts.app')
+@section('css')
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel='stylesheet' href="{{ asset('bower/jquery-bar-rating/dist/themes/fontawesome-stars.css') }}" type='text/css' />
 
+@endsection
 @section('content')
 <div class="warper-content">
     <div class="film--wrapper">
@@ -26,6 +30,23 @@
                 <div class="product--view col-md-7">
                     <div class="product--name">
                         <h3>{{ $movie->name }}</h3>
+                        <table>
+                            <tr>
+                                <th>
+                                    <select id="example">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </th>
+                                <th>
+                                    <button class="btn btn-rounded btn-success rating-point">3.5</button>
+                                </th>
+                            </tr>
+                        </table>
+                        
                     </div>
                     <div class="film--tech">
                     </div>
@@ -45,7 +66,7 @@
                         <li>
                             <span class="col-left">{{ trans('message.column.type') }}</span>
                             <span class="col-right">
-                                @foreach ($movieTypes as $type)
+                                @foreach ($movie->movieTypes as $type)
                                     {{ $type->type->name }}
                                 @endforeach
                             </span>
@@ -81,8 +102,37 @@
         <div class="film--detail-bottom clearfix">
             <div class="comment--film">
                 <h3>{{ trans('message.action.comment') }}</h3>
-                <div class="background-fff">
-                    <div class="fb-comments" data-href="http://www.bhdstar.vn/movies/798muoi/" data-width="100%" data-numposts="5"></div>
+                <div class="background-fff clearfix">
+                    <div class="comment-form">
+                        <img class="img-responsive comment-avatar col-md-2" src="{{ asset('images/default-avatar.jpeg') }}">
+                        <div class="form-group col-md-10" >
+                            <textarea class="form-control" rows="5" id="comment-text"></textarea>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <div class="col-md-12 comment-option">
+                            <p class="col-md-3"><b>1 bình luận</b></p>
+                            <div class="col-md-3 col-md-offset-6 form-group">
+                                <div>
+                                    <select class="form-control" >
+                                        <option>Mới nhất</option>
+                                        <option>Cũ nhất</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <img class="img-responsive comment-avatar col-md-2" src="{{ asset('images/default-avatar.jpeg') }}">
+                                    <div class="form-group col-md-10" >
+                                        <p><b>Viet Toan</b></p>
+                                        <p>comment</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div><!-- film--detail-bottom -->
@@ -90,5 +140,12 @@
 </div>
 @endsection
 @section('script')
+<script type="text/javascript">
+   $(function() {
+      $('#example').barrating({
+        theme: 'fontawesome-stars'
+      });
+   });
+</script>
 <script src="{{ asset('js/sites/movie.js') }}"></script>
 @endsection

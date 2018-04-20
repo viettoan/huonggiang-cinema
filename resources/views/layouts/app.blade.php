@@ -40,7 +40,9 @@
             
 
     <!-- Scripts -->
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="{{asset('bower/jquery-bar-rating/dist/jquery.barrating.min.js')}}"></script>
+
     <script src="{{asset('wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4')}}"></script>
     <script src="{{asset('wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1')}}"></script>
     <script src="{{asset('wp-content/plugins/contact-form-7/includes/js/jquery.form.mind03d.js?ver=3.51.0-2014.06.20')}}"></script>
@@ -55,5 +57,6 @@
     <script src="{{asset('wp-content/themes/bhd/assets/scripts/main5152.js?ver=1.0')}}"></script>
     <script src="{{asset('wp-includes/js/wp-embed.min125b.js?ver=4.7.4')}}"></script>
     @yield('script')
+    <script lang="javascript">var _vc_data = {id : 5257784, secret : '7d3496ce2fc99b67e2cbd74214e6687f'};(function() {var ga = document.createElement('script');ga.type = 'text/javascript';ga.async=true; ga.defer=true;ga.src = '//live.vnpgroup.net/client/tracking.js';var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>
 </body>
 </html>
