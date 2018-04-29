@@ -29,9 +29,7 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        $movie = $this->movie->find($id, ['media']);
-        $movieTypes = $this->movieType->getTypeByMovieId($id, ['type']);
-
-        return view('sites.movie', compact('movie', 'movieTypes'));
+        $movie = $this->movie->find($id, ['media', 'movieTypes']);
+        return view('sites.movie', compact('movie'));
     }
 }

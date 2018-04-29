@@ -87,3 +87,13 @@
 .meta-box-type {
     bottom: 75px !important;
 }
+
+.rating-point {
+    width: 25px;
+    height: 25px;
+    padding: 0px;
+    margin-bottom: 7px;
+}
+.comment-content p {
+    color: #333;
+}
