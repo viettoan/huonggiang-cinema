@@ -4,16 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Contracts\TimeRepository;
-use App\Http\Requests\TimeRequest;
+use App\Contracts\CityRepository;
+use App\Http\Requests\CityRequest;
 
-class TimeController extends Controller
+
+class CityController extends Controller
 {
-    protected $time;
-    public function __construct(TimeRepository $time) {
-        $this->time = $time;
+   protected $city;
+    public function __construct(CityRepository $city){
+        $this->city =$city;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +21,8 @@ class TimeController extends Controller
      */
     public function index()
     {
-        $times = $this->time->paginate(10, []);
-        return view('admin.time.index', compact('times'));
+        $cities = $this->city->paginate(10, []);
+        return view('admin.city.index', compact('cities'));
     }
 
     /**
@@ -32,7 +32,7 @@ class TimeController extends Controller
      */
     public function create()
     {
-        return view('admin.time.create');
+        return view('admin.city.create');
     }
 
     /**
@@ -41,14 +41,14 @@ class TimeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TimeRequest $request)
+    public function store(CityRequest $request)
     {
         $data = $request->all();
 
-        if ($this->time->create($data)) {
-            return redirect()->route('time.create')->with('success', trans('The time has been successfully created'));
+        if ($this->city->create($data)) {
+            return redirect()->route('city.create')->with('success', trans('The city has been successfully created'));
         } else {
-            return redirect()->route('time.create')->with('error', trans('The time has been created failed'));
+            return redirect()->route('city.create')->with('error', trans('The city has been created failed'));
         }
     }
 
@@ -71,9 +71,8 @@ class TimeController extends Controller
      */
     public function edit($id)
     {
-        $time = $this->time->find($id, []);
-
-        return view('admin.time.edit', compact('time'));
+        $city = $this->city->find($id, []);
+        return view('admin.city.edit', compact('city'));
     }
 
     /**
@@ -83,14 +82,14 @@ class TimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TimeRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         
-        if ($this->time->update($id, $data)) {
-            return redirect()->route('time.edit', ['id' => $id])->with('success', trans('The time has been successfully edited'));
+        if ($this->city->update($id, $data)) {
+            return redirect()->route('city.edit', ['id' => $id])->with('success', trans('The city has been successfully edited'));
         } else {
-            return redirect()->route('time.edit', ['id' => $id])->with('error', trans('The time has been edited failed'));
+            return redirect()->route('city.edit', ['id' => $id])->with('error', trans('The city has been edited failed'));
         }
     }
 
@@ -100,10 +99,10 @@ class TimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
         if ($request->ajax()) {
-            if ($this->time->delete($id)) {
+            if ($this->city->delete($id)) {
                 return response(['status' => trans('messages.success')]);
             }
             return response(['status' => trans('messages.failed')]);

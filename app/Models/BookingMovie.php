@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+
+class BookingMovie extends Model
 {
     
     protected $fillable = [
-        'movie_id',
         'cinema_id',
+        'movie_id',
         'link',
     ];
 
@@ -18,7 +19,8 @@ class Booking extends Model
         return $this->belongsTo(Movie::class);
     }
 
-    public function cinemaSystem()
+    public function cinema()
+
     {
         return $this->belongsTo(Cinema::class);
     }

@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Contracts\TimeRepository;
-use App\Http\Requests\TimeRequest;
+use App\Contracts\MovieRepository;
+use App\Contracts\TrailerRepository;
+use App\Http\Requests\TrailerRequest;
 
-class TimeController extends Controller
+
+class TrailerController extends Controller
 {
-    protected $time;
-    public function __construct(TimeRepository $time) {
-        $this->time = $time;
+    protected $trailer, $movie;
+    public function __construct(TrailerRepository $trailer, MovieRepository $movie){
+        $this->trailer =$trailer;
+        $this->movie =$movie;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +23,8 @@ class TimeController extends Controller
      */
     public function index()
     {
-        $times = $this->time->paginate(10, []);
-        return view('admin.time.index', compact('times'));
+        $trailers = $this->trailer->paginate(10, []);
+        return view('admin.trailer.index', compact('trailers'));
     }
 
     /**
@@ -32,7 +34,8 @@ class TimeController extends Controller
      */
     public function create()
     {
-        return view('admin.time.create');
+        $movies =$this->movie->all();
+        return view('admin.trailer.create', compact('movies'));
     }
 
     /**
@@ -41,14 +44,14 @@ class TimeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TimeRequest $request)
+    public function store(TrailerRequest $request)
     {
         $data = $request->all();
 
-        if ($this->time->create($data)) {
-            return redirect()->route('time.create')->with('success', trans('The time has been successfully created'));
+        if ($this->trailer->create($data)) {
+            return redirect()->route('trailer.create')->with('success', trans('The trailer has been successfully created'));
         } else {
-            return redirect()->route('time.create')->with('error', trans('The time has been created failed'));
+            return redirect()->route('trailer.create')->with('error', trans('The trailer has been created failed'));
         }
     }
 
@@ -71,9 +74,9 @@ class TimeController extends Controller
      */
     public function edit($id)
     {
-        $time = $this->time->find($id, []);
+        $trailer = $this->trailer->find($id, []);
 
-        return view('admin.time.edit', compact('time'));
+        return view('admin.trailer.edit', compact('trailer'));
     }
 
     /**
@@ -83,14 +86,14 @@ class TimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TimeRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         
-        if ($this->time->update($id, $data)) {
-            return redirect()->route('time.edit', ['id' => $id])->with('success', trans('The time has been successfully edited'));
+        if ($this->trailer->update($id, $data)) {
+            return redirect()->route('trailer.edit', ['id' => $id])->with('success', trans('The trailer has been successfully edited'));
         } else {
-            return redirect()->route('time.edit', ['id' => $id])->with('error', trans('The time has been edited failed'));
+            return redirect()->route('trailer.edit', ['id' => $id])->with('error', trans('The trailer has been edited failed'));
         }
     }
 
@@ -100,10 +103,10 @@ class TimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        if ($request->ajax()) {
-            if ($this->time->delete($id)) {
+       if ($request->ajax()) {
+            if ($this->trailer->delete($id)) {
                 return response(['status' => trans('messages.success')]);
             }
             return response(['status' => trans('messages.failed')]);

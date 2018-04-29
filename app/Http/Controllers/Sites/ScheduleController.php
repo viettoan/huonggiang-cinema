@@ -63,9 +63,19 @@ class ScheduleController extends Controller
     {
         $cinema_id = $request->cinema_id;
         $date = $request->date;
-        $schedules = $this->schedule->getByCinema($cinema_id, ['scheduleTime' => function ($query) use ($date) {
-            $query->where('date', '=', $date)->with('time');
-        }, 'movie.media']);
+        $schedules = $this->schedule->getByCinema($cinema_id, [
+            'scheduleTime' => function ($query) use ($date) {
+                $query->where('date', '=', $date)->with('time');
+            },
+            'movie' => function ($query) use ($cinema_id) {
+                $query->with([
+                    'bookingMovies' => function ($query) use ($cinema_id) {
+                        $query->where('cinema_id', $cinema_id);
+                    },
+                    'media'
+                ]);
+            }
+        ]);
         
         return response(['schedules' => $schedules]);
     }
@@ -74,9 +84,19 @@ class ScheduleController extends Controller
     {
         $movie_id = $request->movie_id;
         $date = $request->date;
-        $schedules = $this->schedule->getByMovie($movie_id, ['scheduleTime' => function ($query) use ($date) {
-            $query->where('date', '=', $date)->with('time');
-        }, 'cinema.media']);
+        $schedules = $this->schedule->getByMovie($movie_id, [
+            'scheduleTime' => function ($query) use ($date) {
+                $query->where('date', '=', $date)->with('time');
+            }, 
+            'cinema' => function ($query) use ($movie_id) {
+                $query->with([
+                    'bookingMovies' => function ($query) use ($movie_id) {
+                        $query->where('movie_id', $movie_id);
+                    },
+                    'media'
+                ]);
+            }
+        ]);
         
         return response(['schedules' => $schedules]);
     }

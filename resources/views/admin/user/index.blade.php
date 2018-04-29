@@ -14,7 +14,7 @@
     {{ trans('message.action.new') }}
     </a>
     </div>
-    <div class="col-md-5"><input type="text" name="search" id="search" placeholder="Search ..." class="form-control"></div>
+    <div class="col-md-5"><input type="text" name="search" placeholder="Search ..." class="form-control search"></div>
 </div>
 <div class="table-responsive">
   <table class="table table-hover table-bordered">

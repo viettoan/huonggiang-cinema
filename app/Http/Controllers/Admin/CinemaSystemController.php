@@ -22,9 +22,9 @@ class CinemaSystemController extends Controller
      */
     public function index()
     {
-        $cinemaSystems = $this->cinemaSystem->all();
-
-        return view('admin.cinema_system.index',compact('cinemaSystems'));
+        $cinemaSystems =$this->cinemaSystem->all();
+        
+        return view('admin.cinema_system.index', compact('cinemaSystems'));
     }
 
     /**
@@ -34,7 +34,7 @@ class CinemaSystemController extends Controller
      */
     public function create()
     {
-        return view('admin.cinem_system.create');
+        return view('admin.cinema_system.create');
     }
 
     /**
@@ -45,11 +45,12 @@ class CinemaSystemController extends Controller
      */
     public function store(CinemaSystemRequest $request)
     {
+        
         $data = $request->all();
         if ($this->cinemaSystem->create($data)) {
-            return redirect()->route('cinema_system.create')->with('error', trans('The ciinem System has been successfully created!'));
+            return redirect()->route('cinema_system.create')->with('success', trans('The cinema system has been successfully created'));
         } else {
-            return redirect()->route('cinema_system.create')->with('success', trans('The mecinema system dia has been created failed!'));
+            return redirect()->route('cinema_system.create')->with('error', trans('The cinema system has been created failed'));
         }
     }
 
@@ -72,7 +73,10 @@ class CinemaSystemController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $cinemaSystem = $this->cinemaSystem->find($id);
+
+        return view('admin.cinema_system.edit', compact('cinemaSystem'));
     }
 
     /**
@@ -82,9 +86,15 @@ class CinemaSystemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CinemaSystemRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        
+        if ($this->cinemaSystem->update($id, $data)) {
+            return redirect()->route('cinema_system.edit', ['id' => $id])->with('success', trans('The cinema system has been successfully edited'));
+        } else {
+            return redirect()->route('cinema.edit', ['id' => $id])->with('error', trans('The cinema system has been edited failed'));
+        }
     }
 
     /**
