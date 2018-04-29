@@ -26,10 +26,43 @@
                 
                 </div>
             </div>
-            <div class="comment">
+            <div class="film--detail-bottom clearfix">
+            <div>
                 <h3>{{ trans('message.action.comment') }}</h3>
-                <div class="fb-comments" data-href="http://www.bhdstar.vn/cinemas/bhd-star-bitexco/" data-width="100%" data-numposts="5"></div>
+                <div class="background-fff clearfix">
+                    <div class="comment-form">
+                        <img class="img-responsive comment-avatar col-md-2" src="{{ asset('images/default-avatar.jpeg') }}">
+                        <div class="form-group col-md-10" >
+                            <textarea class="form-control" rows="5" id="comment-text"></textarea>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <div class="col-md-12 comment-option">
+                            <p class="col-md-3"><b>1 bình luận</b></p>
+                            <div class="col-md-3 col-md-offset-6 form-group">
+                                <div>
+                                    <select class="form-control" >
+                                        <option>Mới nhất</option>
+                                        <option>Cũ nhất</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <img class="img-responsive comment-avatar col-md-2" src="{{ asset('images/default-avatar.jpeg') }}">
+                                    <div class="form-group col-md-10" >
+                                        <p><b>Viet Toan</b></p>
+                                        <p>comment</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div><!-- film--detail-bottom -->
         </div>
         <div class="about--us-sidebar col-md-4">
             <ul class="list-cinema">
