@@ -20,7 +20,7 @@ class Movie extends Model
 
     public function comments()
     {
-        return $this->morphMany(Booking::class, 'commentable');
+        return $this->morphMany('App\Models\Comment', 'commentable');
     }
     public function ratings()
     {

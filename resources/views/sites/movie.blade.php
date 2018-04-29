@@ -33,16 +33,20 @@
                         <table>
                             <tr>
                                 <th>
-                                    <select id="example">
+                                    <select id="rating" data-current-rating="{{ $rating }}" data-movie="{{ $movie->id }}" data-user="{{ Auth::user()->id }}">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
-                                        <option value="4">4</option>
+                                        <option value="4" >4</option>
                                         <option value="5">5</option>
                                     </select>
                                 </th>
                                 <th>
-                                    <button class="btn btn-rounded btn-success rating-point">3.5</button>
+                                    <button class="btn btn-rounded btn-success rating-point">
+                                        @if ($rating != null)
+                                            {{ $rating }}
+                                        @endif
+                                    </button>
                                 </th>
                             </tr>
                         </table>
@@ -103,33 +107,47 @@
             <div class="comment--film">
                 <h3>{{ trans('message.action.comment') }}</h3>
                 <div class="background-fff clearfix">
+                    @if (Auth::user())
                     <div class="comment-form">
-                        <img class="img-responsive comment-avatar col-md-2" src="{{ asset('images/default-avatar.jpeg') }}">
+                        <img class="img-responsive comment-avatar col-md-2" src="{{ Auth::user()->avatar }}">
                         <div class="form-group col-md-10" >
-                            <textarea class="form-control" rows="5" id="comment-text"></textarea>
+                            <textarea class="form-control" rows="5" data-user="{{ Auth::user()->id }}" data-movie="{{ $movie->id }}" id="comment-text"></textarea>
                         </div>
                     </div>
+                    @endif
                     <div class="comment-content">
                         <div class="col-md-12 comment-option">
-                            <p class="col-md-3"><b>1 bình luận</b></p>
+                            @if (isset($movie->comments))
+                                <p class="col-md-3 count-comment" data-comment="{{ count($movie->comments) }}">
+                                    <b>{{ count($movie->comments) }} bình luận</b>
+                                </p>
+                            @else
+                                <p class="col-md-3 count-comment" data-comment="0">
+                                    <b>0 bình luận</b>
+                                </p>
+                            @endif    
                             <div class="col-md-3 col-md-offset-6 form-group">
                                 <div>
-                                    <select class="form-control" >
-                                        <option>Mới nhất</option>
-                                        <option>Cũ nhất</option>
+                                    <select class="form-control" id="comment-option" data-movie="{{ $movie->id }}">
+                                        <option value="DESC">Mới nhất</option>
+                                        <option value="ASC">Cũ nhất</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div>
                             <ul>
-                                <li>
-                                    <img class="img-responsive comment-avatar col-md-2" src="{{ asset('images/default-avatar.jpeg') }}">
-                                    <div class="form-group col-md-10" >
-                                        <p><b>Viet Toan</b></p>
-                                        <p>comment</p>
-                                    </div>
-                                </li>
+                                @if (isset($movie->comments))
+                                    @foreach ($movie->comments as $comment)
+                                    <li>
+                                        <img class="img-responsive comment-avatar col-md-2" src="{{ $comment->user->avatar }}">
+                                        <div class="form-group col-md-10" >
+                                            <p><b>{{ $comment->user->name }}</b></p>
+                                            <p>{{ $comment->content }}</p>
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -140,12 +158,6 @@
 </div>
 @endsection
 @section('script')
-<script type="text/javascript">
-   $(function() {
-      $('#example').barrating({
-        theme: 'fontawesome-stars'
-      });
-   });
-</script>
 <script src="{{ asset('js/sites/movie.js') }}"></script>
+<script src="{{ asset('js/sites/comment.js') }}"></script>
 @endsection

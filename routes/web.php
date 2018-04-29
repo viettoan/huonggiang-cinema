@@ -85,6 +85,9 @@ Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function(
     Route::get('/he-thong-rap', 'CinemaController@index')->name('cinemas');
 
     Route::get('/movies/{id}', 'MovieController@show')->name('movie');
+    Route::get('/movie/store-comment', 'MovieController@storeComment');
+    Route::get('/movie/get-comment', 'MovieController@getComment');
+    Route::get('/movie/get-rating', 'MovieController@getRating');
     
     Route::get('/cinemas/{id}', 'CinemaController@show')->name('cinema');
 

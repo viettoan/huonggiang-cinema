@@ -76,8 +76,16 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\BookingMovieRepositoryEloquent::class,
         ],
         'trailer' => [
-        \App\Contracts\TrailerRepository::class,
-        \App\Repositories\TrailerRepositoryEloquent::class,
+            \App\Contracts\TrailerRepository::class,
+            \App\Repositories\TrailerRepositoryEloquent::class,
+        ],
+        'comment' => [
+            \App\Contracts\CommentRepository::class,
+            \App\Repositories\CommentRepositoryEloquent::class,
+        ],
+        'rating' => [
+            \App\Contracts\RatingRepository::class,
+            \App\Repositories\RatingRepositoryEloquent::class,
         ],
     ];
     /**
