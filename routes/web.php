@@ -54,6 +54,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/store-schedule-time', 'ScheduleController@storeScheduleTime');
     Route::get('/remove-schedule-time', 'ScheduleController@removeScheduleTime');
     Route::get('/edit-schedule-time', 'ScheduleController@editScheduleTime');
+    Route::resource('cinema_system', 'CinemaSystemController');
+    Route::get('/cinema_system/delete/{id}', 'CinemaSystemController@destroy');
 
     Route::get('/get-cinema-add-booking', 'MovieController@getCinema');
     Route::get('/store-booking-movie', 'MovieController@storeBookingMovie');
@@ -83,6 +85,9 @@ Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function(
     Route::get('/he-thong-rap', 'CinemaController@index')->name('cinemas');
 
     Route::get('/movies/{id}', 'MovieController@show')->name('movie');
+    Route::get('/movie/store-comment', 'MovieController@storeComment');
+    Route::get('/movie/get-comment', 'MovieController@getComment');
+    Route::get('/movie/get-rating', 'MovieController@getRating');
     
     Route::get('/cinemas/{id}', 'CinemaController@show')->name('cinema');
 

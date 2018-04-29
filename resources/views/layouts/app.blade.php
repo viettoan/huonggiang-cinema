@@ -25,6 +25,7 @@
 	<link rel='stylesheet' id='style-css'  href="{{ asset('wp-content/themes/bhd/style5917.css?t=1514297339&amp;ver=5.57') }}" type='text/css' media='all' />
 	<link rel='stylesheet' id='style_v3-css'  href="{{ asset('wp-content/themes/bhd/v3/style_v35fba.css?ver=5.2') }}" type='text/css' media='all' />
     <link rel='stylesheet' id='style_v3-css'  href="{{ asset('css/sites.css') }}" type='text/css' media='all' />
+    <link href="{{asset('bower/toastr/toastr.min.css')}}" rel="stylesheet">
     @yield('css')
 </head>
 <body class="home blog">
@@ -56,6 +57,7 @@
     <script src="{{asset('wp-content/themes/bhd/lib_frontend/js/jquery.magnific-popup.min5152.js?ver=1.0')}}"></script>
     <script src="{{asset('wp-content/themes/bhd/assets/scripts/main5152.js?ver=1.0')}}"></script>
     <script src="{{asset('wp-includes/js/wp-embed.min125b.js?ver=4.7.4')}}"></script>
+    <script src="{{asset('bower/toastr/toastr.min.js')}}"></script>
     @yield('script')
     <script lang="javascript">var _vc_data = {id : 5257784, secret : '7d3496ce2fc99b67e2cbd74214e6687f'};(function() {var ga = document.createElement('script');ga.type = 'text/javascript';ga.async=true; ga.defer=true;ga.src = '//live.vnpgroup.net/client/tracking.js';var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>
 </body>

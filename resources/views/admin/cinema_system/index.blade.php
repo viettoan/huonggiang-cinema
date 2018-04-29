@@ -49,8 +49,11 @@
     @endif
     </tbody>
   </table>
+  @if (isset($cinemas)) 
+      {{ $cinemas->links() }}
+  @endif
 </div>
 @endsection
 @section('script')
-  <script src="{{ asset('js/admin/cinema_system.js') }}"></script>
+  <script src="{{ asset('js/admin/cinema.js') }}"></script>
 @endsection

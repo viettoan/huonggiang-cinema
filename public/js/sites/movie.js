@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    
+    $('#rating').barrating({
+        theme: 'fontawesome-stars',
+        initialRating: $('#rating').data('current-rating')
+      });
     /**
      * EVENT
      */
@@ -94,4 +99,25 @@ $(document).ready(function () {
             }
         });
     }
+
+    //rating
+    $(document).on('change', '#rating', function () {
+        var value = $(this).val();
+        var movie_id = $(this).data('movie');
+        var user_id = $(this).data('user');
+        $.ajax({
+            url: '/movie/get-rating',
+            method: 'GET',
+            data: {
+                'value': value,
+                'movie_id': movie_id,
+                'user_id': user_id
+            },
+            success: function(res) {
+                if (res != null) {
+                    location.reload();
+                }
+            }
+        })
+    })
 });

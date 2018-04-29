@@ -73,6 +73,7 @@ class CinemaSystemController extends Controller
      */
     public function edit($id)
     {
+
         $cinemaSystem = $this->cinemaSystem->find($id);
 
         return view('admin.cinema_system.edit', compact('cinemaSystem'));
