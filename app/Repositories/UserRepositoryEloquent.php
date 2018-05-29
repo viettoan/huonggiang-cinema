@@ -17,6 +17,7 @@ class UserRepositoryEloquent extends AbstractRepositoryEloquent implements UserR
             ->with($with)
             ->select($select)
             ->where('name', 'like', '%' . $keyword . '%')
+            ->orWhere('email', 'like', '%' . $keyword . '%')
             ->paginate(10);
     }
 }

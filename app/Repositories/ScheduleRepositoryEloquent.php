@@ -35,4 +35,13 @@ class ScheduleRepositoryEloquent extends AbstractRepositoryEloquent implements S
         return $this->model()->with($with)->select($select)->where('movie_id', $movie_id)->where('cinema_id', $cinema_id)->get();
     }
 
+     public function search($keyword, $select = '*')
+    {
+        return $this->model()
+            ->with(['movie', 'cinema'])
+            ->select($select)
+            ->whereIn('cinema_id', function($query) use ($keyword){
+                $query->table('cinema')->where('name', 'LIKE', '%' . $keyword . '%')->get();
+            })->paginate(10);
+    }
 }

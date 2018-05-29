@@ -97,3 +97,7 @@
 .comment-content p {
     color: #333;
 }
+
+#trailer {
+    z-index: 9999999999999;
+}

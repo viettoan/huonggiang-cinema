@@ -41,6 +41,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = $this->movie->paginate(10, ['media']);
+
         return view('admin.movie.index', compact('movies'));
     }
 
@@ -51,7 +52,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        $media = $this->media->getMediaByTypeMovie([]);
+        $media = $this->media->all();
         $types = $this->type->getTypeByMovie([]);
 
         return view('admin.movie.create', compact('media', 'types'));
@@ -111,7 +112,7 @@ class MovieController extends Controller
     {
         $movie = $this->movie->find($id, ['media']);
         $movieTypes = $this->movieType->getTypeByMovieId($id, [])->pluck('type_id')->toArray();
-        $media = $this->media->getMediaByTypeMovie([]);
+        $media = $this->media->all([]);
         $types = $this->type->getTypeByMovie([]);
         return view('admin.movie.edit', compact('movie', 'media', 'types', 'movieTypes'));
     }
@@ -188,9 +189,18 @@ class MovieController extends Controller
     {
         $data = $request->all();
         if ($this->bookingMovie->create($data)) {
-            return response(['success' => 'The booking link has been successfully added!']);
+            return response(['success' => 'The booking link has been successfully added']);
         } else {
-            return response(['failed' => 'The booking link has been created failed!']);
+            return response(['failed' => 'The booking link has been created failed']);
+        }
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $movies = $this->movie->search($request->keyword);
+            $view = view('admin.movie.list_movie', compact('movies'))->render(); //Chuyển View từ dạng html sang string
+            return response(['movies' => $view]);
         }
     }
 }

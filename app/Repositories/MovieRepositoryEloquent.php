@@ -22,4 +22,13 @@ class MovieRepositoryEloquent extends AbstractRepositoryEloquent implements Movi
     {
         return $this->model()->select($select)->with($with)->whereNotIn('id', $movies)->get();
     }
+
+    public function search($keyword, $with = [], $select = '*')
+    {
+        return $this->model()
+            ->with($with)
+            ->select($select)
+            ->where('name', 'like', '%' . $keyword . '%')
+            ->paginate(10);
+    }
 }

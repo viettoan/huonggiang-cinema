@@ -79,4 +79,16 @@ $(document).ready(function() {
             }
         })
     })
+
+    $(document).on('keyup', '.search', function() {
+        var keyd = $(this).val();
+        $.ajax({
+            url: '/admin/search-movie',
+            method: 'GET',
+            data: {keyword: keyd},
+            success: function (response) {
+                $('.table-responsive').html(response.movies); //Thay thế bảng kết quả tìm kiếm
+            }
+        });
+    });
 });

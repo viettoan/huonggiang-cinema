@@ -11,12 +11,6 @@ return [
     'stripe' => 1,
     'direct_payment' => 0,
     'media' => [
-        'type' => [
-            'post' => 0,
-            'movie' => 1,
-            'cinema' => 2,
-            'promotion' => 3,
-        ],
         'status' => [
             'hide' => 0,
             'show' => 1
@@ -53,10 +47,8 @@ return [
             'show' => 1
         ],
         'type' => [
-            'event' => 0,
+            'promotion' => 0,
             'advertisement' => 1,
-            'recruitment' => 2,
-            'other' => 3
         ],
     ],
     'promotion' => [

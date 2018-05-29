@@ -21,9 +21,11 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 
     Route::resource('cinema', 'CinemaController');
     Route::get('/cinema/delete/{id}', 'CinemaController@destroy');
+    Route::get('/search-cinema', 'CinemaController@search');
 
     Route::resource('movie', 'MovieController');
     Route::get('/movie/delete/{id}', 'MovieController@destroy');
+    Route::get('/search-movie', 'MovieController@search');
 
     Route::resource('media', 'MediaController');
     Route::get('/media/delete/{id}', 'MediaController@destroy');
@@ -33,15 +35,18 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
 
     Route::resource('post', 'PostController');
     Route::get('/post/delete/{id}', 'PostController@destroy');
+    Route::get('/search-post', 'PostController@search');
 
     Route::resource('promotion', 'PromotionController');
     Route::get('/promotion/delete/{id}', 'PromotionController@destroy');
+    Route::get('/search-promotion', 'PromotionController@search');
 
     Route::resource('time', 'TimeController');
     Route::get('/time/delete/{id}', 'TimeController@destroy');
 
     Route::resource('cinema_system', 'CinemaSystemController');
     Route::get('/cinema_system/delete/{id}', 'CinemaSystemController@destroy');
+    Route::get('/search-cinemasystem', 'CinemaSystemController@search');
 
     Route::resource('schedule', 'ScheduleController');
     Route::get('/create-schedule', 'ScheduleController@store');
@@ -56,6 +61,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/edit-schedule-time', 'ScheduleController@editScheduleTime');
     Route::resource('cinema_system', 'CinemaSystemController');
     Route::get('/cinema_system/delete/{id}', 'CinemaSystemController@destroy');
+    Route::get('/search-schedule', 'ScheduleController@search');
 
     Route::get('/get-cinema-add-booking', 'MovieController@getCinema');
     Route::get('/store-booking-movie', 'MovieController@storeBookingMovie');

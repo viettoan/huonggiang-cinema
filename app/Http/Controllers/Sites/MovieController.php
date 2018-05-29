@@ -36,12 +36,13 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        $movie = $this->movie->find($id, ['media', 'movieTypes', 'comments' => function($query) {
+        $movie = $this->movie->find($id, ['trailers', 'media', 'movieTypes', 'comments' => function($query) {
             $query->orderBy('created_at','DESC')->with('user');
         }]);
 
         $rating = $this->rating->model()->where('movie_id', $id)->avg('value');
         $rating = round($rating, 1);
+
         return view('sites.movie', compact(['movie', 'rating']));
     }
 

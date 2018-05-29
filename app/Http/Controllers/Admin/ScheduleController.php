@@ -234,4 +234,12 @@ class ScheduleController extends Controller
         return response(['html' => $html]);
     }
 
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $schedules = $this->schedule->search($request->keyword);
+            $view = view('admin.schedules.list_schedule', compact('schedules'))->render();
+            return response(['schedules' => $view]);
+        }
+    }
 }

@@ -25,8 +25,8 @@ class MediaRequest extends FormRequest
     {
         if ($this->isMethod('PUT')) {
             $arr = [
-                'path' => 'max:255' ,
-                'description' => 'required|max:255',
+                'path' => 'max:10000' ,
+                'description' => 'required',
                 'status' => 'required|numeric',
                 'type' => 'numeric'
             ];
@@ -34,7 +34,7 @@ class MediaRequest extends FormRequest
             return $arr;
         }
         return [
-            'path' => 'required|max:255' ,
+            'path' => 'required|max:10000' ,
             'description' => 'required|max:255',
             'status' => 'required|numeric',
             'type' => 'numeric'

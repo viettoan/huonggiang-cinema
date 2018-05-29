@@ -41,7 +41,7 @@ class PromotionController extends Controller
     public function create()
     {
         $cinemas = $this->cinema->all();
-        $media = $this->media->getMediaByTypePromotion([]);
+        $media = $this->media->all();
         
         return view('admin.promotion.create', compact('cinemas', 'media'));
     }
@@ -84,7 +84,7 @@ class PromotionController extends Controller
     {
         $promotion = $this->promotion->find($id, ['cinema']);
         $cinemas = $this->cinema->all();
-        $media = $this->media->getMediaByTypePromotion([]);
+        $media = $this->media->all();
 
         return view('admin.promotion.edit', compact('promotion', 'cinemas', 'media'));
     }
@@ -120,6 +120,15 @@ class PromotionController extends Controller
                 return response(['status' => trans('messages.success')]);
             }
             return response(['status' => trans('messages.failed')]);
+        }
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $promotions = $this->promotion->search($request->keyword);
+            $view = view('admin.promotion.list_promotion', compact('promotions'))->render();
+            return response(['promotions' => $view]);
         }
     }
 }

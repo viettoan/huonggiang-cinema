@@ -85,7 +85,9 @@
                         </li>
                     </ul>
                     <div class="button--green">
-                        <a class="btn--green bhd-trailer" href="https://www.youtube.com/watch?v=CAP97QEQAJA">{{ trans('message.trailer') }}</a>
+                        <a class="btn--green bhd-trailer" href="https://www.youtube.com/watch?v=CAP97QEQAJA" data-toggle="modal" data-target="#trailer">
+                        {{ trans('message.trailer') }}
+                        </a>
                     </div>
                     <div class="button--share">
                         <a href="javascript:fbShare('index.html', 'Fb Share', 'Facebook share popup', '', 520, 350)" class="btn--fb-share"><i class="fa fa-facebook"></i>{{ trans('message.action.share') }}</a>
@@ -154,6 +156,19 @@
                 </div>
             </div>
         </div><!-- film--detail-bottom -->
+    </div>
+    <!--- model show trailer -->
+       <!-- Modal -->
+    <div class="modal fade" id="trailer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-body ">
+            {!! $movie->trailers[0]->embedded_code !!}
+          
+          </div>
+        </div>
+      </div>
     </div>
 </div>
 @endsection

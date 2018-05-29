@@ -49,7 +49,6 @@ class MediaController extends Controller
             'status' => $request->status,
             'type' => $request->type,
         ];
-        dd($request->path);
         $data['path'] = Helper::upload($request->path, 'media');
 
         if ($this->media->create($data)) {

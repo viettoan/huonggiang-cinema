@@ -23,7 +23,6 @@
           <th class="text-center ">{{ trans('message.column.file') }}</th>
           <th class="text-center">{{ trans('message.column.description') }}</th>
           <th class="text-center">{{ trans('message.column.status') }}</th>
-          <th class="text-center">{{ trans('message.column.type') }}</th>
           <th class="text-center"></th>
       </tr>
     </thead>
@@ -39,15 +38,6 @@
                 <button class="btn btn-primary">{{ trans('message.config.show') }}</button>
             @else
             <button class="btn btn-warning">{{ trans('message.config.hide') }}</button>
-            @endif
-          </th>
-          <th class="text-center">
-            @if (config('custom.media.type') != null)
-                @foreach(config('custom.media.type') as $key => $type)
-                    @if($m->type == $type)
-                    <button class="btn btn-primary">{{ $key }}</button>
-                    @endif
-                @endforeach
             @endif
           </th>
           <th>

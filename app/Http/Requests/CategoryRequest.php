@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
         $arr = [
             'name' => 'required|max:255' ,
             'parent_id' => 'required|numeric',
-            'description' => 'required|max:255',
+            'description' => 'required',
         ];
         
         return $arr;

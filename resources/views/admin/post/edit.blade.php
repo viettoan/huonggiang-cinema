@@ -69,8 +69,8 @@
             <label for="exampleInputEmail1">{{ trans('message.column.type') }}</label>
             <select name="type" class="form-control">
                 @if (config('custom.post.type') != null)
-                    @foreach(config('custom.post.type') as $key => $value)
-                        <option value="{{ $value }}" @if($post->type == $value) selected @endif>{{ $key }}</option>
+                    @foreach(config('custom.post.type') as $key => $type)
+                        <option value="{{ $type }}">{{ $key }}</option>
                     @endforeach
                 @endif
             </select>

@@ -95,7 +95,7 @@
             <label for="exampleInputEmail1">{{ trans('message.column.type') }}</label>
             <select class="js-example-basic-multiple form-control" name="type_id[]" multiple="multiple">
                 @foreach ($types as $type)
-                <option value="{{ $type->id }}">{{ $type->description }}</option>
+                <option value="{{ $type->id }}">{{ $type->name }}</option>
                 @endforeach 
             </select>
             @if ($errors->has('type_id'))

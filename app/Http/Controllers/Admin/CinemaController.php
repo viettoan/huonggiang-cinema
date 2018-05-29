@@ -44,7 +44,7 @@ class CinemaController extends Controller
      */
     public function create()
     {
-        $media = $this->media->getMediaByTypeCinema([]);
+        $media = $this->media->all([]);
         $cities = $this->city->all();
         $cinemaSystems = $this->cinemaSystem->getCinemaSystemByStatus(config('custom.cinema_system.status.active'));
 
@@ -62,9 +62,9 @@ class CinemaController extends Controller
         $data = $request->all();
 
         if ($this->cinema->create($data)) {
-            return redirect()->route('cinema.create')->with('error', trans('The cinema has been successfully created!'));
+            return redirect()->route('cinema.create')->with('success', trans('The cinema has been successfully created'));
         } else {
-            return redirect()->route('cinema.create')->with('success', trans('The cinema has been created failed!'));
+            return redirect()->route('cinema.create')->with('error', trans('The cinema has been created failed'));
         }
     }
 
@@ -88,7 +88,7 @@ class CinemaController extends Controller
     public function edit($id)
     {
         $cinema = $this->cinema->find($id, ['media', 'city', 'cinemaSystem']);
-        $media = $this->media->getMediaByTypeCinema([]);
+        $media = $this->media->all([]);
         $cities = $this->city->all();
         $cinemaSystems = $this->cinemaSystem->getCinemaSystemByStatus(config('custom.cinema_system.status.active'));
 
@@ -107,9 +107,9 @@ class CinemaController extends Controller
         $data = $request->all();
         
         if ($this->cinema->update($id, $data)) {
-            return redirect()->route('cinema.edit', ['id' => $id])->with('error', trans('The cinema has been successfully edited!'));
+            return redirect()->route('cinema.edit', ['id' => $id])->with('success', trans('The cinema has been successfully edited'));
         } else {
-            return redirect()->route('cinema.edit', ['id' => $id])->with('success', trans('The cinema has been edited failed!'));
+            return redirect()->route('cinema.edit', ['id' => $id])->with('error', trans('The cinema has been edited failed'));
         }
     }
 
@@ -126,6 +126,15 @@ class CinemaController extends Controller
                 return response(['status' => trans('messages.success')]);
             }
             return response(['status' => trans('messages.failed')]);
+        }
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $cinemas = $this->cinema->search($request->keyword);
+            $view = view('admin.user.list_cinema', compact('cinemas'))->render();
+            return response(['cinemas' => $view]);
         }
     }
 }

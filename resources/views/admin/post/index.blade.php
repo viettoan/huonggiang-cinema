@@ -14,6 +14,9 @@
     {{ trans('message.action.new') }}
     </a>
     </div>
+     <div class="col-md-5">
+      <input type="text" name="search" placeholder="Search ..." class="form-control search">
+    </div>
 </div>
 <div class="table-responsive">
   <table class="table table-hover table-bordered">
@@ -23,7 +26,6 @@
             <th class="text-center ">{{ trans('message.column.title') }}</th>
             <th class="text-center ">{{ trans('message.column.description') }}</th>
             <th class="text-center">{{ trans('message.column.status') }}</th>
-            <th class="text-center">{{ trans('message.column.type') }}</th>  
             <th class="text-center"></th>
         </tr>
     </thead>
@@ -41,15 +43,6 @@
                 <button class="btn btn-primary">{{ trans('message.config.show') }}</button>
                 @endif
             </th> 
-            <th class="text-center">
-                @if (config('custom.post.type') != null)
-                    @foreach(config('custom.post.type') as $key => $value)
-                        @if($post->type == $value)
-                        <button class="btn btn-primary">{{ $key }}</button>
-                        @endif
-                    @endforeach
-                @endif
-            </th>
             <th>
                 <a href = "{{ route('post.edit', ['id' => $post->id]) }}">
                     <i class="fas fa-edit"></i>

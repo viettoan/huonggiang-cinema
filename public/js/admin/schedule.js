@@ -270,4 +270,17 @@ $(document).ready(function() {
             }
         });
     }
+
+    $(document).on('keyup', '.search', function() {
+        var keyd = $(this).val();
+        $.ajax({
+            url: '/admin/search-schedule',
+            method: 'GET',
+            data: {keyword: keyd},
+            success: function (response) {
+                console.log(response);
+                $('.table-responsive').html(response.schedules);
+            }
+        });
+    });
 });
