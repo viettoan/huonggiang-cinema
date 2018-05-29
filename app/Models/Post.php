@@ -14,7 +14,6 @@ class Post extends Model
         'content',
         'status',
         'media_id',
-        'type',
     ];
     public function user()
     {

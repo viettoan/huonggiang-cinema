@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $media = $this->media->getMediaByTypePost([]);
+        $media = $this->media->all();
 
         return view('admin.post.create', compact('media'));
     }
@@ -82,7 +82,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = $this->post->find($id, ['media']);
-        $media = $this->media->getMediaByTypePost([]);
+        $media = $this->media->all();
 
         return view('admin.post.edit', compact('post', 'media'));
     }
@@ -118,6 +118,14 @@ class PostController extends Controller
                 return response(['status' => trans('messages.success')]);
             }
             return response(['status' => trans('messages.failed')]);
+        }
+    }
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $posts = $this->post->search($request->keyword);
+            $view = view('admin.post.list_post', compact('posts'))->render();
+            return response(['posts' => $view]);
         }
     }
 }

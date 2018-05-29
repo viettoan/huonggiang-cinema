@@ -23,7 +23,7 @@
         </div>
     @endif
     <form method="POST" action="{{route('user.store')}}">
-    {{ csrf_field() }}
+    {{ csrf_field() }} <!-- Trường bảo mật(All form)-->
         <div class="form-group">
             <div class="form-row">
                 <div class="col-md-12">

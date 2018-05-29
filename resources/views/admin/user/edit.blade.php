@@ -23,7 +23,7 @@
         </div>
     @endif
     <form method="POST" action="{{ route('user.update', ['id' => $user->id]) }}">
-        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_method" value="PUT"> <!--Khai báo method(Bắt buộc)-->
         <input type="hidden" name="id" value="{{ $user->id }}">
         {{ csrf_field() }}
         <div class="form-group">

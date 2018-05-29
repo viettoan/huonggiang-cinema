@@ -9,39 +9,4 @@ class MediaRepositoryEloquent extends AbstractRepositoryEloquent implements Medi
     {
         return new Media;
     }
-    public function getMediaByTypeCinema($with = [], $select = ['*'])
-    {
-        return $this->model()
-            ->select($select)
-            ->with($with)
-            ->where('type', config('custom.media.type.cinema'))
-            ->get();
-    }
-
-    public function getMediaByTypeMovie($with = [], $select = ['*'])
-    {
-        return $this->model()
-            ->select($select)
-            ->with($with)
-            ->where('type', config('custom.media.type.movie'))
-            ->get();
-    }
-
-    public function getMediaByTypePost($with = [], $select = ['*'])
-    {
-        return $this->model()
-            ->select($select)
-            ->with($with)
-            ->where('type', config('custom.media.type.post'))
-            ->get();
-    }
-
-    public function getMediaByTypePromotion($with = [], $select = ['*'])
-    {
-        return $this->model()
-            ->select($select)
-            ->with($with)
-            ->where('type', config('custom.media.type.promotion'))
-            ->get();
-    }
 }

@@ -41,9 +41,9 @@ class Kernel extends HttpKernel
             'bindings',
         ],
         'admin' => [
-            'auth',
-            'role',
-            'localization'
+            'auth', //Đăng nhập
+            'role', //Quyền
+            'localization' //Chuyển ngôn ngữ
         ],
     ];
 

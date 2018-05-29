@@ -25,7 +25,7 @@ class TypeRequest extends FormRequest
     {
         $arr = [
             'name' => 'required|max:255' ,
-            'description' => 'required|max:255',
+            'description' => 'required',
         ];
         
         return $arr;

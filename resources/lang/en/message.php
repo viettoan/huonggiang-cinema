@@ -4,10 +4,10 @@ return [
     'title' => [
         'manage_cinema_systems' => 'Manage Cinema Systems',
         'add_booking_cinema' => 'Add Booking Cinema',
-        'manage_schedules' => 'Manage Schedules',
+        'manage_schedules' => ' Manage Cinema Schedules',
         'edit_schedule' => 'Edit Schedule',
         'create_schedule' => 'Create Schedule',
-        'manage_cinemas' => 'Manage Cinemas',
+        'manage_cinemas' => ' Manage Cinema Systems',
         'edit_cinema' => 'Edit Cinema',
         'create_cinema' => 'Create Cinema',
         'manage_users' => 'Manage Users',

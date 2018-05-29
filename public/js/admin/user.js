@@ -38,12 +38,13 @@ $(document).ready(function() {
 
     //search by username
     $(document).on('keyup', '.search', function() {
-        var keyword = $(this).val();
+        var keyd = $(this).val();
         $.ajax({
             url: '/admin/search-user',
             method: 'GET',
-            data: {keyword: keyword},
+            data: {keyword: keyd},
             success: function (response) {
+                console.log(response);
                 $('.table-responsive').html(response.users);
             }
         });

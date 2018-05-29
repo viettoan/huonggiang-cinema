@@ -60,16 +60,6 @@
                 </label>
             </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Type</label>
-            <select name="type" class="form-control">
-                @if (config('custom.media.type') != null)
-                    @foreach(config('custom.media.type') as $key => $type)
-                        <option value="{{ $type }}">{{ $key }}</option>
-                    @endforeach
-                @endif
-            </select>
-        </div>
         <button type="submit" class="btn btn-primary btn-block">{{ trans('message.action.save') }}</button>
     </form>
     </div>

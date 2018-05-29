@@ -45,12 +45,12 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $data = $request->all();
-        $data['avatar'] = 'default-avatar.jpeg';
+        $data['avatar'] = 'default-avatar.jpeg'; //Mặc định
 
         if ($this->user->create($data)) {
-            return redirect()->route('user.create')->with('error', trans('The user has been successfully created!'));
+            return redirect()->route('user.create')->with('success', trans('The user has been successfully created'));
         } else {
-            return redirect()->route('user.create')->with('success', trans('The user has been created failed!'));
+            return redirect()->route('user.create')->with('error', trans('The user has been created failed'));
         }
     }
 
@@ -90,9 +90,9 @@ class UserController extends Controller
         $data = $request->all();
         
         if ($this->user->update($id, $data)) {
-            return redirect()->route('user.edit', ['id' => $id])->with('error', trans('The user has been successfully edited!'));
+            return redirect()->route('user.edit', ['id' => $id])->with('success', trans('The user has been successfully edited'));
         } else {
-            return redirect()->route('user.edit', ['id' => $id])->with('success', trans('The user has been edited failed!'));
+            return redirect()->route('user.edit', ['id' => $id])->with('error', trans('The user has been edited failed'));
         }
     }
 

@@ -9,6 +9,10 @@ use App\Http\Requests\TechnologyRequest;
 
 class TechnologyController extends Controller
 {
+    protected $technology;
+    public function __construct(TechnologyRepository $technology) {
+        $this->technology = $technology;
+    }
     /**
      * Display a listing of the resource.
      *

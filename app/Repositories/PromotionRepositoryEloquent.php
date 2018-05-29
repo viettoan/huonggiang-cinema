@@ -14,4 +14,14 @@ class PromotionRepositoryEloquent extends AbstractRepositoryEloquent implements 
     {
         return $this->model()->select($select)->with($with)->where('status', $status)->get();
     }
+
+     public function search($keyword, $with = [], $select = '*')
+    {
+        return $this->model()
+            ->with($with)
+            ->select($select)
+            ->where('start', 'like', '%' . $keyword . '%')
+            ->orwhere('end', 'like', '%' . $keyword . '%')
+            ->paginate(10);
+    }
 }

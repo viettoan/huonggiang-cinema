@@ -34,4 +34,16 @@ $(document).ready(function() {
             }
         });    
     });
+
+    $(document).on('keyup', '.search', function() {
+        var keyd = $(this).val();
+        $.ajax({
+            url: '/admin/search-cinema',
+            method: 'GET',
+            data: {keyword: keyd},
+            success: function (response) {
+                $('.table-responsive').html(response.cinemas); //Thay thế bảng kết quả tìm kiếm
+            }
+        });
+    });
 });

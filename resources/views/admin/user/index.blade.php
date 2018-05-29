@@ -14,7 +14,9 @@
     {{ trans('message.action.new') }}
     </a>
     </div>
-    <div class="col-md-5"><input type="text" name="search" placeholder="Search ..." class="form-control search"></div>
+    <div class="col-md-5">
+      <input type="text" name="search" placeholder="Search ..." class="form-control search">
+    </div>
 </div>
 <div class="table-responsive">
   <table class="table table-hover table-bordered">
@@ -29,11 +31,13 @@
       </tr>
     </thead>
     <tbody>
-    @if (isset($users))
-      @foreach ($users as $user)
+    @if (isset($users)) <!--Check xem biến user được khởi tạo hay chưa?-->
+      @foreach ($users as $user) 
       <tr>
           <th class="text-center">{{ $user->id }}</th>
-          <th class="user-column"><img class="img-responsive avatar-user" src="{{ $user->avatar }}"></th>
+          <th class="user-column">
+            <img class="img-responsive avatar-user" src="{{ $user->avatar }}">
+          </th>
           <th>{{ $user->name }}</th>
           <th>{{ $user->email }}</th>
           <th>{{ $user->role }}</th>
@@ -54,7 +58,7 @@
   </table>
   @if (isset($users)) 
       {{ $users->links() }}
-  @endif
+  @endif <!--Cách khai báo phân trang-->
 </div>
 @endsection
 @section('script')

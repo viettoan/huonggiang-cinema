@@ -11,7 +11,6 @@ class Media extends Model
         'path',
         'description',
         'status',
-        'type',
     ];
 
     public function posts()

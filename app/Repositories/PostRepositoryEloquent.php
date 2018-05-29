@@ -15,4 +15,13 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
     {
         return $this->model()->select($select)->with($with)->where('type', $type)->where('status', config('custom.post.status.show'))->get();
     }
+
+    public function search($keyword, $with = [], $select = '*')
+    {
+        return $this->model()
+            ->with($with)
+            ->select($select)
+            ->where('title', 'like', '%' . $keyword . '%')
+            ->paginate(10);
+    }
 }
