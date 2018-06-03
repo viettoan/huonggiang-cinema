@@ -9,7 +9,7 @@
             <ul class="slides">
                 @if (isset($promotions))
                     @foreach ($promotions as $promotion)
-                        <li><a href="{{ route('promotion', ['id' => $promotion->id]) }}"><img src="{{ $promotion->media->path }}" alt="" /></a></li>
+                        <li><a href="{{ route('promotion', ['id' => $promotion->id]) }}"><img src="{{ $promotion->media }}" alt="" /></a></li>
                     @endforeach
                 @endif
             </ul>
@@ -19,7 +19,7 @@
             <ul class="slides">
             @if (isset($events))
                 @foreach ($events as $event)
-                    <li><a href="{{ route('post', ['id' => $event->id]) }}"><img src="{{ $event->media->path }}" alt="" /></a></li>
+                    <li><a href="{{ route('post', ['id' => $event->id]) }}"><img src="{{ $event->media }}" alt="" /></a></li>
                 @endforeach
             @endif
             </ul>
@@ -45,7 +45,7 @@
                                             <a class="bhd-trailer-box bhd-trailer" href="https://www.youtube.com/watch?v=jSnzO3v1iD0">{{ trans('message.trailer') }}</a>
                                             <span class="meta-box-type"><span class="film--rating">C 13</span> <span class="tech--2d">2D</span></span>
                                             <a href="">
-                                                <img width="245" height="365" src="{{ $movie->media->path }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt=""  />        </a>
+                                                <img width="245" height="365" src="{{ $movie->media }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt=""  />        </a>
                                             <a href=""><span class="movie--name">{{ $movie->name }}</span></a>
                                         </div>
                                         <a href="movies/jumanji-tro-choi-ky-ao/index.html" class="btn--green"><i class="fa fa-ticket"></i>{{ trans('message.action.comment') }}</a>
@@ -67,7 +67,7 @@
                                             <a class="bhd-trailer-box bhd-trailer" href="https://www.youtube.com/watch?v=jSnzO3v1iD0">{{ trans('message.share') }}</a>
                                             <span class="meta-box-type"><span class="film--rating">C 13</span> <span class="tech--2d">2D</span></span>
                                             <a href="">
-                                                <img width="245" height="365" src="{{ $movie->media->path }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt=""/>        </a>
+                                                <img width="245" height="365" src="{{ $movie->media }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt=""/>        </a>
                                             <a href=""><span class="movie--name">{{ $movie->name }}</span></a>
                                         </div>
                                         <a href="movies/jumanji-tro-choi-ky-ao/index.html" class="btn--green"><i class="fa fa-ticket"></i>{{ trans('message.action.comment') }}</a>

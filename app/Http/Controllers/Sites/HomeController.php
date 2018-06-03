@@ -31,10 +31,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $newRelease = $this->movie->getMovieByStatus(config('custom.movie.status.new_release'), ['media']);
-        $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), ['media']);
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), ['media']);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), ['media']);
+        $newRelease = $this->movie->getMovieByStatus(config('custom.movie.status.new_release'), []);
+        $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), []);
+        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
 
         return view('sites.home', compact('newRelease', 'nowShowing', 'promotions', 'events'));
     }
