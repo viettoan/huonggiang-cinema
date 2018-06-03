@@ -15,7 +15,7 @@
         @foreach ($movies as $movie)
         <tr>
             <th class="text-center">{{ $movie->id }}</th>
-            <th><img class="media-file" src="{{ $movie->media->path }}"></th>
+            <th><img class="media-file" src="{{ $movie->media }}"></th>
             <th>{{ $movie->name }}</th>
             <th>{{ $movie->time }}</th>
             <th>{{ $movie->release_date }}</th>

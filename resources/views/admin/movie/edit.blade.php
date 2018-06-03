@@ -81,18 +81,16 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.movie_poster') }}</label>
-            <select name="media_id" class="form-control">
-            @foreach ($media as $m)
-                <option value="{{ $m->id }}" @if ($movie->media->id == $m->id) selected @endif>{{ $m->description }}</option>
-            @endforeach 
-            </select>
-            @if ($errors->has('media_id'))
+            <input class="form-control" id="file-media" type="file" name="media" value="{{ $movie->media }}">
+            @if ($errors->has('media'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('media_id') }}</strong>
+                        <strong>{{ $errors->first('media') }}</strong>
                 </span>
             @endif
+            </div>
+            <img class="col-md-12 img-responsive review-file-media" src="{{ $movie->media }}">
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label for="exampleInputEmail1">{{ trans('message.column.type') }}</label>
             <select class="js-example-basic-multiple form-control" name="type_id[]" multiple="multiple">
                 @foreach ($types as $type)
@@ -109,7 +107,7 @@
                 </span>
             @endif
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label for="exampleInputEmail1">{{ trans('message.column.status') }}</label>
             <div class="radio">
                 <label>

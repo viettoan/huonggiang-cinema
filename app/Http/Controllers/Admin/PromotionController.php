@@ -8,6 +8,7 @@ use App\Contracts\PromotionRepository;
 use App\Contracts\CinemaRepository;
 use App\Contracts\MediaRepository;
 use App\Http\Requests\PromotionRequest;
+use App\Helper\Helper;
 
 class PromotionController extends Controller
 {
@@ -41,9 +42,8 @@ class PromotionController extends Controller
     public function create()
     {
         $cinemas = $this->cinema->all();
-        $media = $this->media->all();
         
-        return view('admin.promotion.create', compact('cinemas', 'media'));
+        return view('admin.promotion.create', compact('cinemas'));
     }
 
     /**
@@ -55,7 +55,7 @@ class PromotionController extends Controller
     public function store(PromotionRequest $request)
     {
         $data = $request->all();
-
+        $data['media'] = Helper::upload($request->media, 'media');
         if ($this->promotion->create($data)) {
             return redirect()->route('promotion.create')->with('error', trans('The promotion has been successfully created!'));
         } else {
@@ -84,9 +84,8 @@ class PromotionController extends Controller
     {
         $promotion = $this->promotion->find($id, ['cinema']);
         $cinemas = $this->cinema->all();
-        $media = $this->media->all();
 
-        return view('admin.promotion.edit', compact('promotion', 'cinemas', 'media'));
+        return view('admin.promotion.edit', compact('promotion', 'cinemas'));
     }
 
     /**
@@ -99,7 +98,9 @@ class PromotionController extends Controller
     public function update(PromotionRequest $request, $id)
     {
         $data = $request->all();
-        
+        if ($request->media != null) {
+            $data['media'] = Helper::upload($request->media, 'media');
+        }
         if ($this->promotion->update($id, $data)) {
             return redirect()->route('promotion.edit', ['id' => $id])->with('error', trans('The promotion has been successfully edited!'));
         } else {

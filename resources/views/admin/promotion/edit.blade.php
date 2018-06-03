@@ -40,16 +40,14 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.banner') }}</label>
-            <select name="media_id" class="form-control">
-            @foreach ($media as $m)
-                <option value="{{ $m->id }}" @if ($promotion->media->id == $m->id) selected @endif>{{ $m->description }}</option>
-            @endforeach 
-            </select>
-            @if ($errors->has('media_id'))
+            <input class="form-control" id="file-media" type="file" name="media" value="{{ $promotion->media }}">
+            @if ($errors->has('media'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('media_id') }}</strong>
+                        <strong>{{ $errors->first('media') }}</strong>
                 </span>
             @endif
+            </div>
+            <img class="col-md-12 img-responsive review-file-media" src="{{ $promotion->media }}">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.title') }}</label>

@@ -9,6 +9,7 @@ use App\Contracts\MediaRepository;
 use App\Contracts\CityRepository;
 use App\Contracts\CinemaSystemRepository;
 use App\Http\Requests\CinemaRequest;
+use App\Helper\Helper;
 
 class CinemaController extends Controller
 {
@@ -32,7 +33,7 @@ class CinemaController extends Controller
      */
     public function index()
     {
-        $cinemas = $this->cinema->paginate(10, ['media', 'city', 'cinemaSystem']);
+        $cinemas = $this->cinema->paginate(10, [ 'city', 'cinemaSystem']);
 
         return view('admin.cinema.index', compact('cinemas'));
     }
@@ -44,11 +45,10 @@ class CinemaController extends Controller
      */
     public function create()
     {
-        $media = $this->media->all([]);
         $cities = $this->city->all();
         $cinemaSystems = $this->cinemaSystem->getCinemaSystemByStatus(config('custom.cinema_system.status.active'));
 
-        return view('admin.cinema.create', compact('media', 'cities', 'cinemaSystems'));
+        return view('admin.cinema.create', compact('cities', 'cinemaSystems'));
     }
 
     /**
@@ -60,6 +60,7 @@ class CinemaController extends Controller
     public function store(CinemaRequest $request)
     {
         $data = $request->all();
+        $data['media'] = Helper::upload($request->media, 'media');
 
         if ($this->cinema->create($data)) {
             return redirect()->route('cinema.create')->with('success', trans('The cinema has been successfully created'));
@@ -87,12 +88,11 @@ class CinemaController extends Controller
      */
     public function edit($id)
     {
-        $cinema = $this->cinema->find($id, ['media', 'city', 'cinemaSystem']);
-        $media = $this->media->all([]);
+        $cinema = $this->cinema->find($id, ['city', 'cinemaSystem']);
         $cities = $this->city->all();
         $cinemaSystems = $this->cinemaSystem->getCinemaSystemByStatus(config('custom.cinema_system.status.active'));
 
-        return view('admin.cinema.edit', compact('cinema', 'media', 'cities', 'cinemaSystems'));
+        return view('admin.cinema.edit', compact('cinema', 'cities', 'cinemaSystems'));
     }
 
     /**
@@ -105,7 +105,9 @@ class CinemaController extends Controller
     public function update(CinemaRequest $request, $id)
     {
         $data = $request->all();
-        
+        if ($request->media != null) {
+            $data['media'] = Helper::upload($request->media, 'media');
+        }
         if ($this->cinema->update($id, $data)) {
             return redirect()->route('cinema.edit', ['id' => $id])->with('success', trans('The cinema has been successfully edited'));
         } else {
