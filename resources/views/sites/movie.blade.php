@@ -25,7 +25,7 @@
         <div class="film--detail-content-top clearfix">
             <div class="row">
                 <div class="col-thubnail-bhd col-md-5">
-                    <a href="#"><img width="470" height="700" src="{{ $movie->media->path }}" class="product--img wp-post-image" alt=""/></a>
+                    <a href="#"><img width="470" height="700" src="{{ $movie->media }}" class="product--img wp-post-image" alt=""/></a>
                 </div>
                 <div class="product--view col-md-7">
                     <div class="product--name">

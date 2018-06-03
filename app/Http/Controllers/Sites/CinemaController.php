@@ -37,9 +37,9 @@ class CinemaController extends Controller
      */
     public function index()
     {
-        $cinemaSystems = $this->cinemaSystem->all(['cinemas.media']);
-        $newRelease = $this->movie->getMovieByStatus(config('custom.movie.status.new_release'), ['media']);
-        $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), ['media']);
+        $cinemaSystems = $this->cinemaSystem->all(['cinemas']);
+        $newRelease = $this->movie->getMovieByStatus(config('custom.movie.status.new_release'), []);
+        $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), []);
         return view('sites.cinemas', compact('cinemaSystems', 'nowShowing', 'newRelease'));
     }
      /**
@@ -51,8 +51,8 @@ class CinemaController extends Controller
     public function show($id)
     {
         $cinema = $this->cinema->find($id, ['cinemaSystem.cinemas.city']);
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), ['media']);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), ['media']);
+        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
 
         return view('sites.cinema', compact('cinema', 'promotions', 'events'));
     }

@@ -36,7 +36,7 @@
         @foreach ($movies as $movie)
         <tr>
             <th class="text-center">{{ $movie->id }}</th>
-            <th><img class="media-file" src="{{ $movie->media->path }}"></th>
+            <th><img class="media-file" src="{{ $movie->media }}"></th>
             <th>{{ $movie->name }}</th>
             <th>{{ $movie->time }}</th>
             <th>{{ $movie->release_date }}</th>
@@ -55,7 +55,7 @@
                 <a href = "{{ route('movie.edit', ['id' => $movie->id]) }}">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a data-movie="{{ $movie->id}}" class="delMovie">
+                <a data-movie="{{ $movie->id }}" class="delMovie">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </th>

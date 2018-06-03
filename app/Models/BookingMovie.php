@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BookingMovie extends Model
 {
-    
+    use SoftDeletes;
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     protected $fillable = [
         'cinema_id',
         'movie_id',
@@ -24,4 +25,5 @@ class BookingMovie extends Model
     {
         return $this->belongsTo(Cinema::class);
     }
+    
 }

@@ -53,16 +53,13 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.banner') }}</label>
-            <select name="media_id" class="form-control">
-            @foreach ($media as $m)
-                <option value="{{ $m->id }}">{{ $m->description }}</option>
-            @endforeach 
-            </select>
-            @if ($errors->has('media_id'))
+            <input class="form-control" id="file-media" type="file" name="media" value="{{ old('media') }}">
+            @if ($errors->has('media'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('media_id') }}</strong>
+                        <strong>{{ $errors->first('media') }}</strong>
                 </span>
             @endif
+            <img class="col-md-12 img-responsive review-file-media">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.type') }}</label>

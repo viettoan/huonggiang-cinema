@@ -57,24 +57,24 @@ class PostController extends Controller
     public function show($id)
     {
         $post = $this->post->find($id, []);
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), ['media']);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), ['media']);
+        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
 
         return view('sites.post', compact('post', 'promotions', 'events'));
     }
     public function showAdvertisement()
     {
-        $post = $this->post->getPostByType(config('custom.post.type.advertisement'), ['media'])->first();
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), ['media']);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), ['media']);
+        $post = $this->post->getPostByType(config('custom.post.type.advertisement'), [])->first();
+        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
 
         return view('sites.post', compact('post', 'promotions', 'events'));
     }
     public function showRecruitment()
     {
-        $post = $this->post->getPostByType(config('custom.post.type.recruitment'), ['media'])->first();
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), ['media']);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), ['media']);
+        $post = $this->post->getPostByType(config('custom.post.type.recruitment'), [])->first();
+        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
 
         return view('sites.post', compact('post', 'promotions', 'events'));
     }

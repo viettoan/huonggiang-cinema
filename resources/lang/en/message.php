@@ -7,7 +7,7 @@ return [
         'manage_schedules' => ' Manage Cinema Schedules',
         'edit_schedule' => 'Edit Schedule',
         'create_schedule' => 'Create Schedule',
-        'manage_cinemas' => ' Manage Cinema Systems',
+        'manage_cinemas' => ' Manage Cinemas',
         'edit_cinema' => 'Edit Cinema',
         'create_cinema' => 'Create Cinema',
         'manage_users' => 'Manage Users',

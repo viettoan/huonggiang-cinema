@@ -36,7 +36,7 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        $movie = $this->movie->find($id, ['trailers', 'media', 'movieTypes', 'comments' => function($query) {
+        $movie = $this->movie->find($id, ['trailers', 'movieTypes', 'comments' => function($query) {
             $query->orderBy('created_at','DESC')->with('user');
         }]);
 

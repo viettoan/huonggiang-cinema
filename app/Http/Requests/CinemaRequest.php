@@ -23,17 +23,29 @@ class CinemaRequest extends FormRequest
      */
     public function rules()
     {
-        $arr = [
+        if ($this->isMethod('PUT')) {
+            $arr = [
+                'cinema_system_id' => 'required|numeric',
+                'city_id' => 'required|numeric',
+                'name' => 'required|max:255' ,
+                'address' => 'required|max:255',
+                'description' => 'required',
+                'media' => 'max:10000',
+                'status' => 'required|numeric',
+                'location' => 'required|max:255',
+            ];
+            
+            return $arr;
+        }
+        return [
             'cinema_system_id' => 'required|numeric',
             'city_id' => 'required|numeric',
             'name' => 'required|max:255' ,
             'address' => 'required|max:255',
             'description' => 'required',
-            'media_id' => 'required|numeric',
+            'media' => 'required|max:10000',
             'status' => 'required|numeric',
             'location' => 'required|max:255',
         ];
-        
-        return $arr;
     }
 }

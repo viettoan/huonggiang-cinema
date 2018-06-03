@@ -3,17 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cinema extends Model
 {
-    
+    use SoftDeletes;
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     protected $fillable = [
         'cinema_system_id',
         'city_id',
         'name',
         'address',
         'description',
-        'media_id',
+        'media',
         'status',
         'location',
     ];
@@ -40,5 +42,10 @@ class Cinema extends Model
     public function bookingMovies()
     {
         return $this->hasMany(BookingMovie::class);
+    }
+
+    public function getMediaAttribute($value)
+    {
+        return asset(config('custom.defaultMedia') . $value);
     }
 }

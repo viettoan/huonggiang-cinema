@@ -43,7 +43,7 @@ class ScheduleController extends Controller
     public function index()
     {
         
-        $movies = $this->movie->all(['media']);
+        $movies = $this->movie->all([]);
         $cinemaSystems = $this->cinemaSystem->all();
         $cities = $this->city->all();
 
@@ -54,7 +54,7 @@ class ScheduleController extends Controller
     {
         $cinemaSystem = $request->cinemaSystem;
         $city = $request->city;
-        $cinemas = $this->cinema->getByCinemaSystemAndCity($cinemaSystem, $city, ['media']);
+        $cinemas = $this->cinema->getByCinemaSystemAndCity($cinemaSystem, $city, []);
 
         return response(['cinemas' => $cinemas]);
     }
@@ -71,8 +71,7 @@ class ScheduleController extends Controller
                 $query->with([
                     'bookingMovies' => function ($query) use ($cinema_id) {
                         $query->where('cinema_id', $cinema_id);
-                    },
-                    'media'
+                    }
                 ]);
             }
         ]);
@@ -92,8 +91,7 @@ class ScheduleController extends Controller
                 $query->with([
                     'bookingMovies' => function ($query) use ($movie_id) {
                         $query->where('movie_id', $movie_id);
-                    },
-                    'media'
+                    }
                 ]);
             }
         ]);

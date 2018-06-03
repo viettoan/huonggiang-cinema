@@ -9,6 +9,7 @@ use App\Contracts\MediaRepository;
 use App\Contracts\PostRepository;
 use App\Http\Requests\PostRequest;
 use Auth;
+use App\Helper\Helper;
 
 class PostController extends Controller
 {
@@ -40,9 +41,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $media = $this->media->all();
-
-        return view('admin.post.create', compact('media'));
+        return view('admin.post.create');
     }
 
     /**
@@ -54,6 +53,7 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $data = $request->all();
+        $data['media'] = Helper::upload($request->media, 'media');
         $data['user_id'] = Auth::user()->id;
         if ($this->post->create($data)) {
             return redirect()->route('post.create')->with('error', trans('The post has been successfully created!'));
@@ -82,9 +82,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = $this->post->find($id, ['media']);
-        $media = $this->media->all();
 
-        return view('admin.post.edit', compact('post', 'media'));
+        return view('admin.post.edit', compact('post'));
     }
 
     /**
@@ -97,7 +96,9 @@ class PostController extends Controller
     public function update(PostRequest $request, $id)
     {
         $data = $request->all();
-        
+        if ($request->media != null) {
+            $data['media'] = Helper::upload($request->media, 'media');
+        }
         if ($this->post->update($id, $data)) {
             return redirect()->route('post.edit', ['id' => $id])->with('error', trans('The post has been successfully edited!'));
         } else {

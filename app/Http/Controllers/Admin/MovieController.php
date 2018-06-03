@@ -11,6 +11,7 @@ use App\Contracts\TypeRepository;
 use App\Contracts\CinemaRepository;
 use App\Contracts\BookingMovieRepository;
 use App\Http\Requests\MovieRequest;
+use App\Helper\Helper;
 
 class MovieController extends Controller
 {
@@ -40,7 +41,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = $this->movie->paginate(10, ['media']);
+        $movies = $this->movie->paginate(10, []);
 
         return view('admin.movie.index', compact('movies'));
     }
@@ -52,10 +53,9 @@ class MovieController extends Controller
      */
     public function create()
     {
-        $media = $this->media->all();
         $types = $this->type->getTypeByMovie([]);
 
-        return view('admin.movie.create', compact('media', 'types'));
+        return view('admin.movie.create', compact('types'));
     }
 
     /**
@@ -76,6 +76,7 @@ class MovieController extends Controller
             'status' => $request->status,
             'media_id' => $request->media_id,
         ];
+        $data['media'] = Helper::upload($request->media, 'media');
         $movie = $this->movie->create($dataMovie);
         if ($movie) {
             foreach ($request->type_id as $type_id) {
@@ -110,11 +111,11 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        $movie = $this->movie->find($id, ['media']);
+        $movie = $this->movie->find($id, []);
         $movieTypes = $this->movieType->getTypeByMovieId($id, [])->pluck('type_id')->toArray();
-        $media = $this->media->all([]);
         $types = $this->type->getTypeByMovie([]);
-        return view('admin.movie.edit', compact('movie', 'media', 'types', 'movieTypes'));
+        
+        return view('admin.movie.edit', compact('movie', 'types', 'movieTypes'));
     }
 
     /**
@@ -134,8 +135,11 @@ class MovieController extends Controller
             'actors' => $request->actors,
             'description' => $request->description,
             'status' => $request->status,
-            'media_id' => $request->media_id,
         ];
+        
+        if ($request->media != null) {
+            $dataMovie['media'] = Helper::upload($request->media, 'media');
+        }
         $movie = $this->movie->update($id, $dataMovie);
         
         if ($movie) {

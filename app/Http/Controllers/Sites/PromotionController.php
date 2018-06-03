@@ -31,10 +31,10 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), ['media']);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), ['media']);
-        $newRelease = $this->movie->getMovieByStatus(config('custom.movie.status.new_release'), ['media']);
-        $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), ['media']);
+        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
+        $newRelease = $this->movie->getMovieByStatus(config('custom.movie.status.new_release'), []);
+        $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), []);
 
         return view('sites.promotion-event', compact('promotions', 'events', 'nowShowing', 'newRelease'));
     }
@@ -69,8 +69,8 @@ class PromotionController extends Controller
     public function show($id)
     {
         $promotion = $this->promotion->find($id, []);
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), ['media']);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), ['media']);
+        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
 
         return view('sites.promotion', compact('promotion', 'promotions', 'events'));
     }
