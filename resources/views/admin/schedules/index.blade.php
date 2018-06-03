@@ -30,7 +30,7 @@
         </thead>
         <tbody>
         @if (isset($schedules))
-        @foreach ($schedules as $schedule)
+        @foreach ($schedules as $key=>$schedule)
             <tr>
                 <th class="text-center ">{{ $schedule->cinema->name }}</th>
                 <th class="text-center ">{{ $schedule->movie->name }}</th>

@@ -31,9 +31,9 @@
     </thead>
     <tbody>
     @if (isset($posts))
-      @foreach ($posts as $post)
+      @foreach ($posts as $key=>$post)
         <tr>
-            <th class="text-center">{{ $post->id }}</th>
+            <th class="text-center">{{ $key+1 }}</th>
             <th>{{ $post->title }}</th>
             <th>{{ $post->description }}</th>
             <th class="text-center">

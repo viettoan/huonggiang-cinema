@@ -25,29 +25,19 @@ class PromotionRequest extends FormRequest
     {
         if ($this->isMethod('PUT')) {
             $arr = [
-                'cinema_id' => 'required',
-                'title' => 'required|max:255' ,
-                'description' => 'required',
-                'content' => 'required',
-                'start' => 'required',
-                'end' => 'required',
-                'sale' => 'required|numeric|min:0',
-                'status' => 'required|numeric',
+                'title' => 'max:255' ,
+                'sale' => 'min:0',
+                'status' => 'numeric',
                 'media' => 'max:10000',
             ];
             
             return $arr;
         }
         return [
-            'cinema_id' => 'required',
-            'title' => 'required|max:255' ,
-            'description' => 'required',
-            'content' => 'required',
-            'start' => 'required',
-            'end' => 'required',
-            'sale' => 'required|numeric|min:0',
-            'status' => 'required|numeric',
-            'media' => 'max:10000|required',
+            'title' => 'max:255' ,
+                'sale' => 'min:0',
+                'status' => 'numeric',
+                'media' => 'max:10000|required',
         ];
     }
 }

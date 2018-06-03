@@ -101,3 +101,12 @@
 #trailer {
     z-index: 9999999999999;
 }
+
+.promotion--name{
+    color:#fff;
+}
+
+.promotion--name:hover{
+    color: #337ab7;
+    text-decoration: none;
+}

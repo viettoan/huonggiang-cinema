@@ -12,8 +12,6 @@
                 <li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="{{ route('cinemas') }}">{{ trans('message.title.cinema_systems') }}</a></li>
                 <li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="{{ route('promotions') }}">{{ trans('message.title.promotions') }}</a></li>
                 <li id="menu-item-272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-272"><a href="{{ route('advertisement') }}">{{ trans('message.title.advertisement') }}</a></li>
-                <li id="menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260"><a href="{{ route('recruitment') }}">{{ trans('message.title.recruitment') }}</a></li>
-                <li id="menu-item-3316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3316"><a href="morathegioi/index.html">{{ trans('message.title.open_world') }}</a></li>
                 @if (!Auth::guest())
                     @if (Auth::user()->role == config('custom.admin'))
                         <li class="menu-item menu-item-type-custom menu-item-object-custom">
@@ -39,18 +37,14 @@
                     <li><a target="_blank" href="https://www.facebook.com/BHDStar"><img src="{{ asset('wp-content/themes/bhd/assets/images/fb_logo.png') }}" alt="fb bhd" /></a></li>
                     <li><a href="{{ route('schedules') }}"><img src="{{ asset('wp-content/themes/bhd/assets/images/lc.png') }}" alt="lich chieu" /></a></li>
                     <li><img class="search-mvtr" src="{{ asset('wp-content/themes/bhd/assets/images/mvtr.png') }}" alt="lich chieu rap" /></li>
-                    <li><img class="search-mvtp" src="{{ asset('wp-content/themes/bhd/assets/images/mvtp.png') }}" alt="lich chieu phim" /></li>
-                    <li><a target="_blank" href="morathegioi/index.html"><img src="{{ asset('wp-content/themes/bhd/assets/images/mrtg1.png') }}" alt="lich chieu" /></a></li>
+                    <li><img class="search-mvtp" src="{{ asset('wp-content/themes/bhd/assets/images/mvtp.png') }}" alt="lich chieu phim" /></li>>
                 </ul>
                 <div class="language">
                     <a class="@if (Session::get('locale') == 'vi') active @endif" href="{{ route('localization', ['lang' => 'vi']) }}">VN</a>
                     | <a class="@if (Session::get('locale') == 'en') active @endif" href="{{ route('localization', ['lang' => 'en']) }}">EN</a>
                 </div>
-                <a class="hotline" href="he-thong-rap/index.html"><span><img src="{{ asset('wp-content/themes/bhd/assets/images/phone.png') }}"  alt="hotline bhd"/> : </span>1900 2099</a>
+                <a class="hotline" href="he-thong-rap/index.html"><span><img src="{{ asset('wp-content/themes/bhd/assets/images/phone.png') }}"  alt="hotline bhd"/> : </span>1900 1080</a>
                 <div class="header--right">
-                    <a target="_blank" href="movie365/index.html" class="top--link" style="margin-right: 15px;"> 
-                        <img src="{{ asset('wp-content/themes/bhd/assets/images/movie-365.png') }}" alt="365">
-                    </a>
                     <a href="tai-khoan/index.html" class="top--link">
                         <img src="{{ asset('wp-content/themes/bhd/assets/images/bhdstar-member.png') }}" alt="MEMBER">
                     </a>

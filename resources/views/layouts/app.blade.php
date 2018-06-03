@@ -59,6 +59,6 @@
     <script src="{{asset('wp-includes/js/wp-embed.min125b.js?ver=4.7.4')}}"></script>
     <script src="{{asset('bower/toastr/toastr.min.js')}}"></script>
     @yield('script')
-    <script lang="javascript">var _vc_data = {id : 5257784, secret : '7d3496ce2fc99b67e2cbd74214e6687f'};(function() {var ga = document.createElement('script');ga.type = 'text/javascript';ga.async=true; ga.defer=true;ga.src = '//live.vnpgroup.net/client/tracking.js';var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>
+    <script lang="javascript">var _vc_data = {id : 5664417, secret : 'c78299a1c3f79e4ec5180adf3a75e05d'};(function() {var ga = document.createElement('script');ga.type = 'text/javascript';ga.async=true; ga.defer=true;ga.src = '//live.vnpgroup.net/client/tracking.js';var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>            
 </body>
 </html>

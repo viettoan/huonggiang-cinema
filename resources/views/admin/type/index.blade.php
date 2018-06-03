@@ -27,9 +27,9 @@
     </thead>
     <tbody>
     @if (isset($types))
-      @foreach ($types as $type)
+      @foreach ($types as $key=>$type)
       <tr>
-          <th class="text-center">{{ $type->id }}</th>
+          <th class="text-center">{{ $key+1 }}</th>
           <th>{{ $type->name }}</th>
           <th>{{ $type->description }}</th>
           <th>

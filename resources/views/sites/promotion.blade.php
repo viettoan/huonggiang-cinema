@@ -6,9 +6,10 @@
     <div class="container">
         <h1 class="about--us-title">{{ trans('message.title.promotions') }}</h1>
         <div class="about--us-content">
-            <h3 class="content--title">{{ $promotion->title }}</h3>
+            <h3 class="content--title">
+                {{ ($promotion->title) ? $promotion->title : '' }}</h3>
             <div class="text--content">
-                {!! $promotion->content !!}
+                {!! ($promotion->content) ? $promotion->content : '' !!}
             </div>
             <div class="tag--list">
                 <i class="fa fa-tags"></i>

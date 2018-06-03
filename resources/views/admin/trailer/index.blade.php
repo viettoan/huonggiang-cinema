@@ -27,9 +27,9 @@
     </thead>
     <tbody>
     @if (isset($trailers))
-      @foreach ($trailers as $trailer)
+      @foreach ($trailers as $key=>$trailer)
         <tr>
-            <th class="text-center">{{ $trailer->id }}</th>
+            <th class="text-center">{{ $key+1 }}</th>
             <th>{{ $trailer->movie->name }}</th>
             <th>{!! $trailer->embedded_code !!}</th>
                         

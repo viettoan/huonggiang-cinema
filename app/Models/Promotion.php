@@ -26,11 +26,6 @@ class Promotion extends Model
     }
     public function cinema()
     {
-        return $this->belongsTo(Cinema::class);
-    }
-
-    public function media()
-    {
-        return $this->belongsTo(Media::class);
+        return $this->belongsTo(CinemaSystem::class);
     }
 }

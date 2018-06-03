@@ -27,9 +27,9 @@
     </thead>
     <tbody>
     @if (isset($technologies))
-      @foreach ($technologies as $technology)
+      @foreach ($technologies as $key=>$technology)
         <tr>
-            <th class="text-center">{{ $technology->id }}</th>
+            <th class="text-center">{{ $key+1 }}</th>
             <th>{{ $technology->name }}</th>
             <th>{{ $technology->description }}</th>
                         

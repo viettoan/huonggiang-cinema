@@ -29,7 +29,7 @@
             <label for="exampleInputEmail1">{{ trans('message.column.cinema') }}</label>
             <select name="cinema_id" class="form-control">
                 @foreach ($cinemas as $cinema)
-                <option value="{{ $cinema->id }}" @if ($promotion->cinema->id == $cinema->id) @endif>{{ $cinema->name }}</option>
+                <option value="{{ $cinema->id }}" @if ($promotion->cinema->id == $cinema->id) selected @endif>{{ $cinema->name }}</option>
                 @endforeach 
             </select>
             @if ($errors->has('cinema_id'))
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.title') }}</label>
-            <input class="form-control" type="text" name="title" value="{{ $promotion->title }}" placeholder="Title" required>
+            <input class="form-control" type="text" name="title" value="{{ $promotion->title }}" placeholder="Title">
             @if ($errors->has('title'))
                 <span class="help-block">
                         <strong>{{ $errors->first('title') }}</strong>
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.description') }}</label>
-            <textarea class="form-control" rows="5" name="description" required>{{ $promotion->description }}</textarea>
+            <textarea class="form-control" rows="5" name="description">{{ $promotion->description }}</textarea>
             @if ($errors->has('description'))
                 <span class="help-block">
                         <strong>{{ $errors->first('description') }}</strong>
@@ -69,7 +69,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.content') }}</label>
-            <textarea class="form-control" rows="5" name="content" required>{{ $promotion->content }}</textarea>
+            <textarea class="form-control" rows="5" name="content">{{ $promotion->content }}</textarea>
             @if ($errors->has('content'))
                 <span class="help-block">
                         <strong>{{ $errors->first('content') }}</strong>
@@ -78,7 +78,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.sale') }}</label>
-            <input class="form-control" type="number" name="sale" value="{{ $promotion->sale }}" placeholder="Time" required>
+            <input class="form-control" type="number" name="sale" value="{{ $promotion->sale }}" placeholder="Time">
             @if ($errors->has('sale'))
                 <span class="help-block">
                         <strong>{{ $errors->first('sale') }}</strong>
@@ -87,7 +87,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.start_date') }}</label>
-            <input class="form-control" type="date" name="start" value="{{ $promotion->start }}" required>
+            <input class="form-control" type="date" name="start" value="{{ $promotion->start }}">
             @if ($errors->has('start'))
                 <span class="help-block">
                         <strong>{{ $errors->first('start') }}</strong>
@@ -96,7 +96,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.end_date') }}</label>
-            <input class="form-control" type="date" name="end" value="{{ $promotion->end }}" required>
+            <input class="form-control" type="date" name="end" value="{{ $promotion->end }}">
             @if ($errors->has('end'))
                 <span class="help-block">
                         <strong>{{ $errors->first('end') }}</strong>

@@ -5,7 +5,7 @@
 				<ul class="slides">
 					@if (isset($promotions))
 						@foreach ($promotions as $promotion)
-							<li><a href="{{ route('promotion', ['id' => $promotion->id]) }}"><img src="{{ $promotion->media->path }}" alt="" /></a></li>
+							<li><a href="{{ route('promotion', ['id' => $promotion->id]) }}"><img src="{{ $promotion->media }}" alt="" /></a></li>
 						@endforeach
 					@endif
 				</ul>
@@ -15,7 +15,7 @@
 				<ul class="slides">
 				@if (isset($events))
 					@foreach ($events as $event)
-						<li><a href="{{ route('post', ['id' => $event->id]) }}"><img src="{{ $event->media->path }}" alt="" /></a></li>
+						<li><a href="{{ route('post', ['id' => $event->id]) }}"><img src="{{ $event->media }}" alt="" /></a></li>
 					@endforeach
 				@endif
 				</ul>

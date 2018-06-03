@@ -33,9 +33,9 @@
     </thead>
     <tbody>
     @if (isset($movies))
-        @foreach ($movies as $movie)
+        @foreach ($movies as $key=>$movie)
         <tr>
-            <th class="text-center">{{ $movie->id }}</th>
+            <th class="text-center">{{ $key+1 }}</th>
             <th><img class="media-file" src="{{ $movie->media }}"></th>
             <th>{{ $movie->name }}</th>
             <th>{{ $movie->time }}</th>
