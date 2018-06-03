@@ -26,9 +26,9 @@
     </thead>
     <tbody>
     @if (isset($cities))
-      @foreach ($cities as $city)
+      @foreach ($cities as $key=>$city)
         <tr>
-            <th class="text-center">{{ $city->id }}</th>
+            <th class="text-center">{{ $key+1 }}</th>
             <th>{{ $city->name }}</th>
             <th>
                 <a href = "{{ route('city.edit', ['id' => $city->id]) }}">

@@ -74,9 +74,9 @@ class MovieController extends Controller
             'actors' => $request->actors,
             'description' => $request->description,
             'status' => $request->status,
-            'media_id' => $request->media_id,
         ];
-        $data['media'] = Helper::upload($request->media, 'media');
+        $dataMovie['media'] = Helper::upload($request->media, 'media');
+        
         $movie = $this->movie->create($dataMovie);
         if ($movie) {
             foreach ($request->type_id as $type_id) {

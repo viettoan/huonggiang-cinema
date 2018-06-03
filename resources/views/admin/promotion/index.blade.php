@@ -34,9 +34,9 @@
     </thead>
     <tbody>
     @if (isset($promotions))
-      @foreach ($promotions as $promotion)
+      @foreach ($promotions as $key=>$promotion)
         <tr>
-            <th class="text-center">{{ $promotion->id }}</th>
+            <th class="text-center">{{ $key+1 }}</th>
             <th>{{ $promotion->cinema->name }}</th>
             <th>{{ $promotion->title }}</th>
             <th>{{ $promotion->start }}</th>

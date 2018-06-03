@@ -26,9 +26,9 @@
     </thead>
     <tbody>
     @if (isset($times))
-      @foreach ($times as $time)
+      @foreach ($times as $key=>$time)
       <tr>
-          <th class="text-center">{{ $time->id }}</th>
+          <th class="text-center">{{ $key+1 }}</th>
           <th class="text-center">{{ $time->time }}</th>
           <th>
             <a href = "{{ route('time.edit', ['id' => $time->id]) }}">

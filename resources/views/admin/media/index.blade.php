@@ -28,9 +28,9 @@
     </thead>
     <tbody>
     @if (isset($media))
-      @foreach ($media as $m)
+      @foreach ($media as $key=>$m)
       <tr>
-          <th class="text-center">{{ $m->id }}</th>
+          <th class="text-center">{{ $key+1 }}</th>
           <th><img class="img-responsive media-file" src="{{ $m->path }}"></th>
           <th>{{ $m->description }}</th>
           <th class="text-center">

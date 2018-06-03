@@ -39,7 +39,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.banner') }}</label>
-            <input class="form-control" id="file-media" type="file" name="media" value="{{ old('media') }}">
+            <input class="form-control" id="file-media" type="file" name="media" value="{{ old('media') }}" required>
             @if ($errors->has('media'))
                 <span class="help-block">
                         <strong>{{ $errors->first('media') }}</strong>
@@ -49,7 +49,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.title') }}</label>
-            <input class="form-control" type="text" name="title" value="{{ old('title') }}" placeholder="Title" required>
+            <input class="form-control" type="text" name="title" value="{{ old('title') }}" placeholder="Title" >
             @if ($errors->has('title'))
                 <span class="help-block">
                         <strong>{{ $errors->first('title') }}</strong>
@@ -58,7 +58,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.description') }}</label>
-            <textarea class="form-control" rows="5" name="description" required>{{ old('description') }}</textarea>
+            <textarea class="form-control" rows="5" name="description" >{{ old('description') }}</textarea>
             @if ($errors->has('description'))
                 <span class="help-block">
                         <strong>{{ $errors->first('description') }}</strong>
@@ -67,7 +67,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.content') }}</label>
-            <textarea class="form-control" rows="5" name="content" required>{{ old('content') }}</textarea>
+            <textarea class="form-control" rows="5" name="content" >{{ old('content') }}</textarea>
             @if ($errors->has('content'))
                 <span class="help-block">
                         <strong>{{ $errors->first('content') }}</strong>
@@ -76,7 +76,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.sale') }}</label>
-            <input class="form-control" type="number" name="sale" value="{{ old('sale') }}" placeholder="Sale" required>
+            <input class="form-control" type="number" name="sale" value="{{ old('sale') }}" placeholder="Sale" >
             @if ($errors->has('sale'))
                 <span class="help-block">
                         <strong>{{ $errors->first('sale') }}</strong>
@@ -85,7 +85,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.start_date') }}</label>
-            <input class="form-control" type="date" name="start" value="{{ old('start') }}" required>
+            <input class="form-control" type="date" name="start" value="{{ old('start') }}" >
             @if ($errors->has('start'))
                 <span class="help-block">
                         <strong>{{ $errors->first('start') }}</strong>
@@ -94,7 +94,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.end_date') }}</label>
-            <input class="form-control" type="date" name="end" value="{{ old('end') }}" required>
+            <input class="form-control" type="date" name="end" value="{{ old('end') }}" >
             @if ($errors->has('end'))
                 <span class="help-block">
                         <strong>{{ $errors->first('end') }}</strong>

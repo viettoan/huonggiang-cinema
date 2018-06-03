@@ -9,7 +9,14 @@
             <ul class="slides">
                 @if (isset($promotions))
                     @foreach ($promotions as $promotion)
-                        <li><a href="{{ route('promotion', ['id' => $promotion->id]) }}"><img src="{{ $promotion->media }}" alt="" /></a></li>
+                        <li>
+                            <a href="{{ route('promotion', ['id' => $promotion->id]) }}"><img src="{{ $promotion->media }}" alt="" /></a>
+                            <h4>
+                                <a class="promotion--name" href="{{ route('promotion', ['id' => $promotion->id]) }}">
+                                    <b  style="color: #fff;">{{ $promotion->title }}</b>
+                                </a>
+                            </h4>
+                        </li>
                     @endforeach
                 @endif
             </ul>

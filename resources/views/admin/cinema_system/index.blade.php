@@ -31,9 +31,9 @@
     </thead>
     <tbody>
     @if (isset($cinemaSystems))
-      @foreach ($cinemaSystems as $cinemaSystem)
+      @foreach ($cinemaSystems as $key=>$cinemaSystem)
       <tr>
-          <th class="text-center">{{ $cinemaSystem->id }}</th>
+          <th class="text-center">{{ $key+1 }}</th>
           <th>{{ $cinemaSystem->name }}</th>
           <th>{{ $cinemaSystem->description }}</th>
           <th>

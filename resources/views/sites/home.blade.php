@@ -54,8 +54,6 @@
             </li>
         </ul>
     </div>
-    @include('layouts.hot-news')
-    @include('layouts.member')
     @include('layouts.promotion')
     </div>
 </div>

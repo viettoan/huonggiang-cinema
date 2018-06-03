@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\PromotionRepository;
-use App\Contracts\CinemaRepository;
+use App\Contracts\CinemaSystemRepository;
 use App\Contracts\MediaRepository;
 use App\Http\Requests\PromotionRequest;
 use App\Helper\Helper;
@@ -15,7 +15,7 @@ class PromotionController extends Controller
     protected $promotion, $cinema, $media;
     public function __construct(
         PromotionRepository $promotion,
-        CinemaRepository $cinema,
+        CinemaSystemRepository $cinema,
         MediaRepository $media
     ) {
         $this->media = $media;

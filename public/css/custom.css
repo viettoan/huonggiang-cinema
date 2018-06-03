@@ -77,3 +77,12 @@ ul.pagination li.disabled span{
 .admin-schedule .room-action .del-room {
     color: #d9534f;
 }
+
+.promotion--name{
+    color:#fff;
+}
+
+.promotion--name:hover{
+    color: #337ab7;
+    text-decoration: none;
+}

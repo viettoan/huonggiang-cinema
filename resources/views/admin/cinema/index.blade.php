@@ -31,9 +31,9 @@
     </thead>
     <tbody>
     @if (isset($cinemas))
-      @foreach ($cinemas as $cinema)
+      @foreach ($cinemas as $key=>$cinema)
       <tr>
-          <th class="text-center">{{ $cinema->id }}</th>
+          <th class="text-center">{{ $key+1 }}</th>
           <th><img class="img-responsive media-file" src="{{ $cinema->media }}"></th>
           <th>{{ $cinema->name }}</th>
           <th>{{ $cinema->address }}</th>
