@@ -2,6 +2,7 @@
 
 return [
     'title' => [
+        'profile' => 'Thông tin thành viên',
         'add_booking_cinema' => 'Thêm link đặt vé rạp',
         'manage_schedules' => 'Quản lý lịch chiếu',
         'edit_schedule' => 'Sửa lịch chiếu',

@@ -102,6 +102,14 @@
             @endif
         </div>
         <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.technology') }}</label>
+            <select class="js-example-basic-multiple form-control" name="technology_id[]" multiple="multiple">
+                @foreach ($technologies as $technology)
+                <option value="{{ $technology->id }}">{{ $technology->name }}</option>
+                @endforeach 
+            </select>
+        </div>
+        <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.status') }}</label>
             <div class="radio">
                 <label>
@@ -111,6 +119,11 @@
             <div class="radio">
                 <label>
                     <input type="radio" name="status" value="{{ config('custom.movie.status.now_showing') }}">{{ trans('message.config.now_showing') }}
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status" value="{{ config('custom.movie.status.sneak_show') }}">{{ trans('message.config.sneak_show') }}
                 </label>
             </div>
         </div>

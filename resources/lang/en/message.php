@@ -2,6 +2,7 @@
 
 return [
     'title' => [
+        'profile' => 'Member Profile',
         'manage_cinema_systems' => 'Manage Cinema Systems',
         'add_booking_cinema' => 'Add Booking Cinema',
         'manage_schedules' => ' Manage Cinema Schedules',

@@ -33,9 +33,10 @@ class HomeController extends Controller
     {
         $newRelease = $this->movie->getMovieByStatus(config('custom.movie.status.new_release'), []);
         $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), []);
+        $sneakShow = $this->movie->getMovieByStatus(config('custom.movie.status.sneak_show'), []);
         $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.advertisement'), []);
 
-        return view('sites.home', compact('newRelease', 'nowShowing', 'promotions', 'events'));
+        return view('sites.home', compact('newRelease', 'nowShowing', 'promotions', 'events', 'sneakShow'));
     }
 }
