@@ -12,11 +12,18 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="{{route('profile.show', ['id' => Auth::user()->id ])}}">
+            <i class="fas fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">{{ trans('message.title.profile') }}</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('user.index')}}">
             <i class="fas fa-fw fa-area-chart"></i>
             <span class="nav-link-text">{{ trans('message.title.manage_users') }}</span>
           </a>
         </li>
+        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="{{route('movie.index')}}">
             <i class="fas fa-fw fa-area-chart"></i>

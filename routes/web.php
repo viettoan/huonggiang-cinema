@@ -104,6 +104,9 @@ Route::group(['middleware' => 'localization', 'namespace' => 'Sites'], function(
     Route::get('/post/{id}', 'PostController@show')->name('post');
     Route::get('/dich-vu-quang-cao', 'PostController@showAdvertisement')->name('advertisement');
     Route::get('/tuyen-dung', 'PostController@showRecruitment')->name('recruitment');
+    Route::resource('profile', 'ProfileController');
+    Route::get('/movie-schedule', 'ScheduleController@movie')->name('schedule.movie');
+    Route::get('/cinema-schedule', 'ScheduleController@cinema')->name('schedule.cinema');
 });
 
 Auth::routes();

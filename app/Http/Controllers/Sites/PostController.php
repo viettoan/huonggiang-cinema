@@ -58,7 +58,7 @@ class PostController extends Controller
     {
         $post = $this->post->find($id, []);
         $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.advertisement'), []);
 
         return view('sites.post', compact('post', 'promotions', 'events'));
     }
@@ -66,7 +66,7 @@ class PostController extends Controller
     {
         $post = $this->post->getPostByType(config('custom.post.type.advertisement'), [])->first();
         $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.advertisement'), []);
 
         return view('sites.post', compact('post', 'promotions', 'events'));
     }
@@ -74,7 +74,7 @@ class PostController extends Controller
     {
         $post = $this->post->getPostByType(config('custom.post.type.recruitment'), [])->first();
         $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.advertisement'), []);
 
         return view('sites.post', compact('post', 'promotions', 'events'));
     }

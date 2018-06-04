@@ -6,7 +6,7 @@ return [
     'admin' => 1,
     'post' =>1,
     'tour' =>0,
-    'defaultPath' => 'images/',
+    'defaultPath' => 'media/',
     'defaultMedia' => 'media/',
     'stripe' => 1,
     'direct_payment' => 0,
@@ -38,7 +38,8 @@ return [
         'status' => [
             'new_release' => 0,
             'now_showing' => 1,
-            'stop_showing' => 2
+            'stop_showing' => 2,
+            'sneak_show' => 3,
         ],
     ],
     'post' => [

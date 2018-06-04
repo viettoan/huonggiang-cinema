@@ -107,21 +107,38 @@
                 </span>
             @endif
         </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">{{ trans('message.column.technology') }}</label>
+            <select class="js-example-basic-multiple form-control" name="technology_id[]" multiple="multiple">
+                @foreach ($technologies as $technology)
+                <option value="{{ $technology->id }}"
+                    @if (in_array($technology->id, $movieTechnologies))
+                        selected
+                    @endif
+                >{{ $technology->name }}</option>
+                @endforeach 
+            </select>
+        </div>
         <div class="form-group col-md-12">
             <label for="exampleInputEmail1">{{ trans('message.column.status') }}</label>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="{{ config('custom.movie.status.new_release') }}" checked>{{ trans('message.config.new_release') }}
+                    <input type="radio" name="status" value="{{ config('custom.movie.status.new_release') }}" @if ($movie->status == 0) checked @endif>{{ trans('message.config.new_release') }}
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="{{ config('custom.movie.status.now_showing') }}">{{ trans('message.config.now_showing') }}
+                    <input type="radio" name="status" value="{{ config('custom.movie.status.now_showing') }}" @if ($movie->status == 1) checked @endif>{{ trans('message.config.now_showing') }}
                 </label>
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" name="status" value="{{ config('custom.movie.status.stop_showing') }}">{{ trans('message.config.stop_showing') }}
+                    <input type="radio" name="status" value="{{ config('custom.movie.status.stop_showing') }}" @if ($movie->status == 2) checked @endif>{{ trans('message.config.stop_showing') }}
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="status" value="{{ config('custom.movie.status.sneak_show') }}" @if ($movie->status == 3) checked @endif>{{ trans('message.config.sneak_show') }}
                 </label>
             </div>
         </div>

@@ -4,25 +4,15 @@ namespace App\Http\Controllers\Sites;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Contracts\MediaRepository;
-use App\Contracts\MovieRepository;
-use App\Contracts\PostRepository;
-use App\Contracts\PromotionRepository;
+use App\Contracts\UserRepository;
+use App\Http\Requests\ProfileRequest;
+use App\Helper\Helper;
 
-class PromotionController extends Controller
+class ProfileController extends Controller
 {
-    protected $media, $movie, $post, $promotion;
-    public function __construct(
-        MediaRepository $media,
-        MovieRepository $movie,
-        PostRepository $post,
-        PromotionRepository $promotion
-    )
-    {
-        $this->media = $media;
-        $this->movie = $movie;
-        $this->post = $post;
-        $this->promotion = $promotion;  
+    protected $user;
+    public function __construct(UserRepository $user) {
+        $this->user = $user;
     }
     /**
      * Display a listing of the resource.
@@ -31,12 +21,7 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
-        $events = $this->post->getPostByType(config('custom.post.type.advertisement'), []);
-        $newRelease = $this->movie->getMovieByStatus(config('custom.movie.status.new_release'), []);
-        $nowShowing = $this->movie->getMovieByStatus(config('custom.movie.status.now_showing'), []);
-
-        return view('sites.promotion-event', compact('promotions', 'events', 'nowShowing', 'newRelease'));
+        //
     }
 
     /**
@@ -68,11 +53,9 @@ class PromotionController extends Controller
      */
     public function show($id)
     {
-        $promotion = $this->promotion->find($id, []);
-        $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
-        $events = $this->post->getPostByType(config('custom.post.type.advertisement'), []);
+        $user = $this->user->find($id);
 
-        return view('sites.promotion', compact('promotion', 'promotions', 'events'));
+        return view('sites.profile', compact('user'));
     }
 
     /**
@@ -83,7 +66,9 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->user->find($id);
+
+        return view('admin.user.profile', compact('user'));
     }
 
     /**
@@ -95,7 +80,22 @@ class PromotionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'email' => $request->email,
+            'name' => $request->name,
+            'password' => $request->password,
+            'address' => $request->address,
+            'gender' => $request->gender,
+        ];
+        if ($request->media != null) {
+            $data['avatar'] = Helper::upload($request->media, 'media');
+        }
+
+        if ($this->user->update($id, $data)) {
+            return redirect()->route('profile.show', ['id' => $id])->with('error', trans('The profile has been successfully edited!'));
+        } else {
+            return redirect()->route('profile.show', ['id' => $id])->with('success', trans('The profile has been edited failed!'));
+        }
     }
 
     /**

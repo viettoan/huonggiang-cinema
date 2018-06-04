@@ -23,27 +23,28 @@
         </div>
     @endif
     <form method="POST" action="{{route('trailer.update', ['id' => $trailer->id])}}">
-        <input trailer="hidden" name="_method" value="PUT">
         {{ csrf_field() }}
+        <input type="hidden" name="_method" value="PUT">
+
         <div class="form-group">
-            <div class="form-row">
-                <div class="col-md-12">
-                <label for="exampleInputName">{{ trans('message.column.movie') }}</label>
-                <input class="form-control" type="trailer" name="movie" value="{{ $trailer->movie }}" placeholder="Enter movie" required>
-                @if ($errors->has('movie'))
-                    <span class="help-block">
-                            <strong>{{ $errors->first('movie') }}</strong>
-                    </span>
-                @endif
-                </div>
-            </div>
+            <label for="exampleInputEmail1">{{ trans('message.column.movie') }}</label>
+            <select name="movie_id" class="form-control">
+            @foreach ($movies as $movie)
+                <option value="{{ $movie->id }}" @if($trailer->movie_id == $movie->id) selected @endif>{{ $movie->name }}</option>
+            @endforeach 
+            </select>
+            @if ($errors->has('movie_id'))
+                <span class="help-block">
+                        <strong>{{ $errors->first('movie_id') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.code') }}</label>
-            <input class="form-control" type="text" name="code" value="{{ $trailer->code }}" placeholder="Code" required>
-            @if ($errors->has('code'))
+            <input class="form-control" type="text" name="embedded_code" value="{{ $trailer->embedded_code }}" placeholder="embedded_code" required>
+            @if ($errors->has('embedded_code'))
                 <span class="help-block">
-                        <strong>{{ $errors->first('code') }}</strong>
+                        <strong>{{ $errors->first('embedded_code') }}</strong>
                 </span>
             @endif
         </div>

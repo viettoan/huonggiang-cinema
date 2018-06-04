@@ -36,8 +36,8 @@
                 <ul class="list--social">
                     <li><a target="_blank" href="https://www.facebook.com/BHDStar"><img src="{{ asset('wp-content/themes/bhd/assets/images/fb_logo.png') }}" alt="fb bhd" /></a></li>
                     <li><a href="{{ route('schedules') }}"><img src="{{ asset('wp-content/themes/bhd/assets/images/lc.png') }}" alt="lich chieu" /></a></li>
-                    <li><img class="search-mvtr" src="{{ asset('wp-content/themes/bhd/assets/images/mvtr.png') }}" alt="lich chieu rap" /></li>
-                    <li><img class="search-mvtp" src="{{ asset('wp-content/themes/bhd/assets/images/mvtp.png') }}" alt="lich chieu phim" /></li>>
+                    <li><a href="{{ route('schedule.cinema') }}"><img class="search-mvtr" src="{{ asset('wp-content/themes/bhd/assets/images/mvtr.png') }}" alt="lich chieu rap" /></a></li>
+                    <li><a href="{{ route('schedule.movie') }}"><img class="search-mvtp" src="{{ asset('wp-content/themes/bhd/assets/images/mvtp.png') }}" alt="lich chieu phim" /></a></li>>
                 </ul>
                 <div class="language">
                     <a class="@if (Session::get('locale') == 'vi') active @endif" href="{{ route('localization', ['lang' => 'vi']) }}">VN</a>
@@ -45,10 +45,6 @@
                 </div>
                 <a class="hotline" href="he-thong-rap/index.html"><span><img src="{{ asset('wp-content/themes/bhd/assets/images/phone.png') }}"  alt="hotline bhd"/> : </span>1900 1080</a>
                 <div class="header--right">
-                    <a href="tai-khoan/index.html" class="top--link">
-                        <img src="{{ asset('wp-content/themes/bhd/assets/images/bhdstar-member.png') }}" alt="MEMBER">
-                    </a>
-                    <a href="tai-khoan/index.html" class="top--link-mobile"><img src="{{ asset('wp-content/themes/bhd/assets/images/user.png') }}" alt="user" /></a>
                     @if (Auth::guest())
                     <div class="btn--dropdown-menu js__dropdown" data-target="#dropdown--menu-2">
                     {{ trans('message.title.login') }}
@@ -63,6 +59,10 @@
                         </form>
                     </div>
                     @else
+                        <a href="{{ route('profile.show', ['id' => Auth::user()->id ]) }}" class="top--link">
+                            <img src="{{ asset('wp-content/themes/bhd/assets/images/bhdstar-member.png') }}" alt="MEMBER">
+                        </a>
+                        <a href="{{ route('profile.show', ['id' => Auth::user()->id ]) }}" class="top--link-mobile"><img src="{{ asset('wp-content/themes/bhd/assets/images/user.png') }}" alt="user" /></a>
                         <div class="btn--dropdown-menu js__dropdown" data-target="#dropdown--menu-3">
                             {{ Auth::user()->name }} 
                         </div>

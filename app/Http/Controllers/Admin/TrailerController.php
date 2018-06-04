@@ -74,9 +74,10 @@ class TrailerController extends Controller
      */
     public function edit($id)
     {
+         $movies =$this->movie->all();
         $trailer = $this->trailer->find($id, []);
 
-        return view('admin.trailer.edit', compact('trailer'));
+        return view('admin.trailer.edit', compact('trailer', 'movies'));
     }
 
     /**
@@ -103,7 +104,7 @@ class TrailerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
        if ($request->ajax()) {
             if ($this->trailer->delete($id)) {

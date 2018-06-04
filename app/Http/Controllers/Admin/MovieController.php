@@ -11,12 +11,14 @@ use App\Contracts\TypeRepository;
 use App\Contracts\CinemaRepository;
 use App\Contracts\BookingMovieRepository;
 use App\Http\Requests\MovieRequest;
+use App\Contracts\TechnologyRepository;
+use App\Contracts\MovieTechnologyRepository;
 use App\Helper\Helper;
 
 class MovieController extends Controller
 {
 
-    protected $movie, $media, $type, $movieType, $cinema, $bookingMovie;
+    protected $movie, $media, $type, $movieType, $cinema, $bookingMovie, $technology, $movieTechnology;
 
     public function __construct(
         MovieRepository $movie,
@@ -24,7 +26,9 @@ class MovieController extends Controller
         TypeRepository $type,
         MovieTypeRepository $movieType,
         CinemaRepository $cinema,
-        BookingMovieRepository $bookingMovie
+        BookingMovieRepository $bookingMovie,
+        TechnologyRepository $technology,
+        MovieTechnologyRepository $movieTechnology
     )
     {
         $this->movie = $movie;
@@ -33,6 +37,8 @@ class MovieController extends Controller
         $this->movieType = $movieType;
         $this->cinema = $cinema;
         $this->bookingMovie = $bookingMovie;
+        $this->technology = $technology;
+        $this->movieTechnology = $movieTechnology;
     }
     /**
      * Display a listing of the resource.
@@ -54,8 +60,9 @@ class MovieController extends Controller
     public function create()
     {
         $types = $this->type->getTypeByMovie([]);
+        $technologies = $this->technology->all();
 
-        return view('admin.movie.create', compact('types'));
+        return view('admin.movie.create', compact('types', 'technologies'));
     }
 
     /**
@@ -86,6 +93,14 @@ class MovieController extends Controller
                 ];
                 $this->movieType->create($dataMovieType);
             }
+
+            foreach ($request->technology_id as $technology_id) {
+                $dataTechnology = [
+                    'technology_id' => $technology_id,
+                    'movie_id' => $movie->id,
+                ];
+                $this->movieTechnology->create($dataTechnology);
+            }
             return redirect()->route('movie.create')->with('error', trans('The movie has been successfully created!'));
         } else {
             return redirect()->route('movie.create')->with('success', trans('The movie has been created failed!'));
@@ -113,9 +128,11 @@ class MovieController extends Controller
     {
         $movie = $this->movie->find($id, []);
         $movieTypes = $this->movieType->getTypeByMovieId($id, [])->pluck('type_id')->toArray();
+        $movieTechnologies = $this->movieTechnology->getByMovieid($id, [])->pluck('technology_id')->toArray();
         $types = $this->type->getTypeByMovie([]);
-        
-        return view('admin.movie.edit', compact('movie', 'types', 'movieTypes'));
+        $technologies = $this->technology->all();
+
+        return view('admin.movie.edit', compact('movie', 'types', 'movieTypes', 'technologies', 'movieTechnologies'));
     }
 
     /**

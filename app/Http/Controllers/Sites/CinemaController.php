@@ -52,7 +52,7 @@ class CinemaController extends Controller
     {
         $cinema = $this->cinema->find($id, ['cinemaSystem.cinemas.city']);
         $promotions = $this->promotion->getPromotionByStatus(config('custom.promotion.status.show'), []);
-        $events = $this->post->getPostByType(config('custom.post.type.event'), []);
+        $events = $this->post->getPostByType(config('custom.post.type.advertisement'), []);
 
         return view('sites.cinema', compact('cinema', 'promotions', 'events'));
     }

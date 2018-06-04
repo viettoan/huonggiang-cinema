@@ -50,6 +50,19 @@ class ScheduleController extends Controller
         return view('sites.schedules', compact('cinemaSystems', 'movies', 'cities'));
     }
 
+    public function movie()
+    {
+        $movies = $this->movie->all([]);
+
+        return view('sites.movie_schedule', compact('movies'));
+    }
+    public function cinema()
+    {
+        $cinemaSystems = $this->cinemaSystem->all();
+        $cities = $this->city->all();
+
+        return view('sites.cinema_schedule', compact('cinemaSystems', 'cities'));
+    }
     public function getCinema(Request $request)
     {
         $cinemaSystem = $request->cinemaSystem;
