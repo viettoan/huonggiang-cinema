@@ -53,6 +53,7 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $data = $request->all();
+        $data['type'] = 1;
         $data['media'] = Helper::upload($request->media, 'media');
         $data['user_id'] = Auth::user()->id;
         if ($this->post->create($data)) {
@@ -96,6 +97,8 @@ class PostController extends Controller
     public function update(PostRequest $request, $id)
     {
         $data = $request->all();
+        $data['type'] = 1;
+
         if ($request->media != null) {
             $data['media'] = Helper::upload($request->media, 'media');
         }

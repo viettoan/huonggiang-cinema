@@ -29,7 +29,7 @@
     @if (isset($types))
       @foreach ($types as $key=>$type)
       <tr>
-          <th class="text-center">{{ $key+1 }}</th>
+          <th class="text-center">{{ (($types->currentPage()-1)*10)+($key+1) }}</th>
           <th>{{ $type->name }}</th>
           <th>{{ $type->description }}</th>
           <th>

@@ -29,7 +29,7 @@
     @if (isset($technologies))
       @foreach ($technologies as $key=>$technology)
         <tr>
-            <th class="text-center">{{ $key+1 }}</th>
+            <th class="text-center">{{ (($technologies->currentPage()-1)*10)+($key+1) }}</th>
             <th>{{ $technology->name }}</th>
             <th>{{ $technology->description }}</th>
                         

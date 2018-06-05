@@ -25,15 +25,11 @@ class PostRequest extends FormRequest
     {
         if ($this->isMethod('PUT')) {
             $arr = [
-                'name' => 'required|max:255' ,
-                'time' => 'required|numeric|min:0',
-                'release_date' => 'required',
-                'directors' => 'required|max:255',
-                'actors' => 'required|max:255',
+                'title' => 'required|max:255',
                 'description' => 'required',
-                'media' => 'max:10000',
+                'content' => 'required',
+                'media' => 'required|max:10000',
                 'status' => 'required|numeric',
-                'type_id' => 'required',
             ];
             
             return $arr;
@@ -44,7 +40,6 @@ class PostRequest extends FormRequest
             'content' => 'required',
             'media' => 'required|max:10000',
             'status' => 'required|numeric',
-            'type' => 'required|numeric',
         ];
     }
 }

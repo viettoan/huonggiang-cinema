@@ -2,6 +2,10 @@
 
 return [
     'title' => [
+        'users' => 'Users',
+        'posts' => 'Posts',
+        'movies' => 'Movies',
+        'cinemas' => 'Cinemas',
         'profile' => 'Member Profile',
         'manage_cinema_systems' => 'Manage Cinema Systems',
         'add_booking_cinema' => 'Add Booking Cinema',
@@ -43,9 +47,9 @@ return [
         'contact' => 'Contact',
         'promotions' => 'Promotions',
         'open_world' => 'Open World',
-        'advertisement' => 'Advertisement',
+        'advertisement' => 'Posts',
         'home' => 'Home',
-        'events' => 'Events',
+        'events' => 'Posts',
         'cinema_schedule' => 'Cinema Schedule',
         'schedule_time' => 'Create time',
         'manage_cinema_systems' => 'Manage Cinema Systems',

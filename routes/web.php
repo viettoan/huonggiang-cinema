@@ -14,7 +14,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/', function () {
         return view('admin.index');
     })->name('dashboard');
-
+    Route::get('/search-total', 'HomeController@index');
     Route::resource('user', 'UserController');
     Route::get('/user/delete/{id}', 'UserController@destroy');
     Route::get('/search-user', 'UserController@search');

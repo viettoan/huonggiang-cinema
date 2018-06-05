@@ -16,7 +16,7 @@
     @if (isset($promotions))
       @foreach ($promotions as $promotion)
         <tr>
-            <th class="text-center">{{ $promotion->id }}</th>
+            <th class="text-center">{{ (($promotions->currentPage()-1)*10)+($key+1) }}</th>
             <th>{{ $promotion->cinema->name }}</th>
             <th>{{ $promotion->title }}</th>
             <th>{{ $promotion->start }}</th>

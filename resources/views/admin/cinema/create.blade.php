@@ -104,3 +104,6 @@
     </div>
 </div>
 @endsection
+@section('script')
+    <script src="{{ asset('js/admin/cinema.js') }}"></script>
+@endsection

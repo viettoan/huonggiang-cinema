@@ -28,7 +28,7 @@
     @if (isset($times))
       @foreach ($times as $key=>$time)
       <tr>
-          <th class="text-center">{{ $key+1 }}</th>
+          <th class="text-center">{{ (($times->currentPage()-1)*10)+($key+1) }}</th>
           <th class="text-center">{{ $time->time }}</th>
           <th>
             <a href = "{{ route('time.edit', ['id' => $time->id]) }}">

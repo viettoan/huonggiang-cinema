@@ -34,7 +34,7 @@
     @if (isset($users)) <!--Check xem biến user được khởi tạo hay chưa?-->
       @foreach ($users as $key=>$user) 
       <tr>
-          <th class="text-center">{{ $key+1 }}</th>
+          <th class="text-center">{{ (($users->currentPage()-1)*10)+($key+1) }}</th>
           <th class="user-column">
             <img class="img-responsive avatar-user" src="{{ $user->avatar }}">
           </th>

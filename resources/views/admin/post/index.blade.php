@@ -33,7 +33,7 @@
     @if (isset($posts))
       @foreach ($posts as $key=>$post)
         <tr>
-            <th class="text-center">{{ $key+1 }}</th>
+            <th class="text-center">{{ (($posts->currentPage()-1)*10)+($key+1) }}</th>
             <th>{{ $post->title }}</th>
             <th>{{ $post->description }}</th>
             <th class="text-center">

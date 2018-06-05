@@ -141,4 +141,5 @@
         filebrowserFlashUploadUrl : '/js/plugin /ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
     });
   </script>
+  <script src="{{ asset('js/admin/promotion.js') }}"></script>
 @endsection
