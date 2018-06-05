@@ -13,7 +13,7 @@
     @if (isset($users))
       @foreach ($users as $user)
       <tr>
-          <th class="text-center">{{ $user->id }}</th>
+          <th class="text-center">{{ (($users->currentPage()-1)*10)+($key+1) }}</th>
           <th class="user-column"><img class="img-responsive avatar-user" src="{{ $user->avatar }}"></th>
           <th>{{ $user->name }}</th>
           <th>{{ $user->email }}</th>

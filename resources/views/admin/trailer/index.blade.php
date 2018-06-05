@@ -29,7 +29,7 @@
     @if (isset($trailers))
       @foreach ($trailers as $key=>$trailer)
         <tr>
-            <th class="text-center">{{ $key+1 }}</th>
+            <th class="text-center">{{ (($trailers->currentPage()-1)*10)+($key+1) }}</th>
             <th>{{ $trailer->movie->name }}</th>
             <th>{!! $trailer->embedded_code !!}</th>
                         

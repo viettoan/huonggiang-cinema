@@ -98,21 +98,19 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0 mr-lg-2">
+      <ul class="navbar-nav" style="margin-left: 900px;">
+        <li class="nav-item" style="width:500px;">
+          <form class="form-inline my-4 my-lg-2 mr-lg-4" >
             <div class="input-group">
-              <input class="form-control" type="text" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search"></i>
-                </button>
-              </span>
+              <input class="form-control col-md-12" id="search-total" type="text" placeholder="Search for..." style="width:500px;">
             </div>
           </form>
+            <ul class="search-total-result">
+
+            </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('logout') }}"
+          <a class="nav-link my-4 my-lg-2 mr-lg-4" href="{{ route('logout') }}"
               onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
             <i class="fas fa-fw fa-sign-out"></i>Logout</a>

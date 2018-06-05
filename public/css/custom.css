@@ -86,3 +86,19 @@ ul.pagination li.disabled span{
     color: #337ab7;
     text-decoration: none;
 }
+
+.search-total-result {
+    position: absolute;
+    top: 50px;
+    width: 500px;
+    max-height: 300px !important;
+    overflow: auto;
+    background: #f1f1f1;
+}
+.list-brand ul {
+    list-style-type: none;
+}
+.img-search {
+    width: 30px;
+    height: 30px;
+}

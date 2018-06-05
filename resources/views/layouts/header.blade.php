@@ -11,7 +11,6 @@
                 <li id="menu-item-239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-239"><a href="{{ route('schedules') }}">{{ trans('message.title.schedule') }}</a></li>
                 <li id="menu-item-250" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-250"><a href="{{ route('cinemas') }}">{{ trans('message.title.cinema_systems') }}</a></li>
                 <li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="{{ route('promotions') }}">{{ trans('message.title.promotions') }}</a></li>
-                <li id="menu-item-272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-272"><a href="{{ route('advertisement') }}">{{ trans('message.title.advertisement') }}</a></li>
                 @if (!Auth::guest())
                     @if (Auth::user()->role == config('custom.admin'))
                         <li class="menu-item menu-item-type-custom menu-item-object-custom">

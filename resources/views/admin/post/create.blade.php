@@ -62,16 +62,6 @@
             <img class="col-md-12 img-responsive review-file-media">
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">{{ trans('message.column.type') }}</label>
-            <select name="type" class="form-control">
-                @if (config('custom.post.type') != null)
-                    @foreach(config('custom.post.type') as $key => $type)
-                        <option value="{{ $type }}">{{ $key }}</option>
-                    @endforeach
-                @endif
-            </select>
-        </div>
-        <div class="form-group">
             <label for="exampleInputEmail1">{{ trans('message.column.status') }}</label>
             <div class="radio">
                 <label>
@@ -101,4 +91,5 @@
         filebrowserFlashUploadUrl : '/js/plugin /ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
     });
   </script>
+  <script src="{{ asset('js/admin/post.js') }}"></script>
 @endsection

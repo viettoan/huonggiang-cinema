@@ -10,11 +10,11 @@ abstract class AbstractRepositoryEloquent
     }
     public function all($with = [], $select = ['*'])
     {
-        return $this->make($with)->get($select);
+        return $this->make($with)->orderBy('updated_at', 'DESC')->get($select);
     }
     public function paginate($paginate, $with = [], $select = ['*'])
     {
-        return $this->make($with)->paginate($paginate, $select);
+        return $this->make($with)->orderBy('updated_at', 'DESC')->paginate($paginate, $select);
     }
     public function find($id, $with = [], $select = ['*'])
     {

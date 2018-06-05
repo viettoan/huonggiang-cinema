@@ -17,7 +17,7 @@
       @foreach ($cinemas as $cinema)
       <tr>
           <th class="text-center">{{ $cinema->id }}</th>
-          <th><img class="img-responsive media-file" src="{{ $cinema->media->path }}"></th>
+          <th><img class="img-responsive media-file" style="height:300px !important;" src="{{ $cinema->media->path }}"></th>
           <th>{{ $cinema->name }}</th>
           <th>{{ $cinema->address }}</th>
           <th>{{ $cinema->city->name }}</th>
