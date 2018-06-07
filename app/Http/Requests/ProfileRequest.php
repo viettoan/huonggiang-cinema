@@ -28,7 +28,7 @@ class ProfileRequest extends FormRequest
             $arr = [
                 'name' => 'max:255' ,
                 'email' => 'email|unique:users,email,'.$request->id,
-                'address' => 'string|max:255',
+                'address' => 'max:255',
                 'gender' => 'numeric',
                 'old_password' => 'min:8',
                 'password' => 'min:8|confirmed',
