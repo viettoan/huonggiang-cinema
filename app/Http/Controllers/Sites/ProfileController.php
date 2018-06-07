@@ -83,10 +83,12 @@ class ProfileController extends Controller
         $data = [
             'email' => $request->email,
             'name' => $request->name,
-            'password' => $request->password,
             'address' => $request->address,
             'gender' => $request->gender,
         ];
+        if ($request->password != null) {
+            $data['password'] = $request->password;
+        }
         if ($request->media != null) {
             $data['avatar'] = Helper::upload($request->media, 'media');
         }

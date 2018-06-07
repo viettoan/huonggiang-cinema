@@ -97,6 +97,19 @@ ul.pagination li.disabled span{
 }
 .list-brand ul {
     list-style-type: none;
+    padding: 5px 0px;
+}
+.list-brand ul li {
+    padding: 5px 0px;
+}
+.list-brand ul li a {
+    color: #333;
+}
+.list-brand ul li a:hover {
+    text-decoration: none;
+}
+.list-brand ul li:hover {
+    background: #fff;
 }
 .img-search {
     width: 30px;
