@@ -51,7 +51,9 @@
     <script src="{{asset('bower/toastr/toastr.min.js')}}"></script>
     <script src="{{asset('bower/select2/dist/js/select2.js')}}"></script>
     <script src="{{asset('js/plugin/ckeditor/ckeditor.js')}}"></script>
-      <script src="{{ asset('js/admin/master.js') }}"></script>
+    <script src="{{ asset('js/admin/master.js') }}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
   @yield('script')
 </body>
 </html>

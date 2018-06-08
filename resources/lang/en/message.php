@@ -78,7 +78,8 @@ return [
         'close' => 'Close',
         'next' => 'Next',
         'remove' => 'Remove',
-        'view_location' => 'View Location'
+        'view_location' => 'View Location',
+        'view' => 'View'
     ],
     'column' => [
         'cinema' => 'Cinema',
