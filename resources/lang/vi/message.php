@@ -73,7 +73,8 @@ return [
         'close' => 'Đóng',
         'next' => 'Tạo lịch chiếu',
         'remove' => 'Xóa',
-        'view_location' => 'Xem vị trí'        
+        'view_location' => 'Xem vị trí',
+        'view' => 'Xem'    
     ],
     'column' => [
         'cinema' => 'Rạp',
