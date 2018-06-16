@@ -72,6 +72,7 @@ $(document).ready(function () {
             type: 'GET',
             data: {'cinema_id': cinema_id, 'date': date},
             success: function (res) {
+                console.log(res.schedules);
                 var html = '';
                 for (var i = 0; i < res.schedules.length; i++) {
                     var schedule_time = res.schedules[i].schedule_time;
@@ -79,7 +80,7 @@ $(document).ready(function () {
                         html += `
                         <div class="schedule-time row">
                             <div class="col-md-3">
-                                <img src="${ res.schedules[i].movie.media.path }">
+                                <img src="${ res.schedules[i].movie.media}">
                             </div>
                             <div class="col-md-9">
                                 <h4>${ res.schedules[i].movie.name }</h4>

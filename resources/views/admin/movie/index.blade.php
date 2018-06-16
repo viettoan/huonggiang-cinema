@@ -45,8 +45,10 @@
                     <button class="btn btn-primary">{{ trans('message.config.new_release') }}</button>
                 @elseif ($movie->status == config('custom.movie.status.now_showing'))
                     <button class="btn btn-success">{{ trans('message.config.now_showing') }}</button>
-                @else
+                @elseif ($movie->status == config('custom.movie.status.stop_showing'))
                     <button class="btn btn-danger">{{ trans('message.config.stop_showing') }}</button>
+                @elseif ($movie->status == config('custom.movie.status.sneak_show'))
+                    <button class="btn btn-info">{{ trans('message.config.sneak_show') }}</button>
                 @endif
             <th>
                 <a class="booking-cinema" data-movie={{ $movie->id }}>

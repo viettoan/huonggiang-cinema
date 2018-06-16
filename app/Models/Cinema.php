@@ -27,10 +27,7 @@ class Cinema extends Model
     {
         return $this->hasMany(CinemaSchedule::class);
     }
-    public function media()
-    {
-        return $this->belongsTo(Media::class);
-    }
+
     public function city()
     {
         return $this->belongsTo(City::class);

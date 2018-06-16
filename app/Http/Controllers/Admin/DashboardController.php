@@ -14,8 +14,8 @@ class DashboardController extends Controller
 {
     protected $cinema, $movie, $user;
     public function __construct(
-        MovieRepository $cinema,
-        CinemaRepository $movie,
+        MovieRepository $movie,
+        CinemaRepository $cinema,
         UserRepository $user
     )
     {

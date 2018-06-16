@@ -15,4 +15,9 @@ class MovieTechnologyRepositoryEloquent extends AbstractRepositoryEloquent imple
     {
         return $this->model()->with($with)->select($select)->where('movie_id', $movie_id)->get();
     }
+
+    public function deleteByMovieId($id)
+    {
+        return $this->model()->where('movie_id', $id)->delete();
+    }
 }
