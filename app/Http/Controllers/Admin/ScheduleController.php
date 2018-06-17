@@ -140,15 +140,15 @@ class ScheduleController extends Controller
 
     public function getMovie(Request $request)
     {
-        $movieActive = $this->schedule->getByCinema($request->cinema_id)->pluck('movie_id')->toArray();
-        $movies = $this->movie->getMovieHaveNotSchedule($movieActive);
+        $movies = $this->movie->all();
         
         return response(['movies' => $movies]);
     }
 
     public function getTechnology(Request $request)
     {
-        $movieTechnologies = $this->movieTechnology->getByMovieid($request->movie_id, ['technology']);
+        $technology = $this->schedule->getByCinemaAndMovie($request->cinema_id, $request->movie_id)->pluck('movie_technology_id')->toArray();
+        $movieTechnologies = $this->movieTechnology->getTechnologyHaveNotSchedule($request->movie_id, $technology, ['technology']);
 
         return response(['movieTechnologies' => $movieTechnologies]);
     }

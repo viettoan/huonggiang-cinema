@@ -32,7 +32,6 @@ $(document).ready(function() {
     $(document).on('change', '#cinema_id', function () {
 
         var cinema_id = $(this).val();
-        console.log(cinema_id);
         var element = $(this);
         getMovie(cinema_id, element);
     });
@@ -40,8 +39,10 @@ $(document).ready(function() {
     //get technology by movie event
     $(document).on('change', '#movie_id', function () {
         var movie_id = $(this).val();
+        var cinema_id = $('#cinema_id').val();
         var element = $(this);
-        getTechnology(movie_id, element);
+        console.log(cinema_id);
+        getTechnology(cinema_id, movie_id, element);
     });
 
     //click btn-next in create schedule page
@@ -49,10 +50,16 @@ $(document).ready(function() {
         var cinema_id = $('#cinema_id').val();
         var movie_id = $('#movie_id').val();
         var movie_technology_id = $('#movie_technology_id').val();
+        if (movie_id == null) {
+            swal('Movie must be selected!');
+        }
+        if (cinema_id == null) {
+            swal('Cinema must be selected!');
+        }
         if (movie_technology_id != null) {
             getScheduleTimeModal(cinema_id, movie_id, movie_technology_id);
         } else {
-            swal('Cinema or movie must be selected!');
+            swal('Technology must be selected!');
         }
     });
 
@@ -146,7 +153,6 @@ $(document).ready(function() {
             type: 'GET',
             data: {'cinema_id': cinema_id},
             success: function (res) {
-                console.log(1);
                 var html = '';
                 html += `<option>Choose one Movie</option>`;
                 for (var i = 0; i < res.movies.length; i++) {
@@ -158,11 +164,12 @@ $(document).ready(function() {
     }
 
     // get technology by movie function
-    function getTechnology (movie_id, element) {
+    function getTechnology (cinema_id, movie_id, element) {
+        console.log(cinema_id);
         $.ajax({
             url: '/admin/get-technology',
             type: 'GET',
-            data: {'movie_id': movie_id},
+            data: {'movie_id': movie_id, 'cinema_id': cinema_id},
             success: function (res) {
                 var html = '';
                 for (var i = 0; i < res.movieTechnologies.length; i++) {
