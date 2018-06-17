@@ -1,7 +1,6 @@
 <li class="list-brand">
     <b>{{ trans('message.title.users') }}</b>
     <ul class="list-group">
-        <li></li>
         @foreach($users as $user)
             <li>
                 <a href="{{ route('user.edit', ['id' => $user->id]) }}">
@@ -19,7 +18,6 @@
 <li class="list-brand">
     <b>{{ trans('message.title.posts') }}</b>
     <ul class="list-group">
-        <li></li>
         @foreach($posts as $post)
             <li>
                 <a  href="{{ route('post.edit', ['id' => $post->id]) }}">
@@ -37,7 +35,6 @@
 <li class="list-brand">
     <b>{{ trans('message.title.movies') }}</b>
     <ul class="list-group">
-        <li></li>
         @foreach($movies as $movie)
             <li>
                 <a href="{{ route('movie.edit', ['id' => $movie->id]) }}">
@@ -55,7 +52,6 @@
 <li class="list-brand">
     <b>{{ trans('message.title.cinemas') }}</b>
     <ul class="list-group">
-        <li></li>
         @foreach($cinemas as $cinema)
             <li>
                 <a href="{{ route('cinema.edit', ['id' => $cinema->id]) }}">

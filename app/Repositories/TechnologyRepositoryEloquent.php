@@ -10,5 +10,8 @@ class TechnologyRepositoryEloquent extends AbstractRepositoryEloquent implements
     {
         return new Technology;
     }
-    
+    public function getTechnologyHaveNotSchedule($technologies = [], $with = [], $select = ['*'])
+    {
+        return $this->model()->select($select)->with($with)->whereNotIn('id', $technologies)->get();
+    }
 }

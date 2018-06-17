@@ -68,7 +68,7 @@ class ScheduleController extends Controller
             'movie_technology_id' => $request->movie_technology_id,
         ];
         $schedule = $this->schedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id)->first();
-        if (count($schedule) == 0) {
+        if ($schedule == null) {
             $schedule = $this->schedule->create($scheduleData);
         }
 
@@ -140,15 +140,15 @@ class ScheduleController extends Controller
 
     public function getMovie(Request $request)
     {
-        $movieActive = $this->schedule->getByCinema($request->cinema_id)->pluck('movie_id')->toArray();
-        $movies = $this->movie->getMovieHaveNotSchedule($movieActive);
+        $movies = $this->movie->all();
         
         return response(['movies' => $movies]);
     }
 
     public function getTechnology(Request $request)
     {
-        $movieTechnologies = $this->movieTechnology->getByMovieid($request->movie_id, ['technology']);
+        $technology = $this->schedule->getByCinemaAndMovie($request->cinema_id, $request->movie_id)->pluck('movie_technology_id')->toArray();
+        $movieTechnologies = $this->movieTechnology->getTechnologyHaveNotSchedule($request->movie_id, $technology, ['technology']);
 
         return response(['movieTechnologies' => $movieTechnologies]);
     }
@@ -159,7 +159,7 @@ class ScheduleController extends Controller
         if (count($scheduleTime) > 0) {
             return response(['status' => 0]);
         }
-        $times = $this->time->all();
+        $times = $this->time->model()->orderBy('time', 'ASC')->get();
         
         return response(['times' => $times]);
     }
@@ -182,7 +182,7 @@ class ScheduleController extends Controller
             }
             $data[$date] = $times;
         }
-        $times = $this->time->all();
+        $times = $this->time->model()->orderBy('time', 'ASC')->get();
         $html = view('admin.schedules.ui.list-schedule', compact('data', 'times', 'schedule'))->render();
         return response(['html' => $html]);
     }

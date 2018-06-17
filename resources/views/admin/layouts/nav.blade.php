@@ -98,11 +98,11 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav" style="margin-left: 420px;">
-        <li class="nav-item" style="width:420px;">
+      <ul class="navbar-nav" style="margin-left: 450px;">
+        <li class="nav-item" style="width:450px;">
           <form class="form-inline my-4 my-lg-2 mr-lg-4" >
             <div class="input-group">
-              <input class="form-control col-md-12" id="search-total" type="text" placeholder="Search..." style="width:420px;">
+              <input class="form-control col-md-12" id="search-total" type="text" placeholder="Search..." style="width:430px;">
             </div>
           </form>
             <ul class="search-total-result">

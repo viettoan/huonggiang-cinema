@@ -12,6 +12,6 @@ class TimeRepositoryEloquent extends AbstractRepositoryEloquent implements TimeR
 
     public function getTimeFree($timeActive = [], $with = [], $select = ['*'])
     {
-        return $this->model()->with($with)->select($select)->whereNotIn('id', $timeActive)->get(); 
+        return $this->model()->with($with)->select($select)->orderBy('time', 'ASC')->whereNotIn('id', $timeActive)->get(); 
     }   
 }
