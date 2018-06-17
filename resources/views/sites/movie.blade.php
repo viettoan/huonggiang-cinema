@@ -33,7 +33,7 @@
                         <table>
                             <tr>
                                 <th>
-                                    <select id="rating" data-current-rating="{{ $rating }}" data-movie="{{ $movie->id }}" data-user="{{ Auth::user()->id }}">
+                                    <select  id="rating" @if(!Auth::guest()) data-user="{{ Auth::user()->id }}" @endif data-current-rating="{{ $rating }}" data-movie="{{ $movie->id }}" >
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -88,9 +88,6 @@
                         <a class="btn--green bhd-trailer" href="https://www.youtube.com/watch?v=CAP97QEQAJA" data-toggle="modal" data-target="#trailer">
                         {{ trans('message.trailer') }}
                         </a>
-                    </div>
-                    <div class="button--share">
-                        <a href="javascript:fbShare('index.html', 'Fb Share', 'Facebook share popup', '', 520, 350)" class="btn--fb-share"><i class="fa fa-facebook"></i>{{ trans('message.action.share') }}</a>
                     </div>
                 </div>
             </div>
@@ -159,17 +156,18 @@
     </div>
     <!--- model show trailer -->
        <!-- Modal -->
+    @if (isset($movie->trailers[0]))
     <div class="modal fade" id="trailer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
 
           <div class="modal-body ">
-            {!! $movie->trailers[0]->embedded_code !!}
-          
+            {!! $movie->trailers[0]->embedded_code !!} 
           </div>
         </div>
       </div>
     </div>
+    @endif
 </div>
 @endsection
 @section('script')

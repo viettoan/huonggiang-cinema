@@ -285,7 +285,17 @@ button{ border: none;}
 
 	#header .hotline,#header .header--right{right: 15px;left: auto;margin: 0;padding: 0;transform: none;-moz-transform: none;-webkit-transform: none;}
 }
+@media(max-width: 320px){
+  #header .btn--dropdown-menu {
+    display:none;
+  }
+  #slider .bhd-icon-slider {
+    width:50px !important;
+  }
+	#header .header--left,#header .language{left: 15px;right: auto;margin: 0;transform: none;-moz-transform: none;-webkit-transform: none;}
 
+	#header .hotline,#header .header--right{right: 15px;left: auto;margin: 0;padding: 0;transform: none;-moz-transform: none;-webkit-transform: none;}
+}
 /* ----------   END HEADER   ---------- */
 
 

@@ -31,6 +31,7 @@ $(document).ready(function () {
             type: 'GET',
             data: {'movie_id': movie_id, 'date': date},
             success: function (res) {
+                console.log(res.schedules[0].cinema.booking_movies.length);
                 var html = '';
                 for (var i = 0; i < res.schedules.length; i++) {
                     var schedule_time = res.schedules[i].schedule_time;
@@ -42,10 +43,15 @@ $(document).ready(function () {
                             </div>
                             <div class="col-md-9">
                                 <h4>${ res.schedules[i].cinema.name }</h4>
-                                <a href="${ (typeof res.schedules[i].cinema.booking_movies !== 'undefined') ? res.schedules[i].cinema.booking_movies[0].link : '' }" class="btn--green booking-button"><i class="fa fa-ticket"></i>Buy Ticket</a>
+                                <a href="${ (res.schedules[i].cinema.booking_movies.length > 0) ? res.schedules[i].cinema.booking_movies[0].link : '' }" class="btn--green booking-button"><i class="fa fa-ticket"></i>Buy Ticket</a>
                                 <div class="times">`;
+                        var time = [];
                         for (var j = 0; j < schedule_time.length; j++) {
-                            html += `<button class="btn col-md-2 btn-default">${ schedule_time[j].time.time }</button>`;
+                            time.push(schedule_time[j].time.time);
+                        }
+                        time = time.sort();
+                        for (var j = 0; j < time.length; j++) {
+                            html += `<button class="btn col-md-2 btn-default">${ time[j] }</button>`;
                         }
                         html += `</div>
                             </div>

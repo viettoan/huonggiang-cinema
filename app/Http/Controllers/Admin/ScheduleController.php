@@ -68,7 +68,7 @@ class ScheduleController extends Controller
             'movie_technology_id' => $request->movie_technology_id,
         ];
         $schedule = $this->schedule->getSchedulesByMovieAndCinema($request->movie_id, $request->cinema_id)->first();
-        if (count($schedule) == 0) {
+        if ($schedule == null) {
             $schedule = $this->schedule->create($scheduleData);
         }
 
@@ -159,7 +159,7 @@ class ScheduleController extends Controller
         if (count($scheduleTime) > 0) {
             return response(['status' => 0]);
         }
-        $times = $this->time->all();
+        $times = $this->time->model()->orderBy('time', 'ASC')->get();
         
         return response(['times' => $times]);
     }
@@ -182,7 +182,7 @@ class ScheduleController extends Controller
             }
             $data[$date] = $times;
         }
-        $times = $this->time->all();
+        $times = $this->time->model()->orderBy('time', 'ASC')->get();
         $html = view('admin.schedules.ui.list-schedule', compact('data', 'times', 'schedule'))->render();
         return response(['html' => $html]);
     }
