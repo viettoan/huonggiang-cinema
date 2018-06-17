@@ -6,25 +6,29 @@
 				<h3 class="title">{{ trans('message.about') }}</h3>
 				<div class="menu-gioi-thieu-container">
 					<ul id="menu-gioi-thieu" class="menu">
-						<li id="menu-item-82" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-82"><a href="indexd7ad.html?page_id=56">Về chúng tôi</a></li>
-						<li id="menu-item-83" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83"><a href="he-thong-rap/index.html">Hệ Thống Rạp</a></li>
-						<li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="tuyen-dung/index.html">Tuyển dụng</a></li>
-						<li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85"><a href="lien-he/index.html">Liên Hệ</a></li>
-						<li id="menu-item-3320" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3320"><a target="_blank" href="morathegioi/index.html">Mở ra thế giới</a></li>
+						<li id="menu-item-83" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83"><a href="{{ route('schedules') }}">{{ trans('message.title.schedule') }}</a></li>
+						<li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="{{ route('cinemas') }}">{{ trans('message.title.cinema_systems') }}</a></li>
+						<li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85"><a href="{{ route('promotions') }}">{{ trans('message.title.promotions') }}</a></li>
+						@if (!Auth::guest())
+		                    @if (Auth::user()->role == config('custom.admin'))
+		                        <li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85">
+		                            <a href="{{ route('dashboard') }}">{{ trans('message.title.admin') }}</a>
+		                        </li>
+		                    @endif
+		                    <li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85">
+		                        <a href="{{ route('logout') }}"
+		                            onclick="event.preventDefault();
+		                                        document.getElementById('logout-form').submit();">{{ trans('message.title.logout') }}
+		                        </a>
+		                        <form method="POST" action="{{ route('logout') }}" id="logout-form">
+		                            {{ csrf_field() }}
+		                        </form>
+		                    </li>
+		                @endif
 					</ul>
 				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
-				<h3 class="title">{{ trans('message.rules') }}</h3>
-				<div class="menu-dieu-khoan-su-dung-container">
-					<ul id="menu-dieu-khoan-su-dung" class="menu">
-						<li id="menu-item-86" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-86"><a href="quy-dinh-thanh-vien/index.html">Quy định thành viên</a></li>
-						<li id="menu-item-87" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-87"><a href="dieu-khoan/index.html">Điều khoản</a></li>
-						<li id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="index8091.html?page_id=64">Quyền và nghĩa vụ</a></li>
-					</ul>
-				</div>
-			</div>				
+			</div>			
 		</div>
-		<div class="copyright">&copy; 2015 BHDStar Cineplex</div>
+		<div class="copyright">&copy; 2018 Huonggiang_cinema</div>
 	</div>
 </footer>

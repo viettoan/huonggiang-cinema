@@ -33,8 +33,8 @@
     @if (isset($cinemas))
       @foreach ($cinemas as $key=>$cinema)
       <tr>
-          <th class="text-center">{{ $key+1 }}</th>
-          <th><img class="img-responsive media-file" style="height:300px !important;" src="{{ $cinema->media }}"></th>
+          <th class="text-center">{{ (($cinemas->currentPage()-1)*10)+($key+1) }}</th>
+          <th><img class="img-responsive media-file" style="width:200px !important; height:250px !important;" src="{{ $cinema->media }}"></th>
           <th>{{ $cinema->name }}</th>
           <th>{{ $cinema->address }}</th>
           <th>{{ $cinema->city->name }}</th>
@@ -55,6 +55,9 @@
     @endif
     </tbody>
   </table>
+    @if (isset($cinemas)) 
+      {{ $cinemas->links() }}
+  @endif
 </div>
 @endsection
 @section('script')

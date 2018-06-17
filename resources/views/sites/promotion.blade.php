@@ -11,16 +11,6 @@
             <div class="text--content">
                 {!! ($promotion->content) ? $promotion->content : '' !!}
             </div>
-            <div class="tag--list">
-                <i class="fa fa-tags"></i>
-            </div>
-            <div class="button--share">
-                <a href="javascript:fbShare('index.html', 'Fb Share', 'Facebook share popup', '', 520, 350)" class="btn--fb-share"><i class="fa fa-facebook"></i>{{ trans('message.share') }}</a>
-            </div>
-            <div class="comment">
-                <h3>{{ trans('message.action.comment') }}</h3>
-                <div class="fb-comments" data-href="http://www.bhdstar.vn/cinemas/bhd-star-bitexco/" data-width="100%" data-numposts="5"></div>
-            </div>
         </div>
     </div>
 </div>

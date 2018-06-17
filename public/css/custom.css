@@ -90,7 +90,7 @@ ul.pagination li.disabled span{
 .search-total-result {
     position: absolute;
     top: 50px;
-    width: 500px;
+    width: 430px;
     max-height: 300px !important;
     overflow: auto;
     background: #f1f1f1;

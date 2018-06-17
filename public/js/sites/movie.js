@@ -38,7 +38,7 @@ $(document).ready(function () {
                         html += `
                         <div class="schedule-time row">
                             <div class="col-md-3">
-                                <img src="${ res.schedules[i].cinema.media.path }">
+                                <img src="${ res.schedules[i].cinema.media }">
                             </div>
                             <div class="col-md-9">
                                 <h4>${ res.schedules[i].cinema.name }</h4>

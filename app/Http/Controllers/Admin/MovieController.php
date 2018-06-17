@@ -161,6 +161,7 @@ class MovieController extends Controller
         
         if ($movie) {
             $this->movieType->deleteByMovieId($id);
+            $this->movieTechnology->deleteByMovieId($id);
             foreach ($request->type_id as $type_id) {
                 $dataMovieType = [
                     'type_id' => $type_id,
@@ -168,9 +169,16 @@ class MovieController extends Controller
                 ];
                 $this->movieType->create($dataMovieType);
             }
-            return redirect()->route('movie.edit', ['id' => $id])->with('error', trans('The movie has been successfully edited!'));
+            foreach ($request->technology_id as $technology_id) {
+                $dataTechnology = [
+                    'technology_id' => $technology_id,
+                    'movie_id' => $id,
+                ];
+                $this->movieTechnology->create($dataTechnology);
+            }
+            return redirect()->route('movie.edit', ['id' => $id])->with('success', trans('The movie has been successfully edited'));
         } else {
-            return redirect()->route('movie.edit', ['id' => $id])->with('success', trans('The movie has been edited failed!'));
+            return redirect()->route('movie.edit', ['id' => $id])->with('error', trans('The movie has been edited failed'));
         }
     }
 

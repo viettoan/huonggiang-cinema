@@ -19,7 +19,7 @@ class Movie extends Model
         'status',
         'media',
     ];
-    public function getMediaAttribute($value)
+    public function getMediaAttribute($value) //GET - XUẤT CSDL
     {
         return asset(config('custom.defaultMedia') . $value);
     }

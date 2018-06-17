@@ -7,7 +7,7 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="{{route('dashboard')}}">
-          <i class="fas fa-arrow-circle-down"></i>
+          <i class="fas fa-chart-area"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
@@ -98,11 +98,11 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav" style="margin-left: 900px;">
-        <li class="nav-item" style="width:500px;">
+      <ul class="navbar-nav" style="margin-left: 420px;">
+        <li class="nav-item" style="width:420px;">
           <form class="form-inline my-4 my-lg-2 mr-lg-4" >
             <div class="input-group">
-              <input class="form-control col-md-12" id="search-total" type="text" placeholder="Search for..." style="width:500px;">
+              <input class="form-control col-md-12" id="search-total" type="text" placeholder="Search..." style="width:420px;">
             </div>
           </form>
             <ul class="search-total-result">
@@ -110,7 +110,7 @@
             </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link my-4 my-lg-2 mr-lg-4" href="{{ route('logout') }}"
+          <a class="nav-link" href="{{ route('logout') }}"
               onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
             <i class="fas fa-fw fa-sign-out"></i>Logout</a>

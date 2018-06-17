@@ -48,7 +48,7 @@ class User extends Authenticatable
         return asset(config('custom.defaultPath') . $value);
     }
 
-    public function setPasswordAttribute($value)
+    public function setPasswordAttribute($value) //SET - LƯU CSDL
     {
         $this->attributes['password'] = bcrypt($value);
     }
